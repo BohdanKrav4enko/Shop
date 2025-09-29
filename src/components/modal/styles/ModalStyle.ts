@@ -6,8 +6,8 @@ export const Overlay = styled.div<{ isOpen: boolean }>`
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
+    background: rgba(0, 0, 0, 0.68);
+    display: ${({isOpen}) => (isOpen ? "flex" : "none")};
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -36,9 +36,9 @@ export const CloseButton = styled.button`
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    border: none;
-    background: linear-gradient(135deg, rgba(12, 11, 11, 0.67), rgba(40, 40, 40, 0.85));
-    color: #fff;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #333;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
@@ -46,19 +46,19 @@ export const CloseButton = styled.button`
     align-items: center;
     justify-content: center;
     line-height: 36px;
-    box-shadow: 0 4px 12px rgba(12, 11, 11, 0.67);
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 
     &:hover {
-        background: linear-gradient(135deg, rgba(20, 20, 20, 0.75), rgba(60, 60, 60, 0.9));
+        background: #f5f5f5;
         transform: scale(1.1);
-        box-shadow: 0 6px 16px rgba(12, 11, 11, 0.75);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
     &:active {
         transform: scale(1);
-        box-shadow: 0 4px 12px rgba(12, 11, 11, 0.67);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     }
+
     &::before {
         content: "×";
         display: block;
@@ -66,28 +66,30 @@ export const CloseButton = styled.button`
     }
 `;
 
+
 export const StyledInput = styled.input`
     width: 100%;
     padding: 12px 16px;
     border-radius: 8px;
-    border: 1px solid rgba(12, 11, 11, 0.5);
+    border: 1px solid #ccc;
     font-size: 16px;
-    color: #fff;
-    background-color: rgba(12, 11, 11, 0.67);
+    color: #333;
+    background-color: #fff;
     outline: none;
     box-sizing: border-box;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
+    &:hover {
+        border-color: #bbb;
+    }
     &:focus {
-        border-color: rgba(50, 50, 50, 0.8);
-        box-shadow: 0 0 0 3px rgba(50, 50, 50, 0.3);
+        border-color: #888;
+        box-shadow: 0 0 0 3px rgba(100, 100, 100, 0.15);
     }
-
     &::placeholder {
-        color: rgba(200, 200, 200, 0.5);
+        color: #aaa;
     }
-`;
-
+`
 
 export const ModalHeader = styled.h3`
     margin: 0 0 12px 0;

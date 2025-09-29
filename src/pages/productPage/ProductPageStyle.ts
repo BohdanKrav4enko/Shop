@@ -40,6 +40,10 @@ export const PriceButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+    @media (max-width: 480px) {
+        flex-direction: column;
+        gap: 16px;
+    }
 `;
 export const TitleWrapper = styled.div`
         display: flex;

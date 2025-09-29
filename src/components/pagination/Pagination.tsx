@@ -1,26 +1,27 @@
 import React from "react";
-import { PageNumber, PaginationWrapper } from "./PaginationStyles.ts";
-import { StyledButton } from "../button/StyledButton.tsx";
+import {PageNumber, PaginationWrapper, StyledPaginationButton} from "./PaginationStyles.ts";
 import {useAppDispatch} from "../hooks/hooks.ts";
 import {setPage} from "../../app/appSlice.ts";
+import {CircleArrowLeft, CircleArrowRight} from 'lucide-react';
 
 interface PaginationProps {
     page: number;
     isNextDisabled?: boolean;
 }
 
-export const Pagination: React.FC<PaginationProps> = ({ page, isNextDisabled }) => {
+export const Pagination: React.FC<PaginationProps> = ({page, isNextDisabled}) => {
     const dispatch = useAppDispatch();
 
     return (
         <PaginationWrapper>
-            <StyledButton onClick={() => dispatch(setPage(Math.max(page - 1, 0)))} disabled={page === 0}>
-                Prev
-            </StyledButton>
+            <StyledPaginationButton onClick={() => dispatch(setPage(Math.max(page - 1, 0)))} disabled={page === 0}>
+                <CircleArrowLeft/>
+            </StyledPaginationButton>
             <PageNumber>Page {page + 1}</PageNumber>
-            <StyledButton onClick={() => dispatch(setPage(page + 1))} disabled={isNextDisabled}>
-                Next
-            </StyledButton>
+            <StyledPaginationButton onClick={() => dispatch(setPage(page + 1))} disabled={isNextDisabled}>
+                <CircleArrowRight/>
+            </StyledPaginationButton>
         </PaginationWrapper>
     );
 };
+

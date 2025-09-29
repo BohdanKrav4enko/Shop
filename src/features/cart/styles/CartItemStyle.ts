@@ -18,30 +18,32 @@ export const Image = styled.img`
 `;
 
 export const Info = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 `;
 
 export const Title = styled.span`
-  font-weight: 600;
-  margin-bottom: 4px;
+    font-weight: 600;
+    margin-bottom: 4px;
 `;
 
 export const Price = styled.span`
-  font-size: 14px;
-  color: #555;
+    font-size: 14px;
+    color: #555;
 `;
 
 export const Controls = styled.div`
-  display: flex;
-  gap: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 `;
 export const DeleteButton = styled.button`
     font-size: 24px;
     border: none;
     background: none;
     cursor: pointer;
+
     &:hover {
         color: red;
     }

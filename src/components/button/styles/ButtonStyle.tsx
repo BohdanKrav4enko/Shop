@@ -1,32 +1,25 @@
 import styled from "styled-components";
 
 export const Button = styled.button<{ disabled?: boolean }>`
-    background: ${({ disabled }) =>
-    disabled
-        ? "rgba(40,40,40,0.4)"
-        : "linear-gradient(135deg, rgba(12,11,11,0.67), rgba(40,40,40,0.85))"};
-    color: #fff;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 12px;
+    background: ${({ disabled }) => (disabled ? "#f2f2f2" : "#f9f9f9")};
+    color: ${({ disabled }) => (disabled ? "#aaa" : "#333")};
+    border: 1px solid ${({ disabled }) => (disabled ? "#ddd" : "#ccc")};
+    padding: 8px 16px;
+    border-radius: 10px;
     cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
-    font-size: 18px;
-    font-weight: 600;
-    box-shadow: 0 4px 12px rgba(12,11,11,0.67);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    font-size: 15px;
+    font-weight: 500;
+
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 
     &:hover {
-        background: ${({ disabled }) =>
-    disabled
-        ? "rgba(40,40,40,0.4)"
-        : "linear-gradient(135deg, rgba(20,20,20,0.75), rgba(60,60,60,0.9))"};
-        transform: ${({ disabled }) => (disabled ? "none" : "translateY(-2px) scale(1.05)")};
-        box-shadow: ${({ disabled }) =>
-    disabled ? "0 4px 12px rgba(12,11,11,0.67)" : "0 6px 16px rgba(12,11,11,0.75)"};
+        background: ${({ disabled }) => (disabled ? "#f2f2f2" : "#f0f0f0")};
+        border-color: ${({ disabled }) => (disabled ? "#ddd" : "#bbb")};
+        transform: ${({ disabled }) => (disabled ? "none" : "translateY(-1px)")};
     }
 
     &:active {
-        transform: translateY(0) scale(1);
-        box-shadow: 0 4px 12px rgba(12,11,11,0.67);
+        background: ${({ disabled }) => (disabled ? "#f2f2f2" : "#e6e6e6")};
+        transform: translateY(0);
     }
 `;

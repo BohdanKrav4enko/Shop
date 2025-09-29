@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const ArrowButton = styled.button<{ visible: boolean }>`
     position: fixed;
-    bottom: 40px;
-    right: 40px;
+    bottom: 20px;
+    right: 20px;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -19,7 +19,7 @@ export const ArrowButton = styled.button<{ visible: boolean }>`
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 12px rgba(12,11,11,0.67);
-    z-index: 800;
+    z-index: 950;
 
     &:hover {
         transform: scale(1.1);

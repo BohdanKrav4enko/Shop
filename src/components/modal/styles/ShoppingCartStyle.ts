@@ -26,6 +26,11 @@ export const Footer = styled.div`
     justify-content: space-between;
     align-items: center;
     gap: 12px;
+    @media (max-width: 500px) {
+        button{
+            font-size: 12px;
+        }
+    }
 `
 export const Total = styled.p`
     font-weight: 700;
@@ -33,7 +38,6 @@ export const Total = styled.p`
     text-align: right;
 `
 export const TotalContainer = styled.div`
-   width: 120px;
     display: flex;
     justify-content: flex-start;
 `

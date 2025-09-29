@@ -28,7 +28,7 @@ export const ShoppingCart = (props: ModalProps) => {
                 </Content>
                 <Footer>
                     <TotalContainer>
-                        <Total>Total: ${total}</Total>
+                        <Total>${total}</Total>
                     </TotalContainer>
                     <StyledButton onClick={() => console.log(items)}>Place an order</StyledButton>
                     <ClearButton onClick={() => dispatch(clearCart())}>Clear Cart</ClearButton>
