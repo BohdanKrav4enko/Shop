@@ -10,7 +10,7 @@ export const SearchModal = (props: ModalProps) => {
     const {onClose} = props;
     const [query, setQuery] = useState("");
 
-    const { data, isLoading, isError } = useGetProductsQuery();
+    const { data, isLoading, isError } = useGetProductsQuery({});
     if (isLoading) return <p>Loading...</p>;
     if (isError || !data) return <p>Failed to load products</p>;
 

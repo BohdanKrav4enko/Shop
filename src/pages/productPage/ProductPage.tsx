@@ -20,7 +20,7 @@ import img from '../../assets/placeholder.webp'
 
 export const ProductPage = () => {
     const { id } = useParams();
-    const { data } = useGetProductsQuery();
+    const { data } = useGetProductsQuery({});
     const { inCart } = useCart();
     const admin = useAppSelector(state => state.app.isAdmin);
     const dispatch = useAppDispatch();

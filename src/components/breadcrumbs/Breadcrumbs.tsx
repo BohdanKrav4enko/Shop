@@ -18,7 +18,7 @@ const Crumb = styled.span`
 
 export const Breadcrumbs = () => {
     const { id } = useParams();
-    const { data } = useGetProductsQuery();
+    const { data } = useGetProductsQuery({});
 
     let productName: string | null = null;
     if (id && data) {

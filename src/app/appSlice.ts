@@ -9,7 +9,7 @@ interface AppModeState {
 const initialState: AppModeState = {
     isAdmin: false,
     error: null,
-    page: 1,
+    page: 0,
 }
 
 export const addSlice = createSlice({
