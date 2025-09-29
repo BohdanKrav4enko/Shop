@@ -41,7 +41,7 @@ export const TextAdmin = styled.p`
 export const ButtonsWrapper = styled.div`
     display: flex;
     gap: 1rem;
-    @media (max-width: 500px) {
+    @media (max-width: 520px) {
         display: none;
     }
 `
@@ -59,7 +59,7 @@ export const ButtonsWrapperModile = styled.div`
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
     z-index: 900;
 
-    @media (min-width: 500px) {
+    @media (min-width: 520px) {
         display: none;
     }
 `;
