@@ -14,7 +14,6 @@ export const HeaderContainer = styled.header`
         justify-content: center;   
     }
 `;
-
 export const Title = styled.h1`
     font-family: Pacifico, sans-serif;
     font-size: 28px;
@@ -22,47 +21,38 @@ export const Title = styled.h1`
     color: #222;
     margin: 0;
     text-align: center;
-    flex: 1;
     letter-spacing: 1px;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    position: 'relative'
 `
 export const TextAdmin = styled.p`
     position: absolute;
-    font-family: "Story Script", sans-serif;
-    color: red;
+    display: flex;
+    align-items: center;
+    font-family: "Germania One", system-ui;
+    color: #0066ff;
     font-size: 20px;
+    left: 4px;
+    top: 2px;
     font-weight: bold;
-    left: -5px;
-    bottom: -5px;
     z-index: 1000;
 `
-
 export const ButtonsWrapper = styled.div`
     display: flex;
     gap: 1rem;
     @media (max-width: 520px) {
-        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 10px 16px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        gap: 1rem;
+        background-color: rgba(255, 255, 255, 0.45);
+        z-index: 900;
     }
 `
-export const ButtonsWrapperModile = styled.div`
-    position: fixed;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    padding: 10px 16px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 1rem;
-    background-color: rgba(255, 255, 255, 0.45);
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
-    z-index: 900;
-
-    @media (min-width: 520px) {
-        display: none;
-    }
-`;
 export const CartWrapper = styled.div`
     position: relative;
 `

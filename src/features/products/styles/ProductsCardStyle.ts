@@ -5,7 +5,7 @@ export const Card = styled.div`
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
-    max-width: 240px;
+    max-width: 300px;
     padding: 16px;
     border-radius: 12px;
     background: #fff;
@@ -20,14 +20,14 @@ export const Card = styled.div`
 `;
 export const ImageWrapper = styled.div`
   width: 100%;
-  height: 180px;
+  height: 280px;
   overflow: hidden;
   border-radius: 8px;
   margin-bottom: 12px;
 
   img {
     width: 100%;
-    height: 200px;
+    height: 280px;
     object-fit: cover;
     transition: transform 0.3s ease;
   }
@@ -42,13 +42,14 @@ export const Title = styled.h3`
   font-weight: 600;
   color: #333;
   margin: 0 0 8px;
-  min-height: 40px; /* чтобы заголовки были ровные по высоте */
+  min-height: 40px;
 `;
 
 export const Price = styled.p`
   font-size: 18px;
-  font-weight: 700;
-  color: #2e7d32;
+  font-weight: 300;
+  font-family: Roboto, sans-serif;
+  color: #000000;
   margin: 0;
 `;
 export const Footer = styled.div`
@@ -58,9 +59,8 @@ export const Footer = styled.div`
   margin-top: 12px;
 `;
 export const BuyButton = styled.button`
-  font-weight: 600;
   font-size: 20px;
-  color: #fff;
+  color: #000000;
   background-color: inherit;
   border: none;
   cursor: pointer;

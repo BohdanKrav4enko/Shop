@@ -9,6 +9,10 @@ export const Button = styled.button<{ disabled?: boolean }>`
     cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
     font-size: 15px;
     font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
 
     transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 

@@ -8,7 +8,7 @@ import {useAppSelector} from "../../components/hooks/hooks.ts";
 
 export const ProductsList = () => {
     const page = useAppSelector(state => state.app.page)
-    const limit = 8;
+    const limit = 9;
 
     const { data, isLoading, error } = useGetProductsQuery({ offset: page * limit, limit })
 

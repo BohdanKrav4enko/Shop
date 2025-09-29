@@ -1,7 +1,7 @@
 import {Button} from "./styles/ButtonStyle.tsx";
 
 interface ButtonsWrapperProps {
-    children: string,
+    children: React.ReactNode;
     onClick?: () => void;
     disabled?: boolean;
 }

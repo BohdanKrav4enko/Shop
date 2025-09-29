@@ -5,6 +5,7 @@ import {useAppDispatch} from "../../components/hooks/hooks.ts";
 import {addCart, removeCart} from "../cart/cartSlice.ts";
 import {useCart} from "../../components/hooks/useCart.ts";
 import img from "../../assets/placeholder.webp";
+import { ShoppingCart } from 'lucide-react';
 
 export const ProductsCard = ({product}: { product: Product }) => {
     const dispatch = useAppDispatch();
@@ -33,7 +34,7 @@ export const ProductsCard = ({product}: { product: Product }) => {
             <Footer>
                 <Price>{product.price} $</Price>
                 <CartWrapper onClick={handleCartClick}>
-                    <BuyButton>🛒</BuyButton>
+                    <BuyButton><ShoppingCart /></BuyButton>
                     {exists && <Badge>✔️</Badge>}
                 </CartWrapper>
             </Footer>
