@@ -33,7 +33,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         setDescription(initialDescription);
         setPrice(initialPrice);
         setImage(initialImage);
-    }, [initialTitle, initialDescription, initialPrice, initialImage]);
+    }, []);
 
     const handleSave = () => {
         onSave({ title, description, price: Number(price), images: image });
