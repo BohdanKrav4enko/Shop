@@ -57,7 +57,7 @@ Error generating stack: `+n.message+`
     align-items: center;
     justify-content: space-between;
     z-index: 999;
-    @media (max-width: 500px) {
+    @media (max-width: 520px) {
         justify-content: center;   
     }
 `,hS=oe.h1`
@@ -83,7 +83,7 @@ Error generating stack: `+n.message+`
 `,yS=oe.div`
     display: flex;
     gap: 1rem;
-    @media (max-width: 500px) {
+    @media (max-width: 520px) {
         display: none;
     }
 `,mS=oe.div`
@@ -100,7 +100,7 @@ Error generating stack: `+n.message+`
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.3);
     z-index: 900;
 
-    @media (min-width: 500px) {
+    @media (min-width: 520px) {
         display: none;
     }
 `,Dg=oe.div`
