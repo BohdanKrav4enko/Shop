@@ -36,11 +36,12 @@ export const ProductPage = () => {
         dispatch(setCategory(data.category.id))
         navigate(-1)
     }
-    const handleShare = async () => {
+    const handleShare = async (product: {title: string; description: string}) => {
         if (navigator.share) {
             try {
                 await navigator.share({
                     title: "SHOP",
+                    text: `${product.title}: ${product.description}`,
                     url: window.location.href,
                 });
             } catch (err: unknown) {
@@ -90,7 +91,7 @@ export const ProductPage = () => {
             </CategoryWrapper>
             <ProductDescription>{data.description}</ProductDescription>
             <ProductItemWrapperFooter>
-                <StyledButton onClick={handleShare}>
+                <StyledButton onClick={() => void handleShare(data)}>
                     <Share /> Share
                 </StyledButton>
                 <StyledButton onClick={() => navigator.clipboard.writeText(window.location.href)}>

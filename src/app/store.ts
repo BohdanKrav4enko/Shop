@@ -15,6 +15,7 @@ export const store = configureStore({
 store.subscribe(() => {
     const state = store.getState();
     localStorage.setItem('isAdmin', JSON.stringify(state.app.isAdmin));
+    localStorage.setItem('items', JSON.stringify(state.cart.items));
 });
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

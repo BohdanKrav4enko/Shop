@@ -13,6 +13,6 @@ export const BurgerButton = styled.button<{ isOpen: boolean }>`
     background: transparent;
     border: none;
     cursor: pointer;
-    z-index: 1100;
+    z-index: 1001;
     padding: 8px;
 `;

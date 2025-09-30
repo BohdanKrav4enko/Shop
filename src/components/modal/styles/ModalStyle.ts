@@ -10,7 +10,7 @@ export const Overlay = styled.div<{ isOpen: boolean }>`
     display: ${({isOpen}) => (isOpen ? "flex" : "none")};
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 1200;
     padding: 20px;
 `;
 
@@ -26,7 +26,7 @@ export const ModalContainer = styled.div`
     display: flex;
     flex-direction: column;
     padding: 24px 24px 0 24px;
-    z-index: 900;
+    z-index: 1200;
 `;
 
 export const CloseButton = styled.button`
