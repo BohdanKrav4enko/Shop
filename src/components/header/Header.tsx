@@ -14,7 +14,6 @@ export const Header = () => {
         <>
             <HeaderContainer>
                 <AdminBadge />
-                <div />
                 <HeaderLogo />
                 <HeaderButtons setOpenModal={setOpenModal} />
             </HeaderContainer>

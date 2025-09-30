@@ -3,13 +3,13 @@ import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
 interface AppModeState {
     isAdmin: boolean;
     error: string | null;
-    page: number;
+    categoryId: number;
 }
 
 const initialState: AppModeState = {
-    isAdmin: false,
+    isAdmin: JSON.parse(localStorage.getItem('isAdmin') || 'false'),
     error: null,
-    page: 0,
+    categoryId: 0,
 }
 
 export const addSlice = createSlice({
@@ -22,11 +22,11 @@ export const addSlice = createSlice({
         setError: (state, action: PayloadAction<string | null>) => {
             state.error = action.payload;
         },
-        setPage: (state, action: PayloadAction<number>) => {
-            state.page = action.payload;
+        setCategory: (state, action: PayloadAction<number>) => {
+            state.categoryId = action.payload;
         },
     }
 })
 
-export const {setAdmin, setError, setPage} = addSlice.actions;
+export const {setAdmin, setError, setCategory} = addSlice.actions;
 export default addSlice.reducer;

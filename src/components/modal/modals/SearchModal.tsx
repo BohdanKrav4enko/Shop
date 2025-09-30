@@ -5,14 +5,16 @@ import {useState} from "react";
 import {useGetProductsQuery} from "../../../api/productsApi.ts";
 import {Content} from "../styles/ShoppingCartStyle.ts";
 import {SearchItem} from "../../../features/search/SearchItem.tsx";
+import { CircularProgress } from "@mui/material";
+
 
 export const SearchModal = (props: ModalProps) => {
     const {onClose} = props;
     const [query, setQuery] = useState("");
 
     const { data, isLoading, isError } = useGetProductsQuery({});
-    if (isLoading) return <p>Loading...</p>;
-    if (isError || !data) return <p>Failed to load products</p>;
+    if (isLoading) return <InputWrapper><CircularProgress /></InputWrapper>;
+    if (isError || !data) return <InputWrapper>Failed to load products</InputWrapper>;
 
     const filteredProducts = query
         ? data.filter(

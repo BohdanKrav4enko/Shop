@@ -5,7 +5,9 @@ import {useAppDispatch} from "../../components/hooks/hooks.ts";
 import {addCart, removeCart} from "../cart/cartSlice.ts";
 import {useCart} from "../../components/hooks/useCart.ts";
 import img from "../../assets/placeholder.webp";
-import { ShoppingCart } from 'lucide-react';
+import {CircleCheckBig, ShoppingCart} from 'lucide-react';
+import {CategoryChangeButton} from "../../pages/productPage/ProductPageStyle.ts";
+import {setCategory} from "../../app/appSlice.ts";
 
 export const ProductsCard = ({product}: { product: Product }) => {
     const dispatch = useAppDispatch();
@@ -31,11 +33,16 @@ export const ProductsCard = ({product}: { product: Product }) => {
                 </ImageWrapper>
             </Link>
                 <Title>{product.title}</Title>
+            {product.category ? (
+                <CategoryChangeButton onClick={()=>{dispatch(setCategory(product.category.id))}}>
+                    {product.category.name}
+                </CategoryChangeButton>
+            ) : "Unknown"}
             <Footer>
                 <Price>{product.price} $</Price>
                 <CartWrapper onClick={handleCartClick}>
                     <BuyButton><ShoppingCart /></BuyButton>
-                    {exists && <Badge>✔️</Badge>}
+                    {exists && <Badge><CircleCheckBig /></Badge>}
                 </CartWrapper>
             </Footer>
         </Card>

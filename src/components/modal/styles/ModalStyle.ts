@@ -114,7 +114,7 @@ export const ButtonsWrapper = styled.div`
     gap: 2rem;
     margin: 30px;
     button{
-        width: 40%;
+        width: 100%;
     }
 `
 export const InputWrapper = styled.div`

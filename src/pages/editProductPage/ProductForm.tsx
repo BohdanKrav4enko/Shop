@@ -1,7 +1,8 @@
-import { StyledButton } from "../../components/button/StyledButton";
-import { Input, Textarea, ButtonGroup, ActionButtons, Title } from "./EditProductPageStyle";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import {StyledButton} from "../../components/button/StyledButton";
+import {Input, Textarea, ButtonGroup, ActionButtons, Title, Select} from "./EditProductPageStyle";
+import {useState, useEffect} from "react";
+import {useNavigate} from "react-router-dom";
+import {useGetCategoriesQuery} from "../../api/productsApi.ts";
 
 interface ProductFormProps {
     initialTitle?: string;
@@ -11,6 +12,8 @@ interface ProductFormProps {
     onSave: (data: { title: string; description: string; price: number; images: string[] }) => void;
     isEdit?: boolean;
     onDelete?: () => void;
+    selectedCategory: number;
+    setSelectedCategory: (id: number) => void;
 }
 
 export const ProductForm: React.FC<ProductFormProps> = ({
@@ -21,12 +24,15 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                                                             onSave,
                                                             isEdit = false,
                                                             onDelete,
+                                                            selectedCategory,
+                                                            setSelectedCategory
                                                         }) => {
     const [title, setTitle] = useState(initialTitle);
     const [description, setDescription] = useState(initialDescription);
     const [price, setPrice] = useState(initialPrice);
     const [image, setImage] = useState(initialImage);
     const navigate = useNavigate();
+    const {data: categories, isLoading: categoriesLoading} = useGetCategoriesQuery();
 
     useEffect(() => {
         setTitle(initialTitle);
@@ -36,15 +42,23 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     }, []);
 
     const handleSave = () => {
-        onSave({ title, description, price: Number(price), images: image });
+        onSave({title, description, price: Number(price), images: image});
     };
 
     return (
         <>
             <Title>{isEdit ? "Edit Product" : "Add Product"}</Title>
-            <Input value={title} onChange={e => setTitle(e.target.value)} placeholder="Enter the product name" />
-            <Input value={image} onChange={e => setImage([e.target.value])} placeholder="Enter the product image URL" />
-            <Textarea value={description} onChange={e => setDescription(e.target.value)} placeholder="Enter a product description" />
+            <Input value={title} onChange={e => setTitle(e.target.value)} placeholder="Enter the product name"/>
+            <Input value={image} onChange={e => setImage([e.target.value])} placeholder="Enter the product image URL"/>
+            <Textarea value={description} onChange={e => setDescription(e.target.value)}
+                      placeholder="Enter a product description"/>
+            {!isEdit && <Select value={selectedCategory} onChange={e => setSelectedCategory(Number(e.target.value))}>
+                    {categoriesLoading && <option>Loading...</option>}
+                    {categories?.map(cat => (
+                        <option key={cat.id} value={cat.id}>
+                            {cat.name}
+                        </option>))}
+                </Select>}
             <Input
                 type="number"
                 value={price === 0 ? "" : price}

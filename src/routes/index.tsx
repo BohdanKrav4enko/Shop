@@ -6,6 +6,7 @@ import {PATH} from "./paths.ts";
 import {PrivacyPage} from "../pages/privacyPolicy/PrivacyPolicy.tsx";
 import {AboutPage} from "../pages/aboutPage/AboutPage.tsx";
 import {ContactPage} from "../pages/contactPage/ContactPage.tsx";
+import {FaqPage} from "../pages/faqPage/FaqPage.tsx";
 
 export const AppRoutes = () => (
     <Routes>
@@ -16,5 +17,6 @@ export const AppRoutes = () => (
         <Route path={PATH.PRIVACY_PAGE} element={<PrivacyPage />} />
         <Route path={PATH.ABOUT_PAGE} element={<AboutPage />} />
         <Route path={PATH.CONTACT_PAGE} element={<ContactPage />} />
+        <Route path={PATH.FAQ_PAGE} element={<FaqPage />} />
     </Routes>
 );

@@ -1,28 +1,42 @@
-import {useGetProductsQuery} from "../../api/productsApi.ts";
-import {ProductsCard} from "./ProductsCard.tsx";
-import type {Product} from "../../types/types.ts";
-import {Grid} from "./styles/ProductsListStyle.ts";
-import {ProductSkeletonGrid} from "../../components/skeletons/ProductSkeletonGrid.tsx";
-import {Pagination} from "../../components/pagination/Pagination.tsx";
-import {useAppSelector} from "../../components/hooks/hooks.ts";
+import {CategoryTitle, Grid} from "./styles/ProductsListStyle";
+import {ProductsCard} from "./ProductsCard";
+import {ProductSkeletonGrid} from "../../components/skeletons/ProductSkeletonGrid";
+import {useInfiniteProducts} from "../../components/hooks/useInfiniteProducts";
+import {ShowMoreButton, ShowMoreButtonWrapper} from "./styles/ShowMoreButtonStyle";
+import {useAppSelector} from "../../components/hooks/hooks";
+import {EmptyState} from "./EmptyState.tsx";
+import {useGetCategoriesQuery} from "../../api/productsApi.ts";
+
+
 
 export const ProductsList = () => {
-    const page = useAppSelector(state => state.app.page)
-    const limit = 9;
+    const categoryId = useAppSelector(state => state.app.categoryId);
+    const {data: categories} = useGetCategoriesQuery()
+    const {products, isLoading, error, loadMore, hasMore} = useInfiniteProducts(9);
 
-    const { data, isLoading, error } = useGetProductsQuery({ offset: page * limit, limit })
+    if (isLoading && products.length === 0) return <ProductSkeletonGrid/>;
+    if (error) return <div>Error loading data</div>;
+    const category = categories?.find(cat => cat.id === categoryId);
+    const categoryName = category ? category.name : "All products";
 
-    if (isLoading) return <ProductSkeletonGrid/>
-    if (error) return <div>Error loading data</div>
-    if (!data) return null;
-
-    return <>
-        <Grid>
-            {data.map((product: Product) => (
-                <ProductsCard key={product.id} product={product} />
-            ))}
-        </Grid>
-        <Pagination isNextDisabled={!data || data.length < limit} page={page} />
-    </>
-
-}
+    const filteredProducts = categoryId === 0
+        ? products
+        : products.filter(product => product.category.id === categoryId);
+    return (
+        <>  <CategoryTitle style={{textAlign: 'center'}}>{categoryName}</CategoryTitle>
+            {filteredProducts.length === 0
+                ? <EmptyState/>
+                : <Grid>
+                        {filteredProducts.map(product => (
+                            <ProductsCard key={product.id} product={product}/>
+                        ))}
+                    </Grid>
+                }
+            {hasMore && filteredProducts.length > 0 && (
+                <ShowMoreButtonWrapper>
+                    <ShowMoreButton onClick={loadMore}>Показать ещё</ShowMoreButton>
+                </ShowMoreButtonWrapper>
+            )}
+        </>
+    );
+};

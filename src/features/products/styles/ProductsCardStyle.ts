@@ -75,17 +75,17 @@ export const CartWrapper = styled.div`
     }
 `
 export const Badge = styled.div`
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: #000000;
-    color: white;
-    font-size: 10px;
-    font-weight: bold;
-    border-radius: 50%;
-    width: 14px;
-    height: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  background-color: #222;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

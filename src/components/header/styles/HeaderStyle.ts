@@ -8,15 +8,15 @@ export const HeaderContainer = styled.header`
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     z-index: 999;
     @media (max-width: 520px) {
         justify-content: center;   
     }
 `;
 export const Title = styled.h1`
-    font-family: Pacifico, sans-serif;
-    font-size: 28px;
+    font-family: "Acme", sans-serif;
+    font-size: 26px;
     font-weight: 800;
     color: #222;
     margin: 0;
@@ -31,15 +31,12 @@ export const TextAdmin = styled.p`
     font-family: "Germania One", system-ui;
     color: #0066ff;
     font-size: 20px;
-    left: 4px;
+    right: 4px;
     top: 2px;
     font-weight: bold;
     z-index: 1000;
 `
 export const ButtonsWrapper = styled.div`
-    display: flex;
-    gap: 1rem;
-    @media (max-width: 520px) {
         position: fixed;
         top: 70px;
         left: 0;
@@ -51,7 +48,6 @@ export const ButtonsWrapper = styled.div`
         gap: 1rem;
         background-color: rgba(255, 255, 255, 0.45);
         z-index: 900;
-    }
 `
 export const CartWrapper = styled.div`
     position: relative;

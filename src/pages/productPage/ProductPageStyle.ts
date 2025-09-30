@@ -49,3 +49,23 @@ export const ProductItemWrapper = styled.div`
         }
     }
 `;
+export const CategoryWrapper = styled.div`
+    font-size: 16px;
+    margin: 10px 0;
+    color: #555;
+`;
+export const CategoryChangeButton = styled.button`
+    background: inherit;
+    border: none;
+    display: flex;
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+        color: #0056b3;
+    }
+`;

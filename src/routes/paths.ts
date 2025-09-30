@@ -7,4 +7,5 @@ export const PATH = {
     PRIVACY_PAGE: "/privacy",
     CONTACT_PAGE: "/contact",
     ABOUT_PAGE: "/about",
+    FAQ_PAGE: "/faq"
 };

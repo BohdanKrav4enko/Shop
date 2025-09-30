@@ -12,6 +12,9 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(productsApi.middleware),
 });
-
+store.subscribe(() => {
+    const state = store.getState();
+    localStorage.setItem('isAdmin', JSON.stringify(state.app.isAdmin));
+});
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

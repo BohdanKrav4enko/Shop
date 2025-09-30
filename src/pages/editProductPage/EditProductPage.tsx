@@ -1,6 +1,6 @@
 import { Container } from "./EditProductPageStyle";
 import { useParams, useNavigate } from "react-router-dom";
-import { useGetProductsQuery, useUpdateProductMutation, useCreateProductMutation } from "../../api/productsApi";
+import { useGetProductByIdQuery, useUpdateProductMutation, useCreateProductMutation } from "../../api/productsApi";
 import { useAppDispatch } from "../../components/hooks/hooks";
 import { setError } from "../../app/appSlice";
 import { useState } from "react";
@@ -10,15 +10,16 @@ import { RemoveItemModal } from "../../components/modal/modals/RemoveItemModal";
 export const EditProductPage = () => {
     const dispatch = useAppDispatch();
     const { id } = useParams();
+    const productId = Number(id);
     const isEdit = Boolean(id);
     const navigate = useNavigate();
 
-    const { data: products, isLoading } = useGetProductsQuery({}, { skip: !isEdit });
-    const product = products?.find(p => p.id === Number(id));
+    const { data: product, isLoading } = useGetProductByIdQuery({id: productId}, { skip: !isEdit });
 
     const [updateProduct] = useUpdateProductMutation();
     const [createProduct] = useCreateProductMutation();
     const [isOpenModal, setIsOpenModal] = useState(false);
+    const [selectedCategory, setSelectedCategory] = useState<number>(product?.category?.id || 1)
 
     if (isLoading) return <p>Loading...</p>;
 
@@ -29,7 +30,7 @@ export const EditProductPage = () => {
                 await updateProduct({ id: product.id, ...data }).unwrap();
                 navigate(`/product/${product.id}`);
             } else {
-                await createProduct({ ...data, categoryId: 52 }).unwrap();
+                await createProduct({ ...data, categoryId: selectedCategory }).unwrap();
                 navigate(`/`);
             }
         } catch (err: unknown) {
@@ -56,6 +57,8 @@ export const EditProductPage = () => {
                     isEdit={isEdit}
                     onSave={handleSave}
                     onDelete={handleDelete}
+                    selectedCategory={selectedCategory}
+                    setSelectedCategory={setSelectedCategory}
                 />
             )}
         </Container>

@@ -33,7 +33,30 @@ export const Input = styled.input`
         border-color: #007bff;
     }
 `;
+export const Select = styled.select`
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="none" stroke="%23999" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
 
+    &:focus {
+        outline: none;
+        border-color: #007bff;
+    }
+
+    option {
+        font-size: 16px;
+        padding: 5px 10px;
+    }
+`;
 export const Textarea = styled.textarea`
     padding: 10px 12px;
     font-size: 16px;

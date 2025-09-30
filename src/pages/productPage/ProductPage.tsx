@@ -1,12 +1,14 @@
 import {Link, useNavigate, useParams} from "react-router-dom";
-import {useGetProductsQuery} from "../../api/productsApi.ts";
+import {useGetProductByIdQuery} from "../../api/productsApi.ts";
 import {
+    CategoryChangeButton,
+    CategoryWrapper,
     ProductContainer,
     ProductDescription,
     ProductImage,
+    ProductItemWrapper,
     ProductPrice,
-    ProductTitle,
-    ProductItemWrapper
+    ProductTitle
 } from "./ProductPageStyle.ts";
 import {StyledButton} from "../../components/button/StyledButton.tsx";
 import {Breadcrumbs} from "../../components/breadcrumbs/Breadcrumbs.tsx";
@@ -16,48 +18,60 @@ import {ProductCardSkeleton} from "../../components/skeletons/ProductPageSkeleto
 import {useCart} from "../../components/hooks/useCart.ts";
 import img from '../../assets/placeholder.webp'
 import {ArrowLeft, CircleDollarSign, Link2, Pen, ShoppingBasket} from "lucide-react";
+import {setCategory} from "../../app/appSlice.ts";
 
 
 export const ProductPage = () => {
     const {id} = useParams();
-    const {data} = useGetProductsQuery({});
+    const productId = Number(id);
+    const {data} = useGetProductByIdQuery({id: productId});
     const {inCart} = useCart();
     const navigate = useNavigate();
     const admin = useAppSelector(state => state.app.isAdmin);
     const dispatch = useAppDispatch();
-    const product = data?.find((p) => p.id === Number(id));
-    if (!product) return <ProductCardSkeleton/>
-    const exists = inCart(product!.id);
+    if (!data) return <ProductCardSkeleton/>
+    const exists = inCart(data!.id);
 
+    const changeCategoryHandler = () => {
+        dispatch(setCategory(data.category.id))
+        navigate(-1)
+    }
 
     return (
         <ProductContainer>
             <Breadcrumbs/>
             <ProductItemWrapper>
-                <ProductTitle>{product.title}</ProductTitle>
-                {admin && <Link to={`/edit-product/${product.id}`}><StyledButton>Edit<Pen
+                <ProductTitle>{data.title}</ProductTitle>
+                {admin && <Link to={`/edit-product/${data.id}`}><StyledButton>Edit<Pen
                     style={{width: '14px'}}/></StyledButton></Link>}
             </ProductItemWrapper>
             <ProductImage
-                src={product.images?.[0]}
-                alt={product.title || "Product image"}
+                src={data.images?.[0]}
+                alt={data.title || "Product image"}
                 onError={e => (e.currentTarget.src = img)}
             />
             <ProductItemWrapper>
-                <ProductPrice>Price: {product.price} $</ProductPrice>
+                <ProductPrice>Price: {data.price} $</ProductPrice>
                 {exists
                     ? <StyledButton onClick={() => {
-                        dispatch(removeCart(product.id))
+                        dispatch(removeCart(data.id))
                     }}>
                         In the basket<ShoppingBasket/>
                     </StyledButton>
                     : <StyledButton onClick={() => {
-                        dispatch(addCart(product))
+                        dispatch(addCart(data))
                     }}>
                         Buy<CircleDollarSign/>
                     </StyledButton>}
             </ProductItemWrapper>
-            <ProductDescription>{product.description}</ProductDescription>
+            <CategoryWrapper>
+                Category: {data.category ? (
+                <CategoryChangeButton onClick={changeCategoryHandler}>
+                    {data.category.name}
+                </CategoryChangeButton>
+            ) : "Unknown"}
+            </CategoryWrapper>
+            <ProductDescription>{data.description}</ProductDescription>
             <ProductItemWrapper>
                 <StyledButton onClick={() => navigate(-1)}>
                     <ArrowLeft/> Back
