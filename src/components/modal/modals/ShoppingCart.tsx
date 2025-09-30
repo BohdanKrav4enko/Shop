@@ -12,12 +12,35 @@ import {
     TotalContainer
 } from "../styles/ShoppingCartStyle.ts";
 import type {ModalProps} from "./type.ts";
+import { sendOrder } from "../../../api/ordersApi.ts";
 
 export const ShoppingCart = (props: ModalProps) => {
     const {onClose} = props;
     const items = useAppSelector((state) => state.cart.items);
     const dispatch = useAppDispatch();
     const total = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
+
+    const prepareOrder = () => {
+        const products = items.map(item => ({
+            id: item.id,
+            title: item.title,
+            price: item.price,
+            quantity: item.quantity
+        }));
+
+        return {
+            name: "Богдан",
+            email: "example@mail.com",
+            products,
+            total,
+            date: new Date().toISOString()
+        };
+    };
+
+    const handleOrder = () => {
+        const order = prepareOrder();
+        sendOrder(order);
+    };
 
     return (
         items.length > 0 ? (
@@ -30,7 +53,7 @@ export const ShoppingCart = (props: ModalProps) => {
                     <TotalContainer>
                         <Total>${total}</Total>
                     </TotalContainer>
-                    <StyledButton onClick={() => console.log(items)}>Place an order</StyledButton>
+                    <StyledButton onClick={handleOrder}>Place an order</StyledButton>
                     <ClearButton onClick={() => dispatch(clearCart())}>Clear Cart</ClearButton>
                 </Footer>
             </CartLayout>
