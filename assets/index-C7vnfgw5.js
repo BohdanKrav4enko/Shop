@@ -1046,7 +1046,7 @@ export default theme;`}function d1(e){return typeof e=="number"?`${(e*100).toFix
     cursor: pointer;
     z-index: 1001;
     padding: 8px;
-`,nL=({isOpen:e,onClick:a})=>P.jsx(eL,{isOpen:e,onClick:a,children:e?P.jsx(XT,{}):P.jsx(DT,{})}),iL=xt.div`
+`,nL=({isOpen:e,onClick:a})=>P.jsx(eL,{isOpen:e,onClick:a,children:e?P.jsx(XT,{style:{color:"black"}}):P.jsx(DT,{style:{color:"black"}})}),iL=xt.div`
     position: fixed;
     top: 0;
     left: ${({isOpen:e})=>e?"0":"-100%"};
