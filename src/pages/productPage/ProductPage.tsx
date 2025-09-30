@@ -6,7 +6,7 @@ import {
     ProductContainer,
     ProductDescription,
     ProductImage,
-    ProductItemWrapper,
+    ProductItemWrapper, ProductItemWrapperFooter,
     ProductPrice,
     ProductTitle
 } from "./ProductPageStyle.ts";
@@ -17,8 +17,8 @@ import {addCart, removeCart} from "../../features/cart/cartSlice.ts";
 import {ProductCardSkeleton} from "../../components/skeletons/ProductPageSkeleton.tsx";
 import {useCart} from "../../components/hooks/useCart.ts";
 import img from '../../assets/placeholder.webp'
-import {ArrowLeft, CircleDollarSign, Link2, Pen, ShoppingBasket} from "lucide-react";
-import {setCategory} from "../../app/appSlice.ts";
+import {ArrowLeft, CircleDollarSign, Link2, Pen, Share, ShoppingBasket} from "lucide-react";
+import {setCategory, setError} from "../../app/appSlice.ts";
 
 
 export const ProductPage = () => {
@@ -36,6 +36,23 @@ export const ProductPage = () => {
         dispatch(setCategory(data.category.id))
         navigate(-1)
     }
+    const handleShare = async () => {
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: "SHOP",
+                    url: window.location.href,
+                });
+            } catch (err: unknown) {
+                let message = "Unknown Error";
+                if (err && typeof err === "object" && "data" in err) {
+                    const e = err as { data?: { message?: string } };
+                    message = e.data?.message || message;
+                }
+                dispatch(setError(message));
+            }
+        }
+    };
 
     return (
         <ProductContainer>
@@ -72,14 +89,17 @@ export const ProductPage = () => {
             ) : "Unknown"}
             </CategoryWrapper>
             <ProductDescription>{data.description}</ProductDescription>
-            <ProductItemWrapper>
-                <StyledButton onClick={() => navigate(-1)}>
-                    <ArrowLeft/> Back
+            <ProductItemWrapperFooter>
+                <StyledButton onClick={handleShare}>
+                    <Share /> Share
                 </StyledButton>
                 <StyledButton onClick={() => navigator.clipboard.writeText(window.location.href)}>
                     <Link2/> Copy link
                 </StyledButton>
-            </ProductItemWrapper>
+            </ProductItemWrapperFooter>
+            <StyledButton onClick={() => navigate(-1)}>
+                <ArrowLeft/> Back
+            </StyledButton>
         </ProductContainer>
     );
 };

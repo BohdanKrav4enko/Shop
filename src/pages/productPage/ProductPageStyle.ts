@@ -49,6 +49,13 @@ export const ProductItemWrapper = styled.div`
         }
     }
 `;
+
+export const ProductItemWrapperFooter = styled(ProductItemWrapper)`
+    button {
+        width: 100%;
+    }
+`
+
 export const CategoryWrapper = styled.div`
     font-size: 16px;
     margin: 10px 0;
