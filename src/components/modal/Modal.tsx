@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Overlay, ModalContainer, CloseButton } from "./styles/ModalStyle";
+import { Overlay, ModalContainer, CloseButton } from "./index.ts";
 
 type ModalProps = {
     isOpen: boolean;

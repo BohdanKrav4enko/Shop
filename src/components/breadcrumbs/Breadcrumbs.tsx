@@ -1,6 +1,6 @@
 import {Link, useParams} from "react-router-dom";
 import styled from "styled-components";
-import {useGetProductByIdQuery} from "../../api/productsApi.ts";
+import {useGetProductByIdQuery} from "@/api/productsApi.ts";
 
 const BreadcrumbsContainer = styled.nav`
   font-size: 14px;

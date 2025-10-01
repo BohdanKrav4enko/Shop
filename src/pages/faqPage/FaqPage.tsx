@@ -1,5 +1,5 @@
-import {FaqContainer, FaqSection, FaqSubTitle, FaqText, FaqTitle} from "./styles/FaqPageStyle.tsx";
-import {NavigationButtons} from "../../components/navigationButtons/NavigationButtons.tsx";
+import {FaqContainer, FaqSection, FaqSubTitle, FaqText, FaqTitle} from "./index.ts";
+import {NavigationButtons} from "@/components";
 
 export const FaqPage = () => {
     return (

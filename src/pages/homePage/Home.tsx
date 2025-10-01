@@ -1,4 +1,4 @@
-import {ProductsList} from "../../features/products/ProductsList.tsx";
+import {ProductsList} from "@/features";
 
 export const Home = () => {
     return <ProductsList/>

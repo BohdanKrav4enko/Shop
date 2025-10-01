@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useGetProductsQuery } from "../../api/productsApi";
-import type { Product } from "../../types/types";
+import { useGetProductsQuery } from "@/api/productsApi.ts";
+import type { Product } from "@/types/types.ts";
 
 export const useInfiniteProducts = (limit: number = 9) => {
     const [offset, setOffset] = useState(0);
     const [products, setProducts] = useState<Product[]>([]);
     const { data, isLoading, isFetching, error } = useGetProductsQuery({ offset, limit });
+
     useEffect(() => {
         if (data && data.length > 0) {
             setProducts(prev => [...prev, ...data]);

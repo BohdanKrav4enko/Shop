@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import {FooterContainer, FooterLinks, FooterText} from "./styles/FooterStyle.ts";
-import {PATH} from "../../routes/paths.ts";
+import {FooterContainer, FooterLinks, FooterText} from "./index.ts";
+import {PATH} from "@/routes/paths.ts";
 
 export const Footer = () => {
     return (

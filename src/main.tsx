@@ -4,7 +4,7 @@ import {App} from "./app/App.tsx";
 import {Provider} from "react-redux";
 import {store} from "./app/store.ts";
 import {GlobalStyle} from "./styles/GlobalStyle.ts";
-import {ScrollToTop} from "./components/scrollToTop/ScrollToTop.tsx";
+import {ScrollToTop} from "./components";
 import {HashRouter} from "react-router-dom";
 
 createRoot(document.getElementById('root')!).render(

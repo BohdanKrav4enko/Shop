@@ -4,9 +4,8 @@ import {
     ContactSubTitle,
     ContactText,
     ContactTitle
-} from "./styles/ContactPageStyle.ts";
-import {MapComponent} from "../../components/mapComponent/MapComponent.tsx";
-import {NavigationButtons} from "../../components/navigationButtons/NavigationButtons.tsx";
+} from "./index.ts";
+import {MapComponent, NavigationButtons} from "@/components";
 
 export const ContactPage = () => {
     return (

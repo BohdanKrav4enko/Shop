@@ -1,5 +1,18 @@
 import styled from "styled-components";
 
+export const ProductItemWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 2px;
+
+    @media (max-width: 480px) {
+        flex-direction: column;
+        gap: 16px;
+        button {
+            width: 100%;
+        }
+    }
+`;
 export const ProductContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -35,19 +48,6 @@ export const ProductImage = styled.img`
     border-radius: 12px;
     object-fit: cover;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-`;
-export const ProductItemWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    gap: 2px;
-
-    @media (max-width: 480px) {
-        flex-direction: column;
-        gap: 16px;
-        button {
-            width: 100%;
-        }
-    }
 `;
 
 export const ProductItemWrapperFooter = styled(ProductItemWrapper)`

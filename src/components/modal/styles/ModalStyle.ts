@@ -18,7 +18,7 @@ export const ModalContainer = styled.div`
     max-width: 800px;
     width: 100%;
     overflow-y: auto;
-    max-height: 90vh;
+    height: 80vh;
     background: #fff;
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.2);
@@ -99,23 +99,37 @@ export const ModalHeader = styled.h3`
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 8px;
 `;
+export const ModalTextContainer = styled.div`
+    padding: 16px 24px;
+    margin: 0 auto 24px auto;
+`;
 
 export const ModalText = styled.p`
     margin: 0 auto;
     font-size: 16px;
     line-height: 1.4;
     color: #555;
+    word-break: break-word;
+    @media (max-width: 480px) {
+        font-size: 14px;
+    }
 `;
-export const ButtonsWrapper = styled.div`
+export const AdminModalButtonsWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    margin: 30px;
-    button{
+    gap: 1rem;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    button {
         width: 100%;
     }
+`;
+export const AdminModalWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
 `
 export const InputWrapper = styled.div`
     display: flex;

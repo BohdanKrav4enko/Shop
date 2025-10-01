@@ -1,5 +1,5 @@
 import React from "react";
-import {BurgerButton} from "./style/MobileBurgerStyle.ts";
+import {BurgerButton} from "./index.ts";
 import { X, Menu  } from 'lucide-react';
 
 

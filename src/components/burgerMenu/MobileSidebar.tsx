@@ -1,25 +1,26 @@
-import { useGetCategoriesQuery } from "../../api/productsApi";
-import { useAppDispatch, useAppSelector } from "../hooks/hooks";
-import { setCategory } from "../../app/appSlice";
+import {useGetCategoriesQuery} from "@/api/productsApi.ts";
+import {setCategory} from "@/app/appSlice.ts";
+import {useEffect} from "react";
+import {useNavigate} from "react-router-dom";
+import {PATH} from "@/routes/paths.ts";
 import {
+    Container,
+    useAppDispatch,
+    useAppSelector,
+    StyledButton,
     MobileCategoryItem,
     MobileSidebarContainer,
     CategoriesGrid,
     SidebarTitle,
-} from "./style/MobileSidebarStyle.ts";
-import { Container } from "../container/Container.tsx";
-import { useEffect } from "react";
-import { StyledButton } from "../button/StyledButton.tsx";
-import { useNavigate } from "react-router-dom";
-import { PATH } from "../../routes/paths.ts";
+} from "../index.ts";
 
 interface MobileSidebarProps {
     isOpen: boolean;
     onClose: () => void;
 }
 
-export const MobileSidebar: React.FC<MobileSidebarProps> = ({ isOpen, onClose }) => {
-    const { data: categories, isLoading } = useGetCategoriesQuery();
+export const MobileSidebar: React.FC<MobileSidebarProps> = ({isOpen, onClose}) => {
+    const {data: categories, isLoading} = useGetCategoriesQuery();
     const dispatch = useAppDispatch();
     const selectedCategory = useAppSelector(state => state.app.categoryId);
     const navigate = useNavigate();

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {ArrowButton} from "./styles/ScrollToTopStyle.ts";
+import {ArrowButton} from "@/components";
 
 export const ScrollToTop = () => {
     const [visible, setVisible] = useState(false);

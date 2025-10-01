@@ -54,6 +54,9 @@ importers:
       '@types/leaflet':
         specifier: ^1.9.20
         version: 1.9.20
+      '@types/node':
+        specifier: ^24.6.1
+        version: 24.6.1
       '@types/react':
         specifier: ^19.1.13
         version: 19.1.13
@@ -61,8 +64,8 @@ importers:
         specifier: ^19.1.9
         version: 19.1.9(@types/react@19.1.13)
       '@vitejs/plugin-react':
-        specifier: ^5.0.2
-        version: 5.0.3(vite@7.1.6)
+        specifier: ^5.0.3
+        version: 5.0.3(vite@7.1.6(@types/node@24.6.1))
       babel-plugin-styled-components:
         specifier: ^2.1.4
         version: 2.1.4(@babel/core@7.28.4)(styled-components@6.1.19(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
@@ -89,7 +92,7 @@ importers:
         version: 8.44.0(eslint@9.36.0)(typescript@5.8.3)
       vite:
         specifier: ^7.1.6
-        version: 7.1.6
+        version: 7.1.6(@types/node@24.6.1)
 
 packages:
 
@@ -755,6 +758,9 @@ packages:
 
   '@types/leaflet@1.9.20':
     resolution: {integrity: sha512-rooalPMlk61LCaLOvBF2VIf9M47HgMQqi5xQ9QRi7c8PkdIe0WrIi5IxXUXQjAdL0c+vcQ01mYWbthzmp9GHWw==}
+
+  '@types/node@24.6.1':
+    resolution: {integrity: sha512-ljvjjs3DNXummeIaooB4cLBKg2U6SPI6Hjra/9rRIy7CpM0HpLtG9HptkMKAb4HYWy5S7HUvJEuWgr/y0U8SHw==}
 
   '@types/parse-json@4.0.2':
     resolution: {integrity: sha512-dISoDXWWQwUquiKsyZ4Ng+HX2KsPL7LyHKHQwgGFEA3IaKac4Obd+h2a/a6waisAoepJlBcx9paWqjA8/HVjCw==}
@@ -1628,6 +1634,9 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  undici-types@7.13.0:
+    resolution: {integrity: sha512-Ov2Rr9Sx+fRgagJ5AX0qvItZG/JKKoBRAVITs1zk7IqZGTJUwgUr7qoYBpWwakpWilTZFM98rG/AFRocu10iIQ==}
+
   universalify@2.0.1:
     resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}
     engines: {node: '>= 10.0.0'}
@@ -2312,6 +2321,10 @@ snapshots:
     dependencies:
       '@types/geojson': 7946.0.16
 
+  '@types/node@24.6.1':
+    dependencies:
+      undici-types: 7.13.0
+
   '@types/parse-json@4.0.2': {}
 
   '@types/prop-types@15.7.15': {}
@@ -2425,7 +2438,7 @@ snapshots:
       '@typescript-eslint/types': 8.44.0
       eslint-visitor-keys: 4.2.1
 
-  '@vitejs/plugin-react@5.0.3(vite@7.1.6)':
+  '@vitejs/plugin-react@5.0.3(vite@7.1.6(@types/node@24.6.1))':
     dependencies:
       '@babel/core': 7.28.4
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.28.4)
@@ -2433,7 +2446,7 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-beta.35
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
-      vite: 7.1.6
+      vite: 7.1.6(@types/node@24.6.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -3213,6 +3226,8 @@ snapshots:
 
   typescript@5.8.3: {}
 
+  undici-types@7.13.0: {}
+
   universalify@2.0.1: {}
 
   update-browserslist-db@1.1.3(browserslist@4.26.2):
@@ -3229,7 +3244,7 @@ snapshots:
     dependencies:
       react: 19.1.1
 
-  vite@7.1.6:
+  vite@7.1.6(@types/node@24.6.1):
     dependencies:
       esbuild: 0.25.10
       fdir: 6.5.0(picomatch@4.0.3)
@@ -3238,6 +3253,7 @@ snapshots:
       rollup: 4.52.0
       tinyglobby: 0.2.15
     optionalDependencies:
+      '@types/node': 24.6.1
       fsevents: 2.3.3
 
   which@2.0.2:

@@ -1,8 +1,8 @@
-import {StyledButton} from "../../components/button/StyledButton";
-import {Input, Textarea, ButtonGroup, ActionButtons, Title, Select} from "./EditProductPageStyle";
+import {StyledButton} from "@/components";
+import {Input, Textarea, ButtonGroup, ActionButtons, Title, Select} from "@/pages";
 import {useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
-import {useGetCategoriesQuery} from "../../api/productsApi.ts";
+import {useGetCategoriesQuery} from "@/api/productsApi.ts";
 
 interface ProductFormProps {
     initialTitle?: string;

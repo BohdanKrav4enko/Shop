@@ -1,9 +1,8 @@
-import {ButtonsWrapper, ModalHeader} from "../styles/ModalStyle.ts";
-import {StyledButton} from "../../button/StyledButton.tsx";
-import {useDeleteProductMutation} from "../../../api/productsApi.ts";
+import {useDeleteProductMutation} from "@/api/productsApi.ts";
 import {useNavigate} from "react-router-dom";
-import {setError} from "../../../app/appSlice.ts";
-import {useAppDispatch} from "../../hooks/hooks.ts";
+import {setNotification} from "@/app/appSlice.ts";
+import {PATH} from "@/routes/paths.ts";
+import { useAppDispatch, StyledButton, AdminModalButtonsWrapper, ModalHeader } from "../../index.ts";
 interface ModalProps {
     onClose: () => void;
     id: number;
@@ -18,14 +17,15 @@ export const RemoveItemModal = (props: ModalProps) => {
         try {
             await deleteProduct({ id }).unwrap();
             onClose();
-            navigate('/');
+            dispatch(setNotification({message: "The product has been successfully removed.", type: "success"}));
+            navigate(PATH.HOME);
         } catch (err: unknown) {
             let message = "Unknown Error";
             if (err && typeof err === "object" && "data" in err) {
                 const e = err as { data?: { message?: string } };
                 message = e.data?.message || message;
             }
-            dispatch(setError(message));
+            dispatch(setNotification({message, type: "error"}));
         }
     };
     const handleDisable = () => {
@@ -34,9 +34,9 @@ export const RemoveItemModal = (props: ModalProps) => {
 
     return <>
         <ModalHeader>Remove item?</ModalHeader>
-        <ButtonsWrapper>
+        <AdminModalButtonsWrapper>
             <StyledButton children={'Yes'} onClick={handleEnable}/>
             <StyledButton children={'No'} onClick={handleDisable}/>
-        </ButtonsWrapper>
+        </AdminModalButtonsWrapper>
     </>
 };

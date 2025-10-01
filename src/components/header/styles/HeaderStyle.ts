@@ -30,13 +30,13 @@ export const TextAdmin = styled.p`
     align-items: center;
     font-family: "Germania One", system-ui;
     color: #0066ff;
-    font-size: 20px;
+    font-size: 40px;
     right: 4px;
     top: 2px;
     font-weight: bold;
     z-index: 1000;
 `
-export const ButtonsWrapper = styled.div`
+export const HeaderButtonsWrapper = styled.div`
         position: fixed;
         top: 70px;
         left: 0;

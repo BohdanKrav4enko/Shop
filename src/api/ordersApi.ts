@@ -1,21 +1,20 @@
 import type {Order} from "../components/modal/modals/type.ts";
 
 export const sendOrder = async (order: Order) => {
-    try {
-        const response = await fetch("https://script.google.com/macros/s/AKfycbxHo42CMYxwg0KcNoDMR7ZwASu9ZeMK8qfnDIzVGLpbxf9lghNcEyl9Z-MOFL5dNu2Hag/exec", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(order),
-        });
+    const response = await fetch("https://script.google.com/macros/s/AKfycbyk88NUT4TCY1cUQNSCdnHqvZ1aPHM7aHmlp8wcoIqoEdZ50BJ_ia8Bj8ptVNPSNa4Wpg/exec", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(order),
+    });
 
-        const result = await response.json();
-
-        if (result.status === "ok") {
-            alert("Заказ успешно отправлен!");
-        } else {
-            alert(result.message)
-        }
-    } catch (err: unknown) {
-        alert(err)
+    if (!response.ok) {
+        throw new Error(`Network error: ${response.status}`);
     }
-}
+
+    const result = await response.json();
+
+    if (result.status !== "ok") {
+        throw new Error(result.message || "Unknown error from server");
+    }
+    return result;
+};

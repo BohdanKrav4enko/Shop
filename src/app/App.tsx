@@ -1,13 +1,7 @@
-import {Header} from "../components/header/Header.tsx";
-import {AppRoutes} from "../routes";
-import {Container} from "../components/container/Container.tsx";
-import {useAppSelector} from "../components/hooks/hooks.ts";
-import {ErrorAlert} from "../components/errorAlert/ErrorAlert.tsx";
-import {Footer} from "../components/footer/Footer.tsx";
+import {Header, useAppSelector, Container, Notification, Footer, ScrollToTopOnRouteChange, BurgerMenu} from "@/components";
+import {AppRoutes} from "@/routes";
 import 'leaflet/dist/leaflet.css';
-import {ScrollToTopOnRouteChange} from "../components/scrollToTopOnRouteChange/ScrollToTopOnRouteChange.tsx";
 import styled from "styled-components";
-import {BurgerMenu} from "../components/burgerMenu/BurgerMenu.tsx";
 
 const MainLayout = styled.div`
     display: flex;
@@ -15,15 +9,20 @@ const MainLayout = styled.div`
 `;
 
 export const App = () => {
-    const error = useAppSelector((state) => state.app.error);
+    const notification = useAppSelector((state) => state.app.notification);
 
     return <>
-        <ScrollToTopOnRouteChange />
+        <ScrollToTopOnRouteChange/>
         <Header/>
         <MainLayout>
             <BurgerMenu/>
             <Container>
-                {error && <ErrorAlert message={error} />}
+                {notification
+                    &&
+                    <Notification key={notification.id}
+                                  message={notification.message}
+                                  type={notification.type}
+                                  duration={notification.duration}/>}
                 <AppRoutes/>
             </Container>
         </MainLayout>

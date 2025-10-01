@@ -16,6 +16,7 @@ store.subscribe(() => {
     const state = store.getState();
     localStorage.setItem('isAdmin', JSON.stringify(state.app.isAdmin));
     localStorage.setItem('items', JSON.stringify(state.cart.items));
+    localStorage.setItem('favorites', JSON.stringify(state.app.favorites));
 });
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

@@ -1,18 +1,20 @@
-import { ModalHeader, ModalText } from "../styles/ModalStyle.ts";
-import { StyledButton } from "../../button/StyledButton.tsx";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks.ts";
-import { clearCart } from "../../../features/cart/cartSlice.ts";
-import { CartItem } from "../../../features/cart/CartItem.tsx";
+import {clearCart, CartItem} from "@/features";
+import {sendOrder} from "@/api/ordersApi.ts";
+import {setNotification} from "@/app/appSlice.ts";
+import type {ModalProps} from "@/types/types.ts";
 import {
+    StyledButton,
     CartLayout,
     ClearButton,
-    Content,
-    Footer,
-    Total,
-    TotalContainer
-} from "../styles/ShoppingCartStyle.ts";
-import type {ModalProps} from "./type.ts";
-import { sendOrder } from "../../../api/ordersApi.ts";
+    CartContent,
+    ModalFooterContainer,
+    CartTotal,
+    TotalContainer,
+    ModalHeader,
+    ModalText,
+    useAppDispatch,
+    useAppSelector, ModalFooter
+} from "@/components";
 
 export const ShoppingCart = (props: ModalProps) => {
     const {onClose} = props;
@@ -29,7 +31,7 @@ export const ShoppingCart = (props: ModalProps) => {
         }));
 
         return {
-            name: "Богдан",
+            name: "User",
             email: "example@mail.com",
             products,
             total,
@@ -39,35 +41,41 @@ export const ShoppingCart = (props: ModalProps) => {
 
     const handleOrder = () => {
         const order = prepareOrder();
-        sendOrder(order);
+        sendOrder(order)
+            .then(() => dispatch(setNotification({
+                message: 'The order has been sent successfully.',
+                type: "success",
+                duration: 1500
+            })))
+            .catch((error: Error) => dispatch(setNotification({
+                message: error.message || 'Something went wrong',
+                type: "error",
+                duration: 1500
+            })))
     };
 
     return (
         items.length > 0 ? (
             <CartLayout>
                 <ModalHeader>Shopping Cart</ModalHeader>
-                <Content>
-                    {items.map(item => <CartItem key={item.id} item={item} />)}
-                </Content>
-                <Footer>
+                <CartContent>
+                    {items.map(item => <CartItem key={item.id} item={item}/>)}
+                </CartContent>
+                <ModalFooterContainer>
                     <TotalContainer>
-                        <Total>${total}</Total>
+                        <CartTotal>${total}</CartTotal>
                     </TotalContainer>
                     <StyledButton onClick={handleOrder}>Place an order</StyledButton>
                     <ClearButton onClick={() => dispatch(clearCart())}>Clear Cart</ClearButton>
-                </Footer>
+                </ModalFooterContainer>
             </CartLayout>
         ) : (
             <CartLayout>
                 <ModalHeader>Shopping Cart</ModalHeader>
-                <Content>
+                <CartContent>
                     <ModalText>There's nothing here yet.</ModalText>
-                </Content>
-                <Footer>
-                    <div/>
-                    <StyledButton onClick={() =>{onClose()}}>Return to shopping</StyledButton>
-                    <div/>
-                </Footer>
+                </CartContent>
+                <ModalFooter onClose={onClose}/>
             </CartLayout>
         )
     );

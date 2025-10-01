@@ -1,4 +1,4 @@
-import { EmptyIcon, EmptyStateWrapper, EmptySubtitle, EmptyTitle } from "./styles/EmptyStateStyle";
+import { EmptyIcon, EmptyStateWrapper, EmptySubtitle, EmptyTitle } from "@/features";
 
 export const EmptyState = () => {
     return (

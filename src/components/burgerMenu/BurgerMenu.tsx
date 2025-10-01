@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { MobileBurger } from "./MobileBurger";
-import { MobileSidebar } from "./MobileSidebar";
+import {MobileBurger, MobileSidebar} from "./index.ts";
 
 export const BurgerMenu = () => {
     const [isOpen, setIsOpen] = useState(false);

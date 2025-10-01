@@ -1,5 +1,5 @@
-import {AboutContainer, AboutSection, AboutSubTitle, AboutText, AboutTitle} from "./styles/AboutPageStyle";
-import {NavigationButtons} from "../../components/navigationButtons/NavigationButtons.tsx";
+import {AboutContainer, AboutSection, AboutSubTitle, AboutText, AboutTitle} from "./index.ts";
+import {NavigationButtons} from "@/components";
 
 export const AboutPage = () => {
     return (

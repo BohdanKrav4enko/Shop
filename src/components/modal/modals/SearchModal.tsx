@@ -1,11 +1,9 @@
-import {InputWrapper, ModalHeader, ModalText, StyledInput} from "../styles/ModalStyle.ts";
-import {StyledButton} from "../../button/StyledButton.tsx";
-import type {ModalProps} from "./type.ts";
 import {useState} from "react";
-import {useGetProductsQuery} from "../../../api/productsApi.ts";
-import {Content} from "../styles/ShoppingCartStyle.ts";
-import {SearchItem} from "../../../features/search/SearchItem.tsx";
+import {useGetProductsQuery} from "@/api/productsApi.ts";
+import {StyledButton, InputWrapper, ModalHeader, ModalText, StyledInput, CartContent} from "../../index.ts";
 import { CircularProgress } from "@mui/material";
+import type {ModalProps} from "@/types/types.ts";
+import { SearchItem } from "@/features";
 
 
 export const SearchModal = (props: ModalProps) => {
@@ -13,7 +11,7 @@ export const SearchModal = (props: ModalProps) => {
     const [query, setQuery] = useState("");
 
     const { data, isLoading, isError } = useGetProductsQuery({});
-    if (isLoading) return <InputWrapper><CircularProgress /></InputWrapper>;
+    if (isLoading) return <div><CircularProgress /></div>;
     if (isError || !data) return <InputWrapper>Failed to load products</InputWrapper>;
 
     const filteredProducts = query
@@ -34,11 +32,11 @@ export const SearchModal = (props: ModalProps) => {
                 children={'Close'}
                 onClick={onClose}/>
         </InputWrapper>
-        <Content style={{ maxHeight: "300px", overflowY: "auto", marginTop: "12px" }}>
+        <CartContent>
             {filteredProducts.length > 0
                 ? filteredProducts.map((item) => <SearchItem onClose={onClose} key={item.id} item={item} />)
                 : <ModalText>Search results will be here</ModalText>
             }
-        </Content>
+        </CartContent>
     </>
 };

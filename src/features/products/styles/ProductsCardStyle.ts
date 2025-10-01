@@ -60,19 +60,24 @@ export const Footer = styled.div`
 `;
 export const BuyButton = styled.button`
   font-size: 20px;
-  color: #000000;
-  background-color: inherit;
   border: none;
+  background: none;
   cursor: pointer;
+  color: #555;
+  transition: color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    color: #ff4d4f;
+    transform: scale(1.1);
+  }
 `;
 export const CartWrapper = styled.div`
     position: relative;
+    z-index: 1000;
     padding: 4px;
     border-radius: 4px;
     transition: background-color 0.2s ease;
-    &:hover {
-        background-color: rgba(0, 0, 0, 0.04);
-    }
+    cursor: pointer;
 `
 export const Badge = styled.div`
   position: absolute;

@@ -11,13 +11,15 @@ const Card = styled.div`
     max-width: 900px;
 `;
 
-export const ProductCardSkeleton = () => {
+export const ProductPageSkeleton = () => {
     return (
         <Card>
             <Skeleton width="70%" height="40px" />
             <Skeleton width="50%" height="50px" />
             <Skeleton width="90%" height="400px" />
             <Skeleton height="40px" />
+            <Skeleton height="160px" />
+            <Skeleton height="160px" />
             <Skeleton height="160px" />
         </Card>
     );

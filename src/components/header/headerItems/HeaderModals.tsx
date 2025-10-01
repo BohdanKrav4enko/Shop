@@ -1,11 +1,9 @@
-import {AdminModal} from "../../modal/modals/AdminModal.tsx";
-import {SearchModal} from "../../modal/modals/SearchModal.tsx";
-import {Modal} from "../../modal/Modal.tsx";
-import {ShoppingCart} from "../../modal/modals/ShoppingCart.tsx";
+import {Modal, ShoppingCart, SearchModal, AdminModal, Favorites} from "../../modal";
+import React from "react";
 
 interface HeaderModalsProps {
-    openModal: "cart" | "admin" | "search" | null;
-    setOpenModal: (type: "cart" | "admin" | "search" | null) => void;
+    openModal: "cart" | "admin" | "search" | "favorites" | null;
+    setOpenModal: (type: "cart" | "admin" | "search" | "favorites" | null) => void;
 }
 
 export const HeaderModals: React.FC<HeaderModalsProps> = ({ openModal, setOpenModal }) => {
@@ -15,6 +13,7 @@ export const HeaderModals: React.FC<HeaderModalsProps> = ({ openModal, setOpenMo
         cart: <ShoppingCart onClose={() => setOpenModal(null)} />,
         admin: <AdminModal onClose={() => setOpenModal(null)} />,
         search: <SearchModal onClose={() => setOpenModal(null)} />,
+        favorites: <Favorites onClose={() => setOpenModal(null)} />,
     };
 
     return (

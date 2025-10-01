@@ -1,13 +1,12 @@
-import { TextAdmin } from "../styles/HeaderStyle";
-import { BadgeCheck } from "lucide-react";
-import { useAppSelector } from "../../hooks/hooks.ts";
+import {BadgeCheck} from "lucide-react";
+import {useAppSelector, TextAdmin} from "../../index.ts";
 
 export const AdminBadge = () => {
     const admin = useAppSelector(state => state.app.isAdmin);
 
     return admin ? (
         <TextAdmin>
-            Admin <BadgeCheck style={{ width: "20px" }} />
+            <BadgeCheck style={{width: "40px"}}/>
         </TextAdmin>
     ) : null;
 };

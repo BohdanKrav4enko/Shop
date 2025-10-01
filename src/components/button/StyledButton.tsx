@@ -1,4 +1,4 @@
-import {Button} from "./styles/ButtonStyle.tsx";
+import {Button} from "./index.ts";
 
 interface ButtonsWrapperProps {
     children: React.ReactNode;

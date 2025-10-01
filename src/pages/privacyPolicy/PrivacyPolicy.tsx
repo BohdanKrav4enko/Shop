@@ -4,8 +4,8 @@ import {
     PrivacySubTitle,
     PrivacyText,
     PrivacyTitle
-} from "./styles/PrivacyPolicyStyle.ts";
-import {NavigationButtons} from "../../components/navigationButtons/NavigationButtons.tsx";
+} from "./index.ts";
+import {NavigationButtons} from "@/components";
 
 export const PrivacyPage = () => {
     return (

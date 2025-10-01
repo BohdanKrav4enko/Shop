@@ -1,6 +1,7 @@
-import { StyledButton } from "../button/StyledButton";
+import { StyledButton } from "../index.ts";
 import { ArrowLeft, House } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
 interface NavigationButtonsProps {
     homePath?: string;
