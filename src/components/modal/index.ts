@@ -19,5 +19,5 @@ export {
 } from "./styles/ModalStyle"
 export {
     ModalFooterContainer, CartLayout, CartTotal, TotalContainer, CartContent, ClearButton
-} from "./styles/ShoppingCartStyle.ts"
+} from "./styles/ShoppingCartStyle"
 export {ModalFooter} from "./modals/shoppingCart/shoppingCartComponents/ModalFooter";
