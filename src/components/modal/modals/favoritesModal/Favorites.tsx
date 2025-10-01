@@ -1,8 +1,9 @@
 import type {ModalProps} from "@/types/types";
-import {CartContent, CartLayout, ClearButton, ModalFooter, ModalHeader, ModalText, useAppSelector} from "@/components";
+import {CartContent, CartLayout, ClearButton, ModalHeader, ModalText, useAppSelector} from "@/components";
 import {useGetProductsQuery} from "@/api/productsApi";
 import {SearchItem} from "@/features";
 import {CircularProgress} from "@mui/material";
+import { ModalFooter } from "../shoppingCart/shoppingCartComponents/ModalFooter";
 
 export const Favorites = ({onClose}: ModalProps) => {
     const favoritesIds = useAppSelector(state => state.app.favorites);
