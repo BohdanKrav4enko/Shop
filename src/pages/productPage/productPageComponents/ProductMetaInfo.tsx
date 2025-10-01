@@ -13,7 +13,11 @@ export const ProductMetaInfo = ({data, handleChangeCategory}: ProductMetaInfoPro
             <ProductPrice>Price: {data.price} $</ProductPrice>
             <CategoryWrapper>
                 Category: {data.category ? (
-                <CategoryChangeButton onClick={handleChangeCategory}>
+                <CategoryChangeButton
+                    onClick={handleChangeCategory}
+                    aria-label={`Change category from ${data.category.name}`}
+                    title={`Change category from ${data.category.name}`}
+                >
                     {data.category.name}
                 </CategoryChangeButton>
             ) : "Unknown"}
@@ -21,4 +25,3 @@ export const ProductMetaInfo = ({data, handleChangeCategory}: ProductMetaInfoPro
         </FlexWrapper>
     );
 };
-

@@ -12,27 +12,32 @@ export const ProductsCard = ({product}: { product: Product }) => {
 
     return (
         <Card>
-            <Link to={`/product/${product.id}`}>
+            <Link to={`/product/${product.id}`} aria-label={`Go to ${product.title} page`}>
                 <ImageWrapper>
-                        <img src={product.images[0]}
-                             alt={product.title}
-                             onError={e => (e.currentTarget.src = img)}
-                        />
+                    <img
+                        src={product.images[0]}
+                        alt={`Image of ${product.title}`}
+                        onError={e => (e.currentTarget.src = img)}
+                    />
                 </ImageWrapper>
             </Link>
-                <Title>{product.title}</Title>
-            <FlexWrapper justify={'space-between'} align={'center'}>
-            {product.category ? (
-                <CategoryChangeButton onClick={()=>{dispatch(setCategory(product.category.id))}}>
-                    {product.category.name}
-                </CategoryChangeButton>
-            ) : "Unknown"}
-                <AddToFavorite product={product} />
+            <Title>{product.title}</Title>
+            <FlexWrapper justify="space-between" align="center">
+                {product.category ? (
+                    <CategoryChangeButton
+                        onClick={() => dispatch(setCategory(product.category.id))}
+                        aria-label={`Set category to ${product.category.name}`}
+                    >
+                        {product.category.name}
+                    </CategoryChangeButton>
+                ) : "Unknown"}
+                <AddToFavorite product={product} aria-label={`Add ${product.title} to favorites`} />
             </FlexWrapper>
             <Footer>
                 <Price>{product.price} $</Price>
-                <AddToCart product={product} />
+                <AddToCart product={product} aria-label={`Add ${product.title} to cart`} />
             </Footer>
         </Card>
+
     );
 };

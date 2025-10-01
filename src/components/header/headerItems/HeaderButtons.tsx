@@ -15,22 +15,34 @@ export const HeaderButtons: React.FC<HeaderButtonsProps> = ({ setOpenModal }) =>
         <HeaderButtonsWrapper>
             {admin && (
                 <Link to="/add-product/">
-                    <StyledButton>
+                    <StyledButton aria-label="Add new product">
                         <Plus />
                     </StyledButton>
                 </Link>
             )}
-            <StyledButton onClick={() => setOpenModal("search")}>
+            <StyledButton
+                onClick={() => setOpenModal("search")}
+                aria-label="Open search modal"
+            >
                 <Search />
             </StyledButton>
-            <StyledButton onClick={() => setOpenModal("admin")}>
+            <StyledButton
+                onClick={() => setOpenModal("admin")}
+                aria-label="Toggle admin mode"
+            >
                 <ShieldUser />
             </StyledButton>
-            <StyledButton onClick={() => setOpenModal("favorites")}>
+            <StyledButton
+                onClick={() => setOpenModal("favorites")}
+                aria-label="Open favorites modal"
+            >
                 <Heart />
             </StyledButton>
             <CartWrapper>
-                <StyledButton onClick={() => setOpenModal("cart")}>
+                <StyledButton
+                    onClick={() => setOpenModal("cart")}
+                    aria-label={`Open cart modal, ${items.length} items`}
+                >
                     <ShoppingBasket />
                 </StyledButton>
                 {items.length > 0 && <Badge>{items.length}</Badge>}

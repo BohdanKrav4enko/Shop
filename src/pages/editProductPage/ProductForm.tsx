@@ -48,17 +48,24 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     return (
         <>
             <Title>{isEdit ? "Edit Product" : "Add Product"}</Title>
+            <label htmlFor="product-title">Product Name</label>
             <Input value={title} onChange={e => setTitle(e.target.value)} placeholder="Enter the product name"/>
+            <label htmlFor="product-image">Product Image URL</label>
             <Input value={image} onChange={e => setImage([e.target.value])} placeholder="Enter the product image URL"/>
+            <label htmlFor="product-description">Description</label>
             <Textarea value={description} onChange={e => setDescription(e.target.value)}
                       placeholder="Enter a product description"/>
-            {!isEdit && <Select value={selectedCategory} onChange={e => setSelectedCategory(Number(e.target.value))}>
+
+            {!isEdit && <>
+                <label htmlFor="product-category">Category</label>
+                <Select value={selectedCategory} onChange={e => setSelectedCategory(Number(e.target.value))}>
                     {categoriesLoading && <option>Loading...</option>}
                     {categories?.map(cat => (
                         <option key={cat.id} value={cat.id}>
                             {cat.name}
                         </option>))}
-                </Select>}
+                </Select></>}
+            <label htmlFor="product-price">Price</label>
             <Input
                 type="number"
                 value={price === 0 ? "" : price}

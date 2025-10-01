@@ -24,16 +24,11 @@ export const Title = styled.h1`
     letter-spacing: 1px;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 `
-export const TextAdmin = styled.p`
+export const TextAdmin = styled.div`
     position: absolute;
-    display: flex;
-    align-items: center;
-    font-family: "Germania One", system-ui;
     color: #0066ff;
-    font-size: 40px;
-    right: 4px;
-    top: 2px;
-    font-weight: bold;
+    right: 20px;
+    top: 20px;
     z-index: 1000;
 `
 export const HeaderButtonsWrapper = styled.div`

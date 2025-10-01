@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const DeleteButton = styled.button`
-    font-size: 24px;
     border: none;
     background: none;
     cursor: pointer;
@@ -27,7 +26,7 @@ export const ItemContainer = styled.div`
     }
 
     a {
-        flex: 1; /* 👈 ссылка с картинкой и инфо занимает всё место слева */
+        flex: 1;
         display: flex;
         align-items: center;
         gap: 16px;
@@ -50,9 +49,12 @@ export const ItemInfo = styled.div`
 
 export const ItemTitle = styled.span`
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 6px;
     color: #333;
+    @media (max-width: 480px) {
+        font-size: 12px;
+    }
 `;
 
 export const ItemPrice = styled.span`
@@ -62,7 +64,7 @@ export const ItemPrice = styled.span`
 
 export const ItemControls = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 12px;
     align-items: center;
     margin-left: auto;

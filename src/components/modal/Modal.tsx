@@ -17,9 +17,15 @@ export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
     if (!isOpen) return null;
 
     return (
-        <Overlay isOpen={isOpen} onClick={onClose}>
+        <Overlay
+            isOpen={isOpen}
+            onClick={onClose}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
+        >
             <ModalContainer onClick={(e) => e.stopPropagation()}>
-                <CloseButton onClick={onClose} aria-label="Close modal"/>
+                <CloseButton onClick={onClose} aria-label="Close modal" />
                 {children}
             </ModalContainer>
         </Overlay>

@@ -23,18 +23,18 @@ const StyledProductItemWrapper = styled.div`
         }
     }
 `
-export const ProductActions = ({existsInCart, onAdd, onRemove, data}: ProductActionsProps) => (
+export const ProductActions = ({ existsInCart, onAdd, onRemove, data }: ProductActionsProps) => (
     <StyledProductItemWrapper>
         {existsInCart ? (
-            <StyledButton onClick={onRemove}>
-                <ShoppingBasket/>In the basket
+            <StyledButton onClick={onRemove} aria-label="Remove from cart">
+                <ShoppingBasket /> In the basket
             </StyledButton>
         ) : (
-            <StyledButton onClick={onAdd}>
-                <CircleDollarSign/>Buy
+            <StyledButton onClick={onAdd} aria-label="Add to cart">
+                <CircleDollarSign /> Buy
             </StyledButton>
         )}
-        <AddToFavoriteButton product={data}/>
+        <AddToFavoriteButton product={data} aria-label="Add to favorites" />
     </StyledProductItemWrapper>
 );
 

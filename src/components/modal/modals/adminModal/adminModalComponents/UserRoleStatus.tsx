@@ -22,7 +22,11 @@ export const UserRoleStatus = () => {
     return (
         <StatusContainer>
             <span>User Role:</span>
-            <StatusBlock isAdmin={isAdmin}>
+            <StatusBlock
+                isAdmin={isAdmin}
+                aria-label={`Current user role: ${isAdmin ? 'Administrator' : 'Regular User'}`}
+                aria-live="polite"
+            >
                 {isAdmin ? "Administrator" : "Regular User"}
             </StatusBlock>
         </StatusContainer>

@@ -15,10 +15,10 @@ export const Favorites = ({onClose}: ModalProps) => {
     return (
         <>
             {favoriteProducts.length === 0 ? (
-                <CartLayout>
-                    <ModalHeader>Favorites</ModalHeader>
+                <CartLayout role="dialog" aria-modal="true" aria-labelledby="favorites-modal-title">
+                    <ModalHeader id="favorites-modal-title">Favorites</ModalHeader>
                     <CartContent>
-                        <ModalText>There's nothing here yet.</ModalText>
+                        <ModalText aria-live="polite">There's nothing here yet.</ModalText>
                     </CartContent>
                     <ModalFooter onClose={onClose}/>
                 </CartLayout>
@@ -30,7 +30,7 @@ export const Favorites = ({onClose}: ModalProps) => {
                             <SearchItem onClose={onClose} key={item.id} item={item}/>
                         ))}
                     </CartContent>
-                    <ModalFooter onClose={onClose} children={<ClearButton>Clear</ClearButton>}/>
+                    <ModalFooter onClose={onClose} children={<ClearButton aria-label="Clear favorites">Clear</ClearButton>}/>
                 </CartLayout>
             )}
         </>

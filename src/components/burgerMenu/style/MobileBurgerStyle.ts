@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const BurgerButton = styled.button<{ isOpen: boolean }>`
     position: fixed;
-    top: 20px;
+    top: 16px;
     left: 16px;
     width: 40px;
     height: 40px;

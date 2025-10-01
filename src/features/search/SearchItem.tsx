@@ -20,10 +20,10 @@ interface CartItemProps {
 export const SearchItem = ({ item, onClose }: CartItemProps) => {
     return (
         <ItemContainer>
-            <Link onClick={onClose} to={`/product/${item.id}`}>
+            <Link to={`/product/${item.id}`} onClick={onClose} aria-label={`View details of ${item.title}`}>
                 <ItemImage
                     src={item.images[0]}
-                    alt={item.title}
+                    alt={`Image of ${item.title}`}
                     onError={e => (e.currentTarget.src = img)}
                 />
                 <ItemInfo>
@@ -32,9 +32,10 @@ export const SearchItem = ({ item, onClose }: CartItemProps) => {
                 </ItemInfo>
             </Link>
             <ItemControls>
-                <AddToFavorite product={item} />
-                <AddToCart product={item} />
+                <AddToFavorite product={item} aria-label={`Add ${item.title} to favorites`} />
+                <AddToCart product={item} aria-label={`Add ${item.title} to cart`} />
             </ItemControls>
         </ItemContainer>
+
     );
 };

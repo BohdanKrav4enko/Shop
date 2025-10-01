@@ -8,10 +8,16 @@ interface ProductShareProps {
 
 export const ProductShare = ({ onShare, onCopy }: ProductShareProps) => (
     <>
-        <StyledButton onClick={onShare}>
+        <StyledButton
+            onClick={onShare}
+            aria-label="Share this product"
+        >
             <Share /> Share
         </StyledButton>
-        <StyledButton onClick={onCopy}>
+        <StyledButton
+            onClick={onCopy}
+            aria-label="Copy product link"
+        >
             <Link2 /> Copy link
         </StyledButton>
     </>

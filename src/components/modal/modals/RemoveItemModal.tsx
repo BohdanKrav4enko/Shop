@@ -33,10 +33,24 @@ export const RemoveItemModal = (props: ModalProps) => {
     };
 
     return <>
-        <ModalHeader>Remove item?</ModalHeader>
-        <AdminModalButtonsWrapper>
-            <StyledButton children={'Yes'} onClick={handleEnable}/>
-            <StyledButton children={'No'} onClick={handleDisable}/>
+        <ModalHeader id="remove-item-modal-title">Remove item?</ModalHeader>
+        <AdminModalButtonsWrapper
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="remove-item-modal-title"
+        >
+            <StyledButton
+                aria-label="Confirm removal"
+                onClick={handleEnable}
+            >
+                Yes
+            </StyledButton>
+            <StyledButton
+                aria-label="Cancel removal"
+                onClick={handleDisable}
+            >
+                No
+            </StyledButton>
         </AdminModalButtonsWrapper>
     </>
 };

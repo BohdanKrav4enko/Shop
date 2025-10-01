@@ -6,7 +6,7 @@ export const AdminBadge = () => {
 
     return admin ? (
         <TextAdmin>
-            <BadgeCheck style={{width: "40px"}}/>
+            <BadgeCheck style={{width: "30px"}}/>
         </TextAdmin>
     ) : null;
 };

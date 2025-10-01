@@ -29,8 +29,8 @@ export const AdminModal = (props: ModalProps) => {
     };
 
     return <>
-        <ModalHeader>{isAdmin ? 'Disable' : 'Enable'} administrator mode?</ModalHeader>
-        <AdminModalWrapper>
+        <ModalHeader id="admin-modal-title">{isAdmin ? 'Disable' : 'Enable'} administrator mode?</ModalHeader>
+        <AdminModalWrapper role="dialog" aria-modal="true" aria-labelledby="admin-modal-title">
             <ModalTextContainer>
                 <UserRoleStatus/>
                 <ModalText>In administrator mode, you can manage your products: add new items, edit existing ones, and
@@ -38,8 +38,14 @@ export const AdminModal = (props: ModalProps) => {
                     unnecessary ones.</ModalText>
             </ModalTextContainer>
             <AdminModalButtonsWrapper>
-                <StyledButton children={'Yes'} onClick={isAdmin ? handleDisable : handleEnable}/>
-                <StyledButton children={'No'} onClick={isAdmin ? handleEnable : handleDisable}/>
+                <StyledButton children={'Yes'}
+                              onClick={isAdmin ? handleDisable : handleEnable}
+                              aria-label={isAdmin ? 'Disable administrator mode' : 'Enable administrator mode'}
+                />
+                <StyledButton children={'No'}
+                              onClick={isAdmin ? handleEnable : handleDisable}
+                              aria-label="Cancel administrator mode change"
+                />
             </AdminModalButtonsWrapper>
         </AdminModalWrapper>
     </>
