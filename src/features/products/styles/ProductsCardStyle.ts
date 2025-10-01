@@ -73,7 +73,7 @@ export const BuyButton = styled.button`
 `;
 export const CartWrapper = styled.div`
     position: relative;
-    z-index: 1000;
+    z-index: 500;
     padding: 4px;
     border-radius: 4px;
     transition: background-color 0.2s ease;
