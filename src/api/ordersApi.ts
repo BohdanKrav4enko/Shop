@@ -1,4 +1,4 @@
-import type {Order} from "../components/modal/modals/type.ts";
+import type {Order} from "@/types/types.ts";
 
 export const sendOrder = async (order: Order) => {
     const response = await fetch("https://script.google.com/macros/s/AKfycbyk88NUT4TCY1cUQNSCdnHqvZ1aPHM7aHmlp8wcoIqoEdZ50BJ_ia8Bj8ptVNPSNa4Wpg/exec", {
