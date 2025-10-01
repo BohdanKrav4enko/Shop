@@ -2,7 +2,6 @@ import {clearCart, CartItem} from "@/features";
 import {sendOrder} from "@/api/ordersApi.ts";
 import {setNotification} from "@/app/appSlice.ts";
 import type {ModalProps} from "@/types/types.ts";
-import {ModalFooter} from "@/components/modal/modals/shoppingCart/shoppingCartComponents/ModalFooter.tsx";
 import {
     StyledButton,
     CartLayout,
@@ -14,7 +13,8 @@ import {
     ModalHeader,
     ModalText,
     useAppDispatch,
-    useAppSelector
+    useAppSelector,
+    ModalFooter
 } from "@/components";
 
 export const ShoppingCart = (props: ModalProps) => {

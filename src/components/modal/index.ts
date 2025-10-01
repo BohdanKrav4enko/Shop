@@ -7,17 +7,17 @@ export {UserRoleStatus} from "./modals/adminModal/adminModalComponents/UserRoleS
 export {Favorites} from "./modals/favoritesModal/Favorites"
 export {
     AdminModalButtonsWrapper,
-    CloseButton,
     InputWrapper,
     StyledInput,
+    AdminModalWrapper,
     ModalContainer,
     ModalTextContainer,
     ModalText,
+    CloseButton,
     ModalHeader,
-    Overlay,
-    AdminModalWrapper
+    Overlay
 } from "./styles/ModalStyle"
 export {
     ModalFooterContainer, CartLayout, CartTotal, TotalContainer, CartContent, ClearButton
 } from "./styles/ShoppingCartStyle"
-export {ModalFooter} from "./modals/shoppingCart/shoppingCartComponents/ModalFooter";
+export {ModalFooter} from "./modals/shoppingCart/ModalFooter.tsx";
