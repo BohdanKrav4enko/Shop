@@ -14,12 +14,15 @@ const StyledProductItemWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 2px;
-
+    button{
+        font-size: 20px;
+    }
     @media (max-width: 480px) {
-        flex-direction: column;
+        flex-direction: row;
         gap: 16px;
         button {
-            width: 40%;
+            width: 50%;
+            font-size: 12px;
         }
     }
 `
