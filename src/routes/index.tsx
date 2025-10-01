@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Home, EditProductPage, AboutPage, ContactPage, ProductPage, PrivacyPage, FaqPage } from "@/pages";
-import {PATH} from "./paths.ts";
+import {PATH} from "./paths";
 
 export const AppRoutes = () => (
     <Routes>

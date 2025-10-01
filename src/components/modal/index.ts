@@ -1,10 +1,23 @@
-export {Modal} from "./Modal.tsx"
-export {AdminModal} from "./modals/adminModal/AdminModal.tsx"
-export {RemoveItemModal} from "./modals/RemoveItemModal.tsx"
-export {SearchModal} from "./modals/SearchModal.tsx"
-export {ShoppingCart} from "./modals/shoppingCart/ShoppingCart.tsx"
-export {UserRoleStatus} from "./modals/adminModal/adminModalComponents/UserRoleStatus.tsx"
-export {Favorites} from "./modals/favoritesModal/Favorites.tsx"
-export {AdminModalButtonsWrapper, CloseButton, InputWrapper, StyledInput, ModalContainer, ModalTextContainer, ModalText, ModalHeader, Overlay, AdminModalWrapper} from "./styles/ModalStyle.ts"
-export {ModalFooterContainer, CartLayout, CartTotal, TotalContainer, CartContent, ClearButton} from "./styles/ShoppingCartStyle.ts"
-export {ModalFooter} from "@/components/modal/modals/shoppingCart/shoppingCartComponents/ModalFooter.tsx"
+export {Modal} from "./Modal"
+export {AdminModal} from "./modals/adminModal/AdminModal"
+export {RemoveItemModal} from "./modals/RemoveItemModal"
+export {SearchModal} from "./modals/SearchModal"
+export {ShoppingCart} from "./modals/shoppingCart/ShoppingCart"
+export {UserRoleStatus} from "./modals/adminModal/adminModalComponents/UserRoleStatus"
+export {Favorites} from "./modals/favoritesModal/Favorites"
+export {
+    AdminModalButtonsWrapper,
+    CloseButton,
+    InputWrapper,
+    StyledInput,
+    ModalContainer,
+    ModalTextContainer,
+    ModalText,
+    ModalHeader,
+    Overlay,
+    AdminModalWrapper
+} from "./styles/ModalStyle"
+export {
+    ModalFooterContainer, CartLayout, CartTotal, TotalContainer, CartContent, ClearButton
+} from "./styles/ShoppingCartStyle.ts"
+export {ModalFooter} from "./modals/shoppingCart/shoppingCartComponents/ModalFooter";

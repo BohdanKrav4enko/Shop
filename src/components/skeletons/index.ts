@@ -1,4 +1,4 @@
 export {Skeleton} from './Skeleton'
-export {ProductCardSkeleton} from './ProductCardSkeleton.tsx'
-export {ProductPageSkeleton} from './ProductPageSkeleton.tsx'
-export {ProductSkeletonGrid} from './ProductSkeletonGrid.tsx'
+export {ProductCardSkeleton} from './ProductCardSkeleton'
+export {ProductPageSkeleton} from './ProductPageSkeleton'
+export {ProductSkeletonGrid} from './ProductSkeletonGrid'

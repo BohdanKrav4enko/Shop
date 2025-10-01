@@ -1,1 +1,1 @@
-export {SearchItem} from "./SearchItem.tsx"
+export {SearchItem} from "./SearchItem"

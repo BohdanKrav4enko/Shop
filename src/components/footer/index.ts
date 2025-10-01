@@ -1,2 +1,2 @@
 export {Footer} from "./Footer";
-export {FooterContainer, FooterText, FooterLinks} from "../footer/styles/FooterStyle.ts"
+export {FooterContainer, FooterText, FooterLinks} from "../footer/styles/FooterStyle"

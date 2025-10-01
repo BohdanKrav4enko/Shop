@@ -1,1 +1,1 @@
-export {NavigationButtons} from './NavigationButtons.tsx'
+export {NavigationButtons} from './NavigationButtons'

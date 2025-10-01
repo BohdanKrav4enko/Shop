@@ -1,9 +1,9 @@
-export {ProductActions} from "./productPageComponents/ProductActions.tsx"
-export {ProductHeader} from "./productPageComponents/ProductHeader.tsx"
-export {ProductShare} from "./productPageComponents/ProductShare.tsx"
-export {AddToFavoriteButton} from "./productPageComponents/AddToFavoriteButton.tsx"
-export {ProductMetaInfo} from "./productPageComponents/ProductMetaInfo.tsx"
-export {ProductPage} from "./ProductPage.tsx"
+export {ProductActions} from "./productPageComponents/ProductActions"
+export {ProductHeader} from "./productPageComponents/ProductHeader"
+export {ProductShare} from "./productPageComponents/ProductShare"
+export {AddToFavoriteButton} from "./productPageComponents/AddToFavoriteButton"
+export {ProductMetaInfo} from "./productPageComponents/ProductMetaInfo"
+export {ProductPage} from "./ProductPage"
 export {
     CategoryChangeButton,
     CategoryWrapper,
@@ -14,4 +14,4 @@ export {
     ProductItemWrapperFooter,
     ProductPrice,
     ProductTitle
-} from "./ProductPageStyle.ts"
+} from "./ProductPageStyle"

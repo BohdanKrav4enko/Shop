@@ -1,2 +1,2 @@
 export {ScrollToTop} from './ScrollToTop'
-export {ArrowButton} from './styles/ScrollToTopStyle.ts'
+export {ArrowButton} from './styles/ScrollToTopStyle'

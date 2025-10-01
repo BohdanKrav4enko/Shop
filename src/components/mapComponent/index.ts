@@ -1,1 +1,1 @@
-export {MapComponent} from "./MapComponent.tsx"
+export {MapComponent} from "./MapComponent"
