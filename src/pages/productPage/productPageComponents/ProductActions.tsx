@@ -19,7 +19,7 @@ const StyledProductItemWrapper = styled.div`
         flex-direction: column;
         gap: 16px;
         button {
-            width: 50%;
+            width: 40%;
         }
     }
 `
