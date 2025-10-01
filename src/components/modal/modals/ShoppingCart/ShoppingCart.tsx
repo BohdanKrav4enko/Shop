@@ -56,8 +56,8 @@ export const ShoppingCart = (props: ModalProps) => {
 
     return (
         items.length > 0 ? (
-            <CartLayout>
-                <ModalHeader>Shopping Cart</ModalHeader>
+            <CartLayout role="dialog" aria-modal="true" aria-labelledby="cart-modal-title">
+                <ModalHeader id="cart-modal-title">Shopping Cart</ModalHeader>
                 <CartContent>
                     {items.map(item => <CartItem key={item.id} item={item}/>)}
                 </CartContent>
@@ -65,15 +65,15 @@ export const ShoppingCart = (props: ModalProps) => {
                     <TotalContainer>
                         <CartTotal>${total}</CartTotal>
                     </TotalContainer>
-                    <StyledButton onClick={handleOrder}>Place an order</StyledButton>
-                    <ClearButton onClick={() => dispatch(clearCart())}>Clear Cart</ClearButton>
+                    <StyledButton aria-label="Place an order" onClick={handleOrder}>Place an order</StyledButton>
+                    <ClearButton aria-label="Clear cart" onClick={() => dispatch(clearCart())}>Clear Cart</ClearButton>
                 </ModalFooterContainer>
             </CartLayout>
         ) : (
             <CartLayout>
                 <ModalHeader>Shopping Cart</ModalHeader>
                 <CartContent>
-                    <ModalText>There's nothing here yet.</ModalText>
+                    <ModalText aria-live="polite">There's nothing here yet.</ModalText>
                 </CartContent>
                 <ModalFooter onClose={onClose}/>
             </CartLayout>
