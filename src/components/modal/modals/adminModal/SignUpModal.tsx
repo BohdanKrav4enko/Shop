@@ -1,4 +1,3 @@
-import type {ModalProps} from "@/types/types";
 import {
     AdminModalButtonsWrapper,
     AdminModalWrapper,
@@ -7,11 +6,13 @@ import {
     ModalText,
     SignInForm,
     SignUpForm,
-    StyledButton,
+    StyledButton, useAppDispatch,
     useAuthForms
 } from "@/components";
+import {closeModal} from "@/app/modalSlice.ts";
 
-export const SignUpModal = ({onClose}: ModalProps) => {
+export const SignUpModal = () => {
+    const dispatch = useAppDispatch();
     const {
         signUpMode,
         setSignUpMode,
@@ -19,7 +20,7 @@ export const SignUpModal = ({onClose}: ModalProps) => {
         signInForm,
         handleSignUp,
         handleSignIn
-    } = useAuthForms(onClose);
+    } = useAuthForms();
 
     return (
         <AdminModalWrapper role="dialog" aria-modal="true">
@@ -39,7 +40,7 @@ export const SignUpModal = ({onClose}: ModalProps) => {
                 }}>
                     {signUpMode ? "Sign In" : "Sign up"}
                 </StyledButton>
-                <StyledButton type="button" onClick={onClose}>Back</StyledButton>
+                <StyledButton type="button" onClick={()=>{dispatch(closeModal())}}>Back</StyledButton>
             </AdminModalButtonsWrapper>
         </AdminModalWrapper>
     );

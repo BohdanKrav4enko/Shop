@@ -16,9 +16,6 @@ export const SignUpForm = ({  errors, register }: Props) => {
             <StyledSignUpInput {...register("surname")} placeholder="Surname" hasError={!!errors.surname} />
             {errors.surname && <InputError>{errors.surname.message}</InputError>}
 
-            <StyledSignUpInput {...register("date")} type="date" placeholder="Date" hasError={!!errors.date} />
-            {errors.date && <InputError>{errors.date.message}</InputError>}
-
             <StyledSignUpInput {...register("phone")} type="tel" placeholder="Phone" hasError={!!errors.phone} />
             {errors.phone && <InputError>{errors.phone.message}</InputError>}
 

@@ -11,12 +11,12 @@ export const AddToCart = ({product}: { product: Product }) => {
 
 
     const handleCartClick = () => {
-        if (exists) {
-            dispatch(removeCart(product.id));
-        } else {
-            dispatch(addCart(product));
-            dispatch(setNotification({message: "The product has been successfully added to your cart.", type: "success", duration: 1500}));
-        }
+            if (exists) {
+                dispatch(removeCart(product.id));
+            } else {
+                dispatch(addCart(product));
+                dispatch(setNotification({message: "The product has been successfully added to your cart.", type: "success", duration: 1500}));
+            }
     };
     return (
         <CartWrapper onClick={handleCartClick}>

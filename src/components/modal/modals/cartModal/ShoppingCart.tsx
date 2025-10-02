@@ -1,7 +1,6 @@
 import {clearCart, CartItem} from "@/features";
 import {sendOrder} from "@/api/ordersApi.ts";
 import {setNotification} from "@/app/appSlice.ts";
-import type {ModalProps} from "@/types/types.ts";
 import {
     StyledButton,
     CartLayout,
@@ -16,10 +15,12 @@ import {
     useAppSelector,
     ModalFooter
 } from "@/components";
+import {closeModal, setOpenModal} from "@/app/modalSlice.ts";
 
-export const ShoppingCart = (props: ModalProps) => {
-    const {onClose} = props;
+export const ShoppingCart = () => {
     const items = useAppSelector((state) => state.cart.items);
+    const user = useAppSelector((state) => state.auth.user);
+    const profile = useAppSelector(state => state.auth.profile);
     const dispatch = useAppDispatch();
     const total = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
 
@@ -32,8 +33,9 @@ export const ShoppingCart = (props: ModalProps) => {
         }));
 
         return {
-            name: "User",
-            email: "example@mail.com",
+            name: profile?.name ?? "Anonymous",
+            email: profile?.email ?? "Anonymous@anonim.anon",
+            phone: profile?.phone ?? "Anonymous",
             products,
             total,
             date: new Date().toISOString()
@@ -42,17 +44,32 @@ export const ShoppingCart = (props: ModalProps) => {
 
     const handleOrder = () => {
         const order = prepareOrder();
-        sendOrder(order)
-            .then(() => dispatch(setNotification({
-                message: 'The order has been sent successfully.',
+        if (user) {
+            console.log(order);
+            dispatch(setNotification({
+                message: 'The object has been sent to the console.',
                 type: "success",
-                duration: 1500
-            })))
-            .catch((error: Error) => dispatch(setNotification({
-                message: error.message || 'Something went wrong',
-                type: "error",
-                duration: 1500
-            })))
+                duration: 5000
+            }))
+            dispatch(closeModal())
+            dispatch(clearCart())
+            sendOrder(order)
+                .then(() => dispatch(setNotification({
+                    message: 'The order has been sent successfully.',
+                    type: "success",
+                    duration: 1500
+                })))
+            dispatch(clearCart())
+            dispatch(closeModal())
+            // .catch((error: Error) => dispatch(setNotification({
+            //     message: error.message || 'Something went wrong',
+            //     type: "error",
+            //     duration: 1500
+            // })))
+        } else {
+            dispatch(setOpenModal("registration"))
+        }
+
     };
 
     return (
@@ -76,7 +93,7 @@ export const ShoppingCart = (props: ModalProps) => {
                 <CartContent>
                     <ModalText aria-live="polite">There's nothing here yet.</ModalText>
                 </CartContent>
-                <ModalFooter onClose={onClose}/>
+                <ModalFooter onClose={() => dispatch(setOpenModal(null))}/>
             </CartLayout>
         )
     );

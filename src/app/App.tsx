@@ -2,6 +2,10 @@ import {Header, useAppSelector, Container, Notification, Footer, ScrollToTopOnRo
 import {AppRoutes} from "@/routes";
 import 'leaflet/dist/leaflet.css';
 import styled from "styled-components";
+import {initAuthListener} from "@/app/firebase/authListener.ts";
+import {store} from "@/app/store.ts";
+
+initAuthListener(store);
 
 const MainLayout = styled.div`
     display: flex;

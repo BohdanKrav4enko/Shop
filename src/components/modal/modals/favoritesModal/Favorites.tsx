@@ -1,10 +1,20 @@
-import type {ModalProps} from "@/types/types";
-import {CartContent, CartLayout, ClearButton, ModalFooter, ModalHeader, ModalText, useAppSelector} from "@/components";
+import {
+    CartContent,
+    CartLayout,
+    ClearButton,
+    ModalFooter,
+    ModalHeader,
+    ModalText,
+    useAppDispatch,
+    useAppSelector
+} from "@/components";
 import {useGetProductsQuery} from "@/api/productsApi";
 import {SearchItem} from "@/features";
 import {CircularProgress} from "@mui/material";
+import {closeModal} from "@/app/modalSlice.ts";
 
-export const Favorites = ({onClose}: ModalProps) => {
+export const Favorites = () => {
+    const dispatch = useAppDispatch();
     const favoritesIds = useAppSelector(state => state.app.favorites);
     const {data: products = [], isLoading} = useGetProductsQuery({offset: 0, limit: 1000});
 
@@ -20,17 +30,17 @@ export const Favorites = ({onClose}: ModalProps) => {
                     <CartContent>
                         <ModalText aria-live="polite">There's nothing here yet.</ModalText>
                     </CartContent>
-                    <ModalFooter onClose={onClose}/>
+                    <ModalFooter onClose={()=>{dispatch(closeModal())}}/>
                 </CartLayout>
             ) : (
                 <CartLayout>
                     <ModalHeader>Favorites</ModalHeader>
                     <CartContent>
                         {favoriteProducts.map(item => (
-                            <SearchItem onClose={onClose} key={item.id} item={item}/>
+                            <SearchItem onClose={()=>{dispatch(closeModal())}} key={item.id} item={item}/>
                         ))}
                     </CartContent>
-                    <ModalFooter onClose={onClose} children={<ClearButton aria-label="Clear favorites">Clear</ClearButton>}/>
+                    <ModalFooter onClose={()=>{dispatch(closeModal())}} children={<ClearButton aria-label="Clear favorites">Clear</ClearButton>}/>
                 </CartLayout>
             )}
         </>

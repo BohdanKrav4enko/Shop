@@ -21,10 +21,6 @@ export interface ProductCreateDto {
     categoryId: number;
     images: string[];
 }
-export interface ModalProps {
-    onClose: () => void;
-    id?: number;
-}
 export type OrderProduct = {
     id: number;
     title: string;

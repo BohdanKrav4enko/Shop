@@ -1,14 +1,22 @@
 import {useState} from "react";
 import {useGetProductsQuery} from "@/api/productsApi.ts";
-import {StyledButton, InputWrapper, ModalHeader, ModalText, StyledInput, CartContent} from "../../index.ts";
+import {
+    StyledButton,
+    InputWrapper,
+    ModalHeader,
+    ModalText,
+    StyledInput,
+    CartContent,
+    useAppDispatch
+} from "../../index.ts";
 import {CircularProgress} from "@mui/material";
-import type {ModalProps} from "@/types/types.ts";
 import {SearchItem} from "@/features";
+import {closeModal} from "@/app/modalSlice.ts";
 
 
-export const SearchModal = (props: ModalProps) => {
-    const {onClose} = props;
+export const SearchModal = () => {
     const [query, setQuery] = useState("");
+    const dispatch = useAppDispatch();
 
     const {data, isLoading, isError} = useGetProductsQuery({});
     if (isLoading) return <div><CircularProgress/></div>;
@@ -39,13 +47,13 @@ export const SearchModal = (props: ModalProps) => {
             />
             <StyledButton
                 children={'Close'}
-                onClick={onClose}
+                onClick={()=>{dispatch(closeModal())}}
                 aria-label="Close search modal"
             />
         </InputWrapper>
         <CartContent>
             {filteredProducts.length > 0
-                ? filteredProducts.map((item) => <SearchItem onClose={onClose} key={item.id} item={item}/>)
+                ? filteredProducts.map((item) => <SearchItem onClose={()=>{dispatch(closeModal())}} key={item.id} item={item}/>)
                 : <ModalText
                     aria-live="polite"
                 >

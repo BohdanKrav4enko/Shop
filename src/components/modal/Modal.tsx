@@ -1,13 +1,14 @@
-import React, { useEffect } from "react";
-import { Overlay, ModalContainer, CloseButton } from "./index.ts";
+import React, {useEffect} from "react";
+import {CloseButton, ModalContainer, Overlay} from "./index.ts";
+import {useAppDispatch, useAppSelector} from "@/components";
+import {closeModal} from "@/app/modalSlice.ts";
 
-type ModalProps = {
-    isOpen: boolean;
-    onClose: () => void;
-    children: React.ReactNode;
-};
+export const Modal = ({ children }: { children: React.ReactNode }) => {
+    const dispatch = useAppDispatch();
+    const isOpen = useAppSelector(state => state.modal.openModal !== null);
 
-export const Modal = ({ isOpen, onClose, children }: ModalProps) => {
+    const onClose = () => dispatch(closeModal());
+
     useEffect(() => {
         const html = document.documentElement;
         html.style.overflow = isOpen ? "hidden" : "";

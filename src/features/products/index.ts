@@ -1,6 +1,6 @@
 export {EmptyIcon, EmptyTitle, EmptyStateWrapper, EmptySubtitle} from "./styles/EmptyStateStyle"
 export {Card, Footer, Price, Title, Badge, ImageWrapper, CartWrapper, BuyButton} from "./styles/ProductsCardStyle"
-export {Grid, CategoryTitle} from "./styles/ProductsListStyle"
+export {Grid, CategoryTitle, Greetings} from "./styles/ProductsListStyle"
 export {ShowMoreButton, ShowMoreButtonWrapper} from "./styles/ShowMoreButtonStyle"
 export {ProductsCard} from "./productsCard/ProductsCard"
 export {ProductsList} from "./ProductsList"

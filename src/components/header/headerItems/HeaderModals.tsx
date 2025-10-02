@@ -1,24 +1,15 @@
-import {Modal, ShoppingCart, SearchModal, SignUpModal, Favorites} from "../../modal";
-import React from "react";
+import {Favorites, Modal, SearchModal, ShoppingCart, SignUpModal, useAppSelector} from "@/components";
 
-interface HeaderModalsProps {
-    openModal: "cart" | "registration" | "search" | "favorites" | null;
-    setOpenModal: (type: "cart" | "registration" | "search" | "favorites" | null) => void;
-}
-
-export const HeaderModals: React.FC<HeaderModalsProps> = ({ openModal, setOpenModal }) => {
+export const HeaderModals = () => {
+    const openModal = useAppSelector(state => state.modal.openModal);
     if (!openModal) return null;
 
     const modals = {
-        cart: <ShoppingCart onClose={() => setOpenModal(null)} />,
-        registration: <SignUpModal onClose={() => setOpenModal(null)} />,
-        search: <SearchModal onClose={() => setOpenModal(null)} />,
-        favorites: <Favorites onClose={() => setOpenModal(null)} />,
+        cart: <ShoppingCart/>,
+        registration: <SignUpModal/>,
+        search: <SearchModal/>,
+        favorites: <Favorites/>,
     };
 
-    return (
-        <Modal isOpen onClose={() => setOpenModal(null)}>
-            {modals[openModal]}
-        </Modal>
-    );
+    return <Modal children={modals[openModal]}/>
 };
