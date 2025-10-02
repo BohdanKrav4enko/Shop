@@ -99,10 +99,6 @@ export const ModalHeader = styled.h3`
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 8px;
 `;
-export const ModalTextContainer = styled.div`
-    padding: 16px 24px;
-    margin: 0 auto 24px auto;
-`;
 
 export const ModalText = styled.p`
     margin: 0 auto;

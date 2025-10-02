@@ -1,9 +1,9 @@
-import {Modal, ShoppingCart, SearchModal, AdminModal, Favorites} from "../../modal";
+import {Modal, ShoppingCart, SearchModal, SignUpModal, Favorites} from "../../modal";
 import React from "react";
 
 interface HeaderModalsProps {
-    openModal: "cart" | "admin" | "search" | "favorites" | null;
-    setOpenModal: (type: "cart" | "admin" | "search" | "favorites" | null) => void;
+    openModal: "cart" | "registration" | "search" | "favorites" | null;
+    setOpenModal: (type: "cart" | "registration" | "search" | "favorites" | null) => void;
 }
 
 export const HeaderModals: React.FC<HeaderModalsProps> = ({ openModal, setOpenModal }) => {
@@ -11,7 +11,7 @@ export const HeaderModals: React.FC<HeaderModalsProps> = ({ openModal, setOpenMo
 
     const modals = {
         cart: <ShoppingCart onClose={() => setOpenModal(null)} />,
-        admin: <AdminModal onClose={() => setOpenModal(null)} />,
+        registration: <SignUpModal onClose={() => setOpenModal(null)} />,
         search: <SearchModal onClose={() => setOpenModal(null)} />,
         favorites: <Favorites onClose={() => setOpenModal(null)} />,
     };

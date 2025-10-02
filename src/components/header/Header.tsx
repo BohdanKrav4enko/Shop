@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {AdminBadge, HeaderButtons, HeaderModals, HeaderLogo, HeaderContainer} from "./index.ts";
 
-export type ModalType = "cart" | "admin" | "search" | "favorites" | null;
+export type ModalType = "cart" | "registration" | "search" | "favorites" | null;
 
 export const Header = () => {
     const [openModal, setOpenModal] = useState<ModalType>(null);

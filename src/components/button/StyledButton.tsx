@@ -4,6 +4,7 @@ interface ButtonsWrapperProps {
     children: React.ReactNode;
     onClick?: () => void;
     disabled?: boolean;
+    type?: "button" | "submit" | "reset"
 }
 export const StyledButton = (props: ButtonsWrapperProps) => {
     const {children, onClick, disabled} = props;

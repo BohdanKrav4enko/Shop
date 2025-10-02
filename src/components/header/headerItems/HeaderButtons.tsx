@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import {ShoppingBasket, Plus, ShieldUser, Search, Heart} from "lucide-react";
+import {ShoppingBasket, Plus, UserRound, Search, Heart} from "lucide-react";
 import {useAppSelector, StyledButton, HeaderButtonsWrapper, CartWrapper, Badge} from "../../index.ts";
 import React from "react";
 
 interface HeaderButtonsProps {
-    setOpenModal: (type: "cart" | "admin" | "search" | "favorites" | null) => void;
+    setOpenModal: (type: "cart" | "registration" | "search" | "favorites" | null) => void;
 }
 
 export const HeaderButtons: React.FC<HeaderButtonsProps> = ({ setOpenModal }) => {
@@ -13,6 +13,12 @@ export const HeaderButtons: React.FC<HeaderButtonsProps> = ({ setOpenModal }) =>
 
     return (
         <HeaderButtonsWrapper>
+            <StyledButton
+                onClick={() => setOpenModal("registration")}
+                aria-label="Toggle registration mode"
+            >
+                <UserRound />
+            </StyledButton>
             {admin && (
                 <Link to="/add-product/">
                     <StyledButton aria-label="Add new product">
@@ -25,12 +31,6 @@ export const HeaderButtons: React.FC<HeaderButtonsProps> = ({ setOpenModal }) =>
                 aria-label="Open search modal"
             >
                 <Search />
-            </StyledButton>
-            <StyledButton
-                onClick={() => setOpenModal("admin")}
-                aria-label="Toggle admin mode"
-            >
-                <ShieldUser />
             </StyledButton>
             <StyledButton
                 onClick={() => setOpenModal("favorites")}
