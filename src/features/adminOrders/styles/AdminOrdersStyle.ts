@@ -35,6 +35,24 @@ export const ProductItem = styled.div`
     margin: 3px 0;
   }
 `;
+export const EmptyOrdersWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+  color: #555;
+  gap: 16px;
+`;
+export const EmptyOrdersTitle = styled.p`
+  font-size: 18px;
+  font-weight: 500;
+`;
+
+export const EmptyOrdersSubtitle = styled.p`
+  font-size: 14px;
+  color: #888;
+`;
 export const StatusDot = styled.span<{ status: string }>`
   display: inline-block;
   width: 12px;

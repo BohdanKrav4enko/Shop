@@ -62,3 +62,8 @@ export const Badge = styled.div`
     align-items: center;
     justify-content: center;
 `
+export const ButtonLabel = styled.p`
+    @media (max-width: 600px) {
+        display: none;
+    }
+`

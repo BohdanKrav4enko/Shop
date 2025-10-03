@@ -4,7 +4,13 @@ import {db} from "@/app/firebase/firebase";
 import {useNavigate} from "react-router-dom";
 import {StyledButton, useAppDispatch} from "@/components";
 import {ArrowLeft, RefreshCcw} from "lucide-react";
-import {OrderCardComponent, OrderContainer} from "@/features";
+import {
+    EmptyOrdersSubtitle,
+    EmptyOrdersTitle,
+    EmptyOrdersWrapper,
+    OrderCardComponent,
+    OrderContainer
+} from "@/features";
 import {useOrders} from "@/components/hooks/useOrders";
 import {setNotification} from "@/app/appSlice.ts";
 import { PATH } from "@/routes/paths";
@@ -48,6 +54,14 @@ export const AdminOrders = () => {
                     setConfirm={() => { setOrderToDelete(order.id); setConfirmOpen(true); }}
                 />
             ))}
+            {orders.length === 0
+                && (
+                    <EmptyOrdersWrapper>
+                        <RefreshCcw size={48} color="#ccc" />
+                        <EmptyOrdersTitle>No orders yet</EmptyOrdersTitle>
+                        <EmptyOrdersSubtitle>Please refresh the page or check back later</EmptyOrdersSubtitle>
+                    </EmptyOrdersWrapper>
+                )}
         </OrderContainer>
     );
 };

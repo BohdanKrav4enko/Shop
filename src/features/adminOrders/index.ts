@@ -4,5 +4,16 @@ export {OrderDetails} from "./adminOrdersComponents/orderProductItem/OrderDetail
 export {OrderActions} from "./adminOrdersComponents/orderProductItem/OrderActions"
 export {OrderProductItem} from "./adminOrdersComponents/orderProductItem/OrderProductItem"
 export {
-    ActionsContainer, ActionButton, OrderProductsList, OrderHeader, OrderTitle, OrderCard, ProductItem, OrderContainer, StatusDot
+    ActionsContainer,
+    ActionButton,
+    OrderProductsList,
+    OrderHeader,
+    OrderTitle,
+    OrderCard,
+    ProductItem,
+    OrderContainer,
+    StatusDot,
+    EmptyOrdersWrapper,
+    EmptyOrdersSubtitle,
+    EmptyOrdersTitle
 } from './styles/AdminOrdersStyle'

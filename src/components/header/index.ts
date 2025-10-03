@@ -1,6 +1,5 @@
 export {Header} from "./Header"
-export {AdminBadge} from "./headerItems/AdminBadge"
 export {HeaderButtons} from "./headerItems/HeaderButtons"
 export {HeaderLogo} from "./headerItems/HeaderLogo"
 export {HeaderModals} from "./headerItems/HeaderModals"
-export {Badge, HeaderButtonsWrapper, CartWrapper, Title, HeaderContainer, TextAdmin} from "./styles/HeaderStyle"
+export {Badge, HeaderButtonsWrapper, CartWrapper, Title, HeaderContainer, TextAdmin, ButtonLabel} from "./styles/HeaderStyle"

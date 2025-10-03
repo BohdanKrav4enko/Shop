@@ -1,6 +1,7 @@
 import {ContactRound, Heart, Search, ShoppingBasket} from "lucide-react";
 import {
     Badge,
+    ButtonLabel,
     CartWrapper,
     HeaderButtonsWrapper,
     StyledButton,
@@ -10,7 +11,6 @@ import {
 import {setOpenModal} from "@/app/modalSlice.ts";
 import {PATH} from "@/routes/paths.ts";
 import {useNavigate} from "react-router-dom";
-
 
 export const HeaderButtons = () => {
     const dispatch = useAppDispatch();
@@ -36,18 +36,21 @@ export const HeaderButtons = () => {
         <HeaderButtonsWrapper>
             <StyledButton onClick={handleMeNavigate}>
                 <ContactRound/>
+                <ButtonLabel>Profile</ButtonLabel>
             </StyledButton>
             <StyledButton
                 onClick={searchHandler}
                 aria-label="Open search modal"
             >
                 <Search/>
+                <ButtonLabel>Search</ButtonLabel>
             </StyledButton>
             <StyledButton
                 onClick={favoritesHandler}
                 aria-label="Open favorites modal"
             >
                 <Heart/>
+                <ButtonLabel>Favorites</ButtonLabel>
             </StyledButton>
             <CartWrapper>
                 <StyledButton
@@ -55,9 +58,12 @@ export const HeaderButtons = () => {
                     aria-label={`Open cart modal, ${items.length} items`}
                 >
                     <ShoppingBasket/>
+                    <ButtonLabel>Basket</ButtonLabel>
                 </StyledButton>
                 {items.length > 0 && <Badge>{items.length}</Badge>}
             </CartWrapper>
         </HeaderButtonsWrapper>
     );
 };
+
+
