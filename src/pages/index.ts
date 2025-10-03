@@ -5,3 +5,5 @@ export * from "./homePage";
 export * from "./privacyPolicy";
 export * from "./productPage";
 export * from "./editProductPage";
+export * from "./ordersPage";
+export * from "./aboutMePage";

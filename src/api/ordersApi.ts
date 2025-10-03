@@ -1,20 +1,16 @@
-import type {Order} from "@/types/types.ts";
+import { db } from "@/app/firebase/firebase";
+import type { Order } from "@/types/types";
+import { addDoc, collection, getDocs, orderBy, query, serverTimestamp } from "firebase/firestore";
 
 export const sendOrder = async (order: Order) => {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbyk88NUT4TCY1cUQNSCdnHqvZ1aPHM7aHmlp8wcoIqoEdZ50BJ_ia8Bj8ptVNPSNa4Wpg/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(order),
+    await addDoc(collection(db, "orders"), {
+        ...order,
+        createdAt: serverTimestamp(),
+        status: "new",
     });
-
-    if (!response.ok) {
-        throw new Error(`Network error: ${response.status}`);
-    }
-
-    const result = await response.json();
-
-    if (result.status !== "ok") {
-        throw new Error(result.message || "Unknown error from server");
-    }
-    return result;
+};
+export const getOrders = async () => {
+    const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
+    const snapshot = await getDocs(q);
+    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 };

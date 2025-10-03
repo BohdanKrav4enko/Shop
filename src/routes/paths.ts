@@ -7,5 +7,8 @@ export const PATH = {
     PRIVACY_PAGE: "/privacy",
     CONTACT_PAGE: "/contact",
     ABOUT_PAGE: "/about",
-    FAQ_PAGE: "/faq"
+    FAQ_PAGE: "/faq",
+    ORDERS_PAGE: "/orders",
+    ABOUT_ME_PAGE: "/about-me",
+    ERROR_PAGE: "/error",
 };

@@ -33,7 +33,7 @@ export const useAuthForms = () => {
     const handleSignUp = async (data: SignUpFormData) => {
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
-            await setDoc(doc(db, "users", userCredential.user.uid), { ...data, favorites: [] });
+            await setDoc(doc(db, "users", userCredential.user.uid), { ...data, favorites: [], isAdmin: false});
             store.dispatch(setUser({ uid: userCredential.user.uid, email: userCredential.user.email }));
             dispatch(setNotification({ type: "info", message: "You have successfully registered." }));
             signUpForm.reset();

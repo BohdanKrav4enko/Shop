@@ -7,7 +7,7 @@ import { setCategory, setNotification } from "@/app/appSlice.ts";
 export const useProductPage = () => {
     const { id } = useParams();
     const productId = Number(id);
-    const { data } = useGetProductByIdQuery({ id: productId });
+    const { data, isLoading, isError} = useGetProductByIdQuery({ id: productId });
     const { inCart } = useCart();
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
@@ -57,6 +57,8 @@ export const useProductPage = () => {
         handleRemoveFromCart,
         handleShare,
         handleCopyLink,
-        handleBack
+        handleBack,
+        isError,
+        isLoading,
     };
 };

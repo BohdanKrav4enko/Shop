@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {MobileBurger, MobileSidebar} from "./index.ts";
+import {Burger, Sidebar} from "./index.ts";
 
 export const BurgerMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -14,8 +14,8 @@ export const BurgerMenu = () => {
 
     return (
         <>
-            <MobileBurger isOpen={isOpen} onClick={onCloseHandler} />
-            <MobileSidebar isOpen={isOpen} onClose={() => setIsOpen(false)} />
+            <Burger isOpen={isOpen} onClick={onCloseHandler} />
+            <Sidebar isOpen={isOpen} onClose={() => setIsOpen(false)} />
         </>
     );
 };

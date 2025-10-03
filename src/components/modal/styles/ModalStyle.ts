@@ -112,13 +112,18 @@ export const ModalText = styled.p`
 `;
 export const AdminModalButtonsWrapper = styled.div`
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
     padding: 20px;
-    border-top: 1px solid #eee;
     button {
-        width: 100%;
+        width: 80%;
+    }
+    @media (max-width: 480px) {
+        button {
+            width: 100%;
+        }
     }
 `;
 export const AdminModalWrapper = styled.div`

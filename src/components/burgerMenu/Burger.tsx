@@ -8,7 +8,7 @@ interface MobileBurgerProps {
     onClick: () => void;
 }
 
-export const MobileBurger: React.FC<MobileBurgerProps> = ({ isOpen, onClick }) => {
+export const Burger: React.FC<MobileBurgerProps> = ({ isOpen, onClick }) => {
     return (
         <BurgerButton isOpen={isOpen} onClick={onClick}>
             {isOpen? <X style={{color: 'black'}}/> : <Menu style={{color: 'black'}}/>}

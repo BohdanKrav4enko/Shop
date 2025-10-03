@@ -12,3 +12,5 @@ export * from "./notification";
 export * from "./scrollToTop";
 export * from "./scrollToTopOnRouteChange";
 export * from "./skeletons";
+export * from "./protectedRoute";
+export * from "./errorFetch";

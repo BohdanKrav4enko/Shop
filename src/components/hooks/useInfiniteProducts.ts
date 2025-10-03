@@ -5,7 +5,7 @@ import type { Product } from "@/types/types.ts";
 export const useInfiniteProducts = (limit: number = 9) => {
     const [offset, setOffset] = useState(0);
     const [products, setProducts] = useState<Product[]>([]);
-    const { data, isLoading, isFetching, error } = useGetProductsQuery({ offset, limit });
+    const { data, isLoading, isFetching, error, refetch } = useGetProductsQuery({ offset, limit });
 
     useEffect(() => {
         if (data && data.length > 0) {
@@ -35,6 +35,7 @@ export const useInfiniteProducts = (limit: number = 9) => {
         isFetching,
         error,
         loadMore,
+        refetch,
         hasMore: data?.length === limit,
     };
 };

@@ -1,12 +1,12 @@
-import {useInfiniteProducts, ProductSkeletonGrid, useAppSelector} from "@/components";
+import {ErrorFetch, ProductSkeletonGrid, useAppSelector, useInfiniteProducts} from "@/components";
 import {
-    ShowMoreButton,
-    ShowMoreButtonWrapper,
-    EmptyState,
-    ProductsCard,
     CategoryTitle,
+    EmptyState,
+    Greetings,
     Grid,
-    Greetings
+    ProductsCard,
+    ShowMoreButton,
+    ShowMoreButtonWrapper
 } from "./index.ts";
 import {useGetCategoriesQuery} from "@/api/productsApi.ts";
 
@@ -14,10 +14,11 @@ export const ProductsList = () => {
     const categoryId = useAppSelector(state => state.app.categoryId);
     const profile = useAppSelector(state => state.auth.profile);
     const {data: categories} = useGetCategoriesQuery()
-    const {products, isLoading, error, loadMore, hasMore} = useInfiniteProducts(9);
+    const {products, isLoading, error, loadMore, hasMore, refetch} = useInfiniteProducts(9);
 
     if (isLoading && products.length === 0) return <ProductSkeletonGrid/>;
-    if (error) return <div>Error loading data</div>;
+    if (error) return <ErrorFetch onRetry={()=>{refetch()}}/>;
+
     const category = categories?.find(cat => cat.id === categoryId);
     const categoryName = category ? category.name : "All products";
     const filteredProducts = categoryId === 0

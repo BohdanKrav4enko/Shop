@@ -10,8 +10,12 @@ import {
     ProductMetaInfo,
     ProductShare
 } from "./index.ts";
+import {ArrowLeft} from "lucide-react";
+import {useNavigate} from "react-router-dom";
+import {PATH} from "@/routes/paths.ts";
 
 export const ProductPage = () => {
+    const navigate = useNavigate();
     const {
         data,
         admin,
@@ -21,10 +25,16 @@ export const ProductPage = () => {
         handleRemoveFromCart,
         handleShare,
         handleCopyLink,
-        handleBack
+        handleBack,
+        isLoading,
+        isError
     } = useProductPage();
 
-    if (!data) return <ProductPageSkeleton/>
+    if (isLoading) return <ProductPageSkeleton />;
+    if (isError || !data) {
+        navigate(PATH.ERROR_PAGE, { replace: true })
+        return null;
+    }
 
     return (
         <ProductContainer>
@@ -46,7 +56,10 @@ export const ProductPage = () => {
             <ProductItemWrapperFooter>
                 <ProductShare onShare={handleShare} onCopy={handleCopyLink}/>
             </ProductItemWrapperFooter>
-            <StyledButton onClick={handleBack}>Back</StyledButton>
+            <StyledButton onClick={handleBack}>
+                <ArrowLeft />
+                Back
+            </StyledButton>
         </ProductContainer>
     );
 };

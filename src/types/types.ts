@@ -4,7 +4,6 @@ export interface Category {
     image: string;
     slug: string;
 }
-
 export interface Product {
     id: number;
     title: string;
@@ -31,7 +30,15 @@ export type OrderProduct = {
 export type Order = {
     name: string;
     email: string;
+    phone: string;
     products: OrderProduct[];
     total: number;
     date: string;
 };
+export interface Profile {
+    name: string;
+    surname: string;
+    email: string;
+    phone: string;
+    isAdmin: boolean;
+}

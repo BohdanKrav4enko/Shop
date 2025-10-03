@@ -45,27 +45,21 @@ export const ShoppingCart = () => {
     const handleOrder = () => {
         const order = prepareOrder();
         if (user) {
-            console.log(order);
-            dispatch(setNotification({
-                message: 'The object has been sent to the console.',
-                type: "success",
-                duration: 5000
-            }))
-            dispatch(closeModal())
-            dispatch(clearCart())
             sendOrder(order)
-                .then(() => dispatch(setNotification({
-                    message: 'The order has been sent successfully.',
-                    type: "success",
+                .then(() => {
+                    dispatch(setNotification({
+                        message: 'The order has been sent successfully.',
+                        type: "success",
+                        duration: 1500
+                    }))
+                    dispatch(clearCart())
+                    dispatch(closeModal())
+                })
+                .catch((error: Error) => dispatch(setNotification({
+                    message: error.message || 'Something went wrong',
+                    type: "error",
                     duration: 1500
                 })))
-            dispatch(clearCart())
-            dispatch(closeModal())
-            // .catch((error: Error) => dispatch(setNotification({
-            //     message: error.message || 'Something went wrong',
-            //     type: "error",
-            //     duration: 1500
-            // })))
         } else {
             dispatch(setOpenModal("registration"))
         }

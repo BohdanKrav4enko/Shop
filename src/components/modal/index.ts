@@ -8,7 +8,8 @@ export {UserRoleStatus} from "@/components/modal/modals/adminModal/signUpModalCo
 export {Favorites} from "./modals/favoritesModal/Favorites"
 export {SignUpForm} from "./modals/adminModal/signUpModalComponents/SignUpForm.tsx"
 export {SignInForm} from "./modals/adminModal/signUpModalComponents/SignInForm.tsx"
-export {StyledSignUpInput, ModalSignUpInputsContainer, InputError} from "./styles/SignUpStyle.ts"
+export {ConfirmModal} from "./modals/ConfirmModal.tsx"
+export {StyledSignUpInput, ModalSignUpInputsContainer, InputError, FormWrapper, FormInputWrapper} from "./styles/SignUpStyle.ts"
 export {
     AdminModalButtonsWrapper,
     InputWrapper,

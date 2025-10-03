@@ -11,7 +11,8 @@ export const store = configureStore({
         cart: cartReducer,
         app: appReducer,
         auth: authReducer,
-        modal: modalReducer
+        modal: modalReducer,
+
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(productsApi.middleware),

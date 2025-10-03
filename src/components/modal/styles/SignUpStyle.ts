@@ -14,7 +14,39 @@ export const ModalSignUpInputsContainer = styled.div`
         margin: 0 auto 0 auto;
     }
 `;
+export const FormWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 12px;
+    padding: 12px;
+    box-sizing: border-box;
+    button {
+        background: rgb(96, 104, 99);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 500;
 
+        &:hover {
+            background: rgb(80, 88, 84);
+        }
+
+        &:active {
+            background: rgb(70, 78, 74);
+        }
+    }
+`
+export const FormInputWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+`
 export const StyledSignUpInput = styled.input<{ hasError?: boolean }>`
     width: 100%;
     padding: 10px 14px;

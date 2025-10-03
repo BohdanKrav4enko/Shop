@@ -3,6 +3,7 @@ import {Input, Textarea, ButtonGroup, ActionButtons, Title, Select} from "@/page
 import {useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import {useGetCategoriesQuery} from "@/api/productsApi.ts";
+import {PATH} from "@/routes/paths.ts";
 
 interface ProductFormProps {
     initialTitle?: string;
@@ -76,7 +77,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                 {isEdit && onDelete && <StyledButton onClick={onDelete}>Delete</StyledButton>}
                 <ActionButtons>
                     <StyledButton onClick={handleSave}>Save</StyledButton>
-                    <StyledButton onClick={() => navigate(-1)}>Cancel</StyledButton>
+                    <StyledButton onClick={() => navigate(PATH.HOME)}>Cancel</StyledButton>
                 </ActionButtons>
             </ButtonGroup>
         </>

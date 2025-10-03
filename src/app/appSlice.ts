@@ -15,7 +15,7 @@ interface AppModeState {
 }
 
 const initialState: AppModeState = {
-    isAdmin: JSON.parse(localStorage.getItem('isAdmin') || 'false'),
+    isAdmin: false,
     favorites: JSON.parse(localStorage.getItem('favorites') || '[]'),
     notification: null,
     categoryId: 0,
