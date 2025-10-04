@@ -1,4 +1,4 @@
-export interface MobileSidebarProps {
+export interface SidebarProps {
     isOpen: boolean;
     onClose: () => void;
 }

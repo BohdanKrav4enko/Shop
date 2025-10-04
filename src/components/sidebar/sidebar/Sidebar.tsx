@@ -1,5 +1,5 @@
 import {useGetCategoriesQuery} from "@/api/productsApi.ts";
-import type {MobileSidebarProps} from "@/components/burgerMenu/type/type.ts";
+import type {SidebarProps} from "@/components/sidebar/type/type.ts";
 import React from "react";
 import {
     AdminMenu,
@@ -12,7 +12,7 @@ import {
 } from "../../index.ts";
 
 
-export const Sidebar: React.FC<MobileSidebarProps> = ({isOpen, onClose}) => {
+export const Sidebar: React.FC<SidebarProps> = ({isOpen, onClose}) => {
     const {data: categories, isLoading} = useGetCategoriesQuery();
     const {
         admin,
@@ -25,7 +25,7 @@ export const Sidebar: React.FC<MobileSidebarProps> = ({isOpen, onClose}) => {
 
 
     if (isLoading) return null;
-    if (!categories) return <></>;
+    if (!categories) return null;
     if (!isOpen) return null;
 
     return (

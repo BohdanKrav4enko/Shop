@@ -8,7 +8,7 @@ import {
     StyleMeError
 } from "./index.ts";
 import {StyledButton, useAboutMe} from "@/components";
-import {ArrowLeft, BadgeCheck, House, Pencil, Save} from "lucide-react";
+import {ArrowLeft, BadgeCheck, House, LogOut, Pencil, Save} from "lucide-react";
 import {Switch} from "@mui/material";
 import {Controller} from "react-hook-form";
 
@@ -23,13 +23,13 @@ export const AboutMePage = () => {
         onSubmit,
         errors,
         isChanged,
-        handleCancelOrHome
+        handleCancelOrHome,
+        logoutHandler
     } = useAboutMe();
 
     return (
         <AboutMeContainer>
-            <AboutMeTitle>About Me</AboutMeTitle>
-
+                <AboutMeTitle>About Me</AboutMeTitle>
             <AboutMeSection>
                 <AboutMeSubTitle>Name</AboutMeSubTitle>
                 <AboutMeText>
@@ -112,11 +112,11 @@ export const AboutMePage = () => {
                 {isEdit ? <Save/> : <Pencil/>}
                 {isEdit ? "Save" : "Edit"}
             </StyledButton>
-
             <StyledButton onClick={handleCancelOrHome}>
                 {isEdit ? <ArrowLeft/> : <House/>}
                 {isEdit ? "Back" : "Home"}
             </StyledButton>
+            <StyledButton onClick={logoutHandler}><LogOut />Logout</StyledButton>
         </AboutMeContainer>
     );
 };

@@ -22,12 +22,18 @@ const authSlice = createSlice({
         setProfile: (state, action: PayloadAction<Profile | null>) => {
             state.profile = action.payload;
         },
-        setUser: (state, action: PayloadAction<User | null>) => {
+        setUser: (state, action) => {
             state.user = action.payload;
+            if (action.payload) {
+                localStorage.setItem("user", JSON.stringify(action.payload));
+            } else {
+                localStorage.removeItem("user");
+            }
         },
         logout: (state) => {
             state.user = null;
             state.profile = null;
+            localStorage.removeItem("user");
         },
     },
 });

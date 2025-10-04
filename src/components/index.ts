@@ -1,5 +1,5 @@
 export * from "./breadcrumbs";
-export * from "./burgerMenu";
+export * from "./sidebar";
 export * from "./button";
 export * from "./container";
 export * from "./footer";

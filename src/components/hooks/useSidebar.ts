@@ -1,14 +1,14 @@
 import {useEffect} from "react";
-import {setCategory, setNotification} from "@/app/appSlice.ts";
+import {setAdmin, setCategory, setNotification} from "@/app/appSlice.ts";
 import {PATH} from "@/routes/paths.ts";
 import {setOpenModal} from "@/app/modalSlice.ts";
 import {getAuth, signOut} from "firebase/auth";
 import {logout} from "@/app/authSlice.ts";
 import {useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "@/components";
-import type {MobileSidebarProps} from "@/components/burgerMenu/type/type.ts";
+import type {SidebarProps} from "@/components/sidebar/type/type.ts";
 
-export const useSidebar = (props: MobileSidebarProps) => {
+export const useSidebar = (props: SidebarProps) => {
     const {isOpen, onClose} = props
     const navigate = useNavigate();
     const auth = getAuth();
@@ -46,8 +46,10 @@ export const useSidebar = (props: MobileSidebarProps) => {
         if (user) {
             signOut(auth)
                 .then(() => {
+                    navigate(PATH.HOME);
                     dispatch(logout());
                     onClose();
+                    dispatch(setAdmin(false))
                     dispatch(setNotification({
                         type: "info",
                         message: "You have successfully logged out of your account."

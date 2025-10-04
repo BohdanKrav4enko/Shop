@@ -1,4 +1,4 @@
-export {BurgerMenu} from "../burgerMenu/BurgerMenu";
+export {BurgerMenu} from "@/components/sidebar/BurgerMenu";
 export {Burger} from "./Burger.tsx";
 export {Sidebar} from "./sidebar/Sidebar.tsx";
 export {BurgerButton} from "./style/MobileBurgerStyle"
