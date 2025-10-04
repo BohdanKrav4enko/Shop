@@ -3,6 +3,7 @@ import {StyledButton} from "@/components";
 import {AddToFavoriteButton} from "@/pages";
 import type {Product} from "@/types/types.ts";
 import styled from "styled-components";
+import {useTranslation} from "react-i18next";
 
 interface ProductActionsProps {
     existsInCart: boolean;
@@ -26,18 +27,22 @@ const StyledProductItemWrapper = styled.div`
         }
     }
 `
-export const ProductActions = ({ existsInCart, onAdd, onRemove, data }: ProductActionsProps) => (
-    <StyledProductItemWrapper>
-        {existsInCart ? (
-            <StyledButton onClick={onRemove} aria-label="Remove from cart">
-                <ShoppingBasket /> In the basket
-            </StyledButton>
-        ) : (
-            <StyledButton onClick={onAdd} aria-label="Add to cart">
-                <CircleDollarSign /> Buy
-            </StyledButton>
-        )}
-        <AddToFavoriteButton product={data} aria-label="Add to favorites" />
-    </StyledProductItemWrapper>
-);
+export const ProductActions = ({ existsInCart, onAdd, onRemove, data }: ProductActionsProps) => {
+    const { t } = useTranslation();
+
+    return (
+        <StyledProductItemWrapper>
+            {existsInCart ? (
+                <StyledButton onClick={onRemove} aria-label={t("Remove from cart")}>
+                    <ShoppingBasket /> {t("In the basket")}
+                </StyledButton>
+            ) : (
+                <StyledButton onClick={onAdd} aria-label={t("Add to cart")}>
+                    <CircleDollarSign /> {t("Buy")}
+                </StyledButton>
+            )}
+            <AddToFavoriteButton product={data} aria-label={t("Add to favorites")} />
+        </StyledProductItemWrapper>
+    );
+};
 

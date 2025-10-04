@@ -1,6 +1,7 @@
 import {StyledSignUpInput, InputError, StyledButton, FormWrapper, FormInputWrapper} from "@/components";
 import type {SignUpFormData} from "@/components/schemas/schemaAuth.tsx";
 import type {FieldErrors, UseFormRegister} from "react-hook-form";
+import {useTranslation} from "react-i18next";
 
 type Props = {
     errors: FieldErrors<SignUpFormData>;
@@ -8,58 +9,59 @@ type Props = {
 };
 
 export const SignUpForm = ({errors, register}: Props) => {
+    const {t} = useTranslation();
     return (
         <FormWrapper>
             <FormInputWrapper>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name">{t("Name")}</label>
                 <StyledSignUpInput
                     id="name"
                     {...register("name")}
-                    placeholder="Name"
+                    placeholder={t("Name")}
                     hasError={!!errors.name}
                 />
-                {errors.name && <InputError>{errors.name.message}</InputError>}
+                {errors.name && <InputError>{t(errors.name.message || "")}</InputError>}
 
-                <label htmlFor="surname">Surname</label>
+                <label htmlFor="surname">{t("Surname")}</label>
                 <StyledSignUpInput
                     id="surname"
                     {...register("surname")}
-                    placeholder="Surname"
+                    placeholder={t("Surname")}
                     hasError={!!errors.surname}
                 />
-                {errors.surname && <InputError>{errors.surname.message}</InputError>}
+                {errors.surname && <InputError>{t(errors.surname.message || "")}</InputError>}
 
-                <label htmlFor="phone">Phone</label>
+                <label htmlFor="phone">{t("Phone")}</label>
                 <StyledSignUpInput
                     id="phone"
                     {...register("phone")}
                     type="tel"
-                    placeholder="Phone"
+                    placeholder={t("Phone")}
                     hasError={!!errors.phone}
                 />
-                {errors.phone && <InputError>{errors.phone.message}</InputError>}
+                {errors.phone && <InputError>{t(errors.phone.message || "")}</InputError>}
 
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">{t("Email")}</label>
                 <StyledSignUpInput
                     id="email"
                     {...register("email")}
                     type="email"
-                    placeholder="Email"
+                    placeholder={t("Email")}
                     hasError={!!errors.email}
                 />
-                {errors.email && <InputError>{errors.email.message}</InputError>}
+                {errors.email && <InputError>{t(errors.email.message || "")}</InputError>}
 
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">{t("Password")}</label>
                 <StyledSignUpInput
                     id="password"
                     {...register("password")}
                     type="password"
-                    placeholder="Password"
+                    placeholder={t("Password")}
                     hasError={!!errors.password}
                 />
-                {errors.password && <InputError>{errors.password.message}</InputError>}
+                {errors.password && <InputError>{t(errors.password.message || "")}</InputError>}
             </FormInputWrapper>
-            <StyledButton type="submit">Sign up</StyledButton>
+            <StyledButton type="submit">{t("Sign up")}</StyledButton>
         </FormWrapper>
     );
 };

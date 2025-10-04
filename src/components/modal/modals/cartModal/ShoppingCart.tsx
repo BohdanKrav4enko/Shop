@@ -16,6 +16,7 @@ import {
     ModalFooter
 } from "@/components";
 import {closeModal, setOpenModal} from "@/app/modalSlice.ts";
+import {useTranslation} from "react-i18next";
 
 export const ShoppingCart = () => {
     const items = useAppSelector((state) => state.cart.items);
@@ -23,6 +24,7 @@ export const ShoppingCart = () => {
     const profile = useAppSelector(state => state.auth.profile);
     const dispatch = useAppDispatch();
     const total = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
+    const {t} = useTranslation();
 
     const prepareOrder = () => {
         const products = items.map(item => ({
@@ -48,7 +50,7 @@ export const ShoppingCart = () => {
             sendOrder(order)
                 .then(() => {
                     dispatch(setNotification({
-                        message: 'The order has been sent successfully.',
+                        message: t("The order has been sent successfully"),
                         type: "success",
                         duration: 1500
                     }))
@@ -56,7 +58,7 @@ export const ShoppingCart = () => {
                     dispatch(closeModal())
                 })
                 .catch((error: Error) => dispatch(setNotification({
-                    message: error.message || 'Something went wrong',
+                    message: error.message || t("Something went wrong"),
                     type: "error",
                     duration: 1500
                 })))
@@ -69,7 +71,7 @@ export const ShoppingCart = () => {
     return (
         items.length > 0 ? (
             <CartLayout role="dialog" aria-modal="true" aria-labelledby="cart-modal-title">
-                <ModalHeader id="cart-modal-title">Shopping Cart</ModalHeader>
+                <ModalHeader id="cart-modal-title">{t("Shopping Cart")}</ModalHeader>
                 <CartContent>
                     {items.map(item => <CartItem key={item.id} item={item}/>)}
                 </CartContent>
@@ -77,20 +79,18 @@ export const ShoppingCart = () => {
                     <TotalContainer>
                         <CartTotal>${total}</CartTotal>
                     </TotalContainer>
-                    <StyledButton aria-label="Place an order" onClick={handleOrder}>Place an order</StyledButton>
-                    <ClearButton aria-label="Clear cart" onClick={() => dispatch(clearCart())}>Clear Cart</ClearButton>
+                    <StyledButton aria-label="Place an order" onClick={handleOrder}>{t("Place an order")}</StyledButton>
+                    <ClearButton aria-label="Clear cart" onClick={() => dispatch(clearCart())}>{t("Clear Cart")}</ClearButton>
                 </ModalFooterContainer>
             </CartLayout>
         ) : (
             <CartLayout>
-                <ModalHeader>Shopping Cart</ModalHeader>
+                <ModalHeader>{t("Shopping Cart")}</ModalHeader>
                 <CartContent>
-                    <ModalText aria-live="polite">There's nothing here yet.</ModalText>
+                    <ModalText aria-live="polite">{t("There's nothing here yet.")}</ModalText>
                 </CartContent>
                 <ModalFooter onClose={() => dispatch(setOpenModal(null))}/>
             </CartLayout>
         )
     );
 };
-
-

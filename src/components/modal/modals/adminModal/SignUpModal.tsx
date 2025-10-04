@@ -10,9 +10,11 @@ import {
     useAuthForms
 } from "@/components";
 import {closeModal} from "@/app/modalSlice.ts";
+import {useTranslation} from "react-i18next";
 
 export const SignUpModal = () => {
     const dispatch = useAppDispatch();
+    const {t} = useTranslation();
     const {
         signUpMode,
         setSignUpMode,
@@ -24,7 +26,7 @@ export const SignUpModal = () => {
 
     return (
         <AdminModalWrapper role="dialog" aria-modal="true">
-            <ModalHeader>{signUpMode ? "Sign up" : "Sign in"}</ModalHeader>
+            <ModalHeader>{signUpMode ? t("Sign up") : t("Sign in")}</ModalHeader>
             <ModalSignUpInputsContainer as="form"
                                         onSubmit={signUpMode ? signUpForm.handleSubmit(handleSignUp) : signInForm.handleSubmit(handleSignIn)}>
                 {signUpMode
@@ -32,15 +34,15 @@ export const SignUpModal = () => {
                     : <SignInForm errors={signInForm.formState.errors} {...signInForm} />}
             </ModalSignUpInputsContainer>
             <AdminModalButtonsWrapper>
-                <ModalText>Or</ModalText>
+                <ModalText>{t("Or")}</ModalText>
                 <StyledButton type="button" onClick={() => {
                     setSignUpMode(!signUpMode);
                     signUpForm.reset();
                     signInForm.reset();
                 }}>
-                    {signUpMode ? "Sign In" : "Sign up"}
+                    {signUpMode ? t("Sign in") : t("Sign up")}
                 </StyledButton>
-                <StyledButton type="button" onClick={()=>{dispatch(closeModal())}}>Back</StyledButton>
+                <StyledButton type="button" onClick={()=>{dispatch(closeModal())}}>{t("Back")}</StyledButton>
             </AdminModalButtonsWrapper>
         </AdminModalWrapper>
     );

@@ -11,12 +11,14 @@ import {
 import {setOpenModal} from "@/app/modalSlice.ts";
 import {PATH} from "@/routes/paths.ts";
 import {useNavigate} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 export const HeaderButtons = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const items = useAppSelector(state => state.cart.items);
     const user = useAppSelector(state => state.auth.user);
+    const { t } = useTranslation();
 
 
     const cartHandler = () => dispatch(setOpenModal("cart"))
@@ -36,21 +38,21 @@ export const HeaderButtons = () => {
         <HeaderButtonsWrapper>
             <StyledButton onClick={handleMeNavigate}>
                 <ContactRound/>
-                <ButtonLabel>Profile</ButtonLabel>
+                <ButtonLabel>{t("Profile")}</ButtonLabel>
             </StyledButton>
             <StyledButton
                 onClick={searchHandler}
                 aria-label="Open search modal"
             >
                 <Search/>
-                <ButtonLabel>Search</ButtonLabel>
+                <ButtonLabel>{t("Search")}</ButtonLabel>
             </StyledButton>
             <StyledButton
                 onClick={favoritesHandler}
                 aria-label="Open favorites modal"
             >
                 <Heart/>
-                <ButtonLabel>Favorites</ButtonLabel>
+                <ButtonLabel>{t("Favorites")}</ButtonLabel>
             </StyledButton>
             <CartWrapper>
                 <StyledButton
@@ -58,7 +60,7 @@ export const HeaderButtons = () => {
                     aria-label={`Open cart modal, ${items.length} items`}
                 >
                     <ShoppingBasket/>
-                    <ButtonLabel>Basket</ButtonLabel>
+                    <ButtonLabel>{t("Basket")}</ButtonLabel>
                 </StyledButton>
                 {items.length > 0 && <Badge>{items.length}</Badge>}
             </CartWrapper>

@@ -3,6 +3,7 @@ import { useGetProductByIdQuery } from "@/api/productsApi.ts";
 import { useCart, useAppDispatch, useAppSelector } from "./index.ts";
 import { addCart, removeCart } from "@/features";
 import { setCategory, setNotification } from "@/app/appSlice.ts";
+import {useTranslation} from "react-i18next";
 
 export const useProductPage = () => {
     const { id } = useParams();
@@ -12,6 +13,7 @@ export const useProductPage = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const admin = useAppSelector(state => state.app.isAdmin);
+    const { t } = useTranslation();
 
     const existsInCart = data ? !!inCart(data.id) : false;
 
@@ -24,7 +26,7 @@ export const useProductPage = () => {
         if (!data) return;
         dispatch(addCart(data));
         dispatch(setNotification({
-            message: "The product has been successfully added to your cart",
+            message: t("The product has been successfully added to your cart"),
             type: "success",
             duration: 1500
         }));
@@ -38,13 +40,13 @@ export const useProductPage = () => {
         try {
             await navigator.share({ title: `${data.title}: ${data.description}`, url: window.location.href });
         } catch {
-            dispatch(setNotification({ message: "Unknown Error", type: "error" }));
+            dispatch(setNotification({ message: t("Unknown Error"), type: "error" }));
         }
     };
     const handleCopyLink = () => {
         if (!data) return;
         navigator.clipboard.writeText(window.location.href);
-        dispatch(setNotification({ message: "The link was copied successfully", type: "info", duration: 1500 }));
+        dispatch(setNotification({ message: t("The link was copied successfully"), type: "info", duration: 1500 }));
     };
     const handleBack = () => navigate(-1);
 

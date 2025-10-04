@@ -7,6 +7,7 @@ import {logout} from "@/app/authSlice.ts";
 import {useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "@/components";
 import type {SidebarProps} from "@/components/sidebar/type/type.ts";
+import {useTranslation} from "react-i18next";
 
 export const useSidebar = (props: SidebarProps) => {
     const {isOpen, onClose} = props
@@ -16,6 +17,7 @@ export const useSidebar = (props: SidebarProps) => {
     const admin = useAppSelector(state => state.app.isAdmin);
     const user = useAppSelector(state => state.auth.user);
     const selectedCategory = useAppSelector(state => state.app.categoryId);
+    const { t } = useTranslation();
 
 
     useEffect(() => {
@@ -52,11 +54,13 @@ export const useSidebar = (props: SidebarProps) => {
                     dispatch(setAdmin(false))
                     dispatch(setNotification({
                         type: "info",
-                        message: "You have successfully logged out of your account."
+                        message: t("You have successfully logged out of your account.")
                     }))
                 })
                 .catch((error) => {
-                    dispatch(setNotification({type: "info", message: `Logout error: ${error}`,}))
+                    dispatch(setNotification({
+                        type: "error",
+                        message: t("Logout error", { error: error instanceof Error ? error.message : String(error) })}));
                 });
         } else {
             onClose();

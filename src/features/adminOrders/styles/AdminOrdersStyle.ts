@@ -79,6 +79,9 @@ export const ActionsContainer = styled.div`
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 10px;
+    @media (max-width: 520px) {
+        gap: 2px;
+    }
 `;
 export const ActionButton = styled.button<{ color?: string }>`
     padding: 5px 10px;
@@ -89,7 +92,7 @@ export const ActionButton = styled.button<{ color?: string }>`
     cursor: pointer;
     font-size: 12px;
     flex-shrink: 1;
-    @media (max-width: 450px) {
+    @media (max-width: 520px) {
         padding: 5px 4px;
     }
     &:hover {

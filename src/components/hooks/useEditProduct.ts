@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAppDispatch } from "./hooks.ts";
 import { setNotification } from "@/app/appSlice.ts";
 import { useGetProductByIdQuery, useUpdateProductMutation, useCreateProductMutation } from "@/api/productsApi.ts";
+import {useTranslation} from "react-i18next";
 
 export const useEditProduct = () => {
     const dispatch = useAppDispatch();
@@ -10,6 +11,8 @@ export const useEditProduct = () => {
     const productId = Number(id);
     const isEdit = Boolean(id);
     const navigate = useNavigate();
+    const { t } = useTranslation();
+
 
     const { data: product, isLoading } = useGetProductByIdQuery({ id: productId }, { skip: !isEdit });
 
@@ -22,11 +25,11 @@ export const useEditProduct = () => {
         try {
             if (isEdit && product) {
                 await updateProduct({ id: product.id, ...data }).unwrap();
-                dispatch(setNotification({ message: "Product changed successfully", type: "success" }));
+                dispatch(setNotification({ message: t("Product changed successfully"), type: "success" }));
                 navigate(`/product/${product.id}`);
             } else {
                 await createProduct({ ...data, categoryId: selectedCategory }).unwrap();
-                dispatch(setNotification({ message: "Product added successfully", type: "success" }));
+                dispatch(setNotification({ message: t("Product added successfully"), type: "success" }));
                 navigate(`/`);
             }
         } catch (err: unknown) {

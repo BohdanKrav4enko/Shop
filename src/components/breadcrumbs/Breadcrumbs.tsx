@@ -1,6 +1,7 @@
 import {Link, useParams} from "react-router-dom";
 import styled from "styled-components";
 import {useGetProductByIdQuery} from "@/api/productsApi.ts";
+import {useTranslation} from "react-i18next";
 
 const BreadcrumbsContainer = styled.nav`
   font-size: 14px;
@@ -17,6 +18,7 @@ const Crumb = styled.span`
 `;
 
 export const Breadcrumbs = () => {
+    const { t } = useTranslation();
     const { id } = useParams();
     const productId = Number(id);
     const { data } = useGetProductByIdQuery({id: productId});
@@ -29,7 +31,7 @@ export const Breadcrumbs = () => {
     return (
         <BreadcrumbsContainer>
             <Crumb>
-                <Link to="/">Home</Link>
+                <Link to="/">{t("Home")}</Link>
             </Crumb>
             {productName && <Crumb>{productName}</Crumb>}
         </BreadcrumbsContainer>

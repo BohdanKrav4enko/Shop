@@ -12,6 +12,7 @@ import type { EditFormData } from "@/components/schemas/schemaAuth.tsx";
 import { editSchema } from "@/components/schemas/schemaAuth.tsx";
 import {getAuth, signOut} from "firebase/auth";
 import {setOpenModal} from "@/app/modalSlice.ts";
+import {useTranslation} from "react-i18next";
 
 export const useAboutMe = () => {
     const profile = useAppSelector(state => state.auth.profile);
@@ -20,6 +21,7 @@ export const useAboutMe = () => {
     const navigate = useNavigate();
     const auth = getAuth();
     const [isEdit, setEdit] = useState(false);
+    const {t} = useTranslation();
 
 
     const { control, register, handleSubmit, watch, reset, formState: { errors } } = useForm<EditFormData>({
@@ -60,12 +62,12 @@ export const useAboutMe = () => {
         try {
             const userRef = doc(db, "users", user.uid);
             await updateDoc(userRef, data);
-            dispatch(setNotification({ type: "success", message: "Profile updated successfully!" }));
+            dispatch(setNotification({ type: "success", message: t("Profile updated successfully!") }));
             dispatch(setProfile(data));
             dispatch(setAdmin(data.isAdmin));
             setEdit(false);
         } catch (error) {
-            dispatch(setNotification({ type: "error", message: `Error updating profile: ${error}` }));
+            dispatch(setNotification({ type: "error", message: t("Error updating profile", { error: error instanceof Error ? error.message : String(error) }) }));
         }
     };
 
@@ -77,6 +79,7 @@ export const useAboutMe = () => {
             navigate(PATH.HOME);
         }
     };
+
     const logoutHandler = async () => {
         navigate(PATH.HOME);
         try {
@@ -86,15 +89,16 @@ export const useAboutMe = () => {
             dispatch(setAdmin(false));
             dispatch(setNotification({
                 type: "info",
-                message: "You have successfully logged out of your account."
+                message: t("You have successfully logged out of your account.")
             }));
         } catch (error) {
             dispatch(setNotification({
                 type: "error",
-                message: `Logout error: ${error instanceof Error ? error.message : error}`
+                message: t("Logout error", { error: error instanceof Error ? error.message : String(error) })
             }));
         }
     };
+
 
 
     return {
@@ -108,6 +112,7 @@ export const useAboutMe = () => {
         errors,
         isChanged,
         handleCancelOrHome,
-        logoutHandler
+        logoutHandler,
+        t
     };
 };

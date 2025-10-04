@@ -3,9 +3,11 @@ import {CircleCheckBig, ShoppingCart} from "lucide-react";
 import {useAppDispatch, useCart} from "@/components";
 import {setNotification} from "@/app/appSlice.ts";
 import type {Product} from "@/types/types.ts";
+import {useTranslation} from "react-i18next";
 
 export const AddToCart = ({product}: { product: Product }) => {
     const dispatch = useAppDispatch();
+    const {t} = useTranslation();
     const { inCart } = useCart();
     const exists = inCart(product.id);
 
@@ -15,7 +17,7 @@ export const AddToCart = ({product}: { product: Product }) => {
                 dispatch(removeCart(product.id));
             } else {
                 dispatch(addCart(product));
-                dispatch(setNotification({message: "The product has been successfully added to your cart.", type: "success", duration: 1500}));
+                dispatch(setNotification({ message: t("The product has been successfully added to your cart."), type: "success", duration: 1500}));
             }
     };
     return (

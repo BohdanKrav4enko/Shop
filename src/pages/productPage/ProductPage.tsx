@@ -13,9 +13,11 @@ import {
 import {ArrowLeft} from "lucide-react";
 import {useNavigate} from "react-router-dom";
 import {PATH} from "@/routes/paths.ts";
+import {useTranslation} from "react-i18next";
 
 export const ProductPage = () => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
     const {
         data,
         admin,
@@ -58,7 +60,7 @@ export const ProductPage = () => {
             </ProductItemWrapperFooter>
             <StyledButton onClick={handleBack}>
                 <ArrowLeft />
-                Back
+                {t("Back")}
             </StyledButton>
         </ProductContainer>
     );

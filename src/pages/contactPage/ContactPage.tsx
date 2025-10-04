@@ -1,30 +1,32 @@
-import {
-    ContactContainer,
-    ContactSection,
-    ContactSubTitle,
-    ContactText,
-    ContactTitle
-} from "./index.ts";
-import {MapComponent, NavigationButtons} from "@/components";
+import { ContactContainer, ContactTitle, ContactSection, ContactSubTitle, ContactText } from "./index.ts";
+import { NavigationButtons } from "@/components";
+import { useTranslation } from "react-i18next";
+import { MapComponent } from "@/components";
 
 export const ContactPage = () => {
+    const { t } = useTranslation();
+
     return (
         <ContactContainer>
-            <ContactTitle>Contact Us</ContactTitle>
+            <ContactTitle>{t("Contact Us")}</ContactTitle>
+
             <ContactSection>
-                <ContactSubTitle>Email</ContactSubTitle>
+                <ContactSubTitle>{t("Email")}</ContactSubTitle>
                 <ContactText>bohdan.krav4enko@gmail.com</ContactText>
             </ContactSection>
+
             <ContactSection>
-                <ContactSubTitle>Phone</ContactSubTitle>
+                <ContactSubTitle>{t("Phone")}</ContactSubTitle>
                 <ContactText>+380 (66) 082-7985</ContactText>
             </ContactSection>
+
             <ContactSection>
-                <ContactSubTitle>Address</ContactSubTitle>
+                <ContactSubTitle>{t("Address")}</ContactSubTitle>
                 <ContactText>123 SHOP Hlib Babich Street, 105, Mykolaiv, Ukraine</ContactText>
             </ContactSection>
-            <MapComponent/>
-            <NavigationButtons/>
+
+            <MapComponent />
+            <NavigationButtons />
         </ContactContainer>
     );
 };

@@ -4,6 +4,7 @@ import {useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import {useGetCategoriesQuery} from "@/api/productsApi.ts";
 import {PATH} from "@/routes/paths.ts";
+import {useTranslation} from "react-i18next";
 
 interface ProductFormProps {
     initialTitle?: string;
@@ -34,6 +35,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     const [image, setImage] = useState(initialImage);
     const navigate = useNavigate();
     const {data: categories, isLoading: categoriesLoading} = useGetCategoriesQuery();
+    const { t } = useTranslation();
 
     useEffect(() => {
         setTitle(initialTitle);
@@ -48,36 +50,40 @@ export const ProductForm: React.FC<ProductFormProps> = ({
 
     return (
         <>
-            <Title>{isEdit ? "Edit Product" : "Add Product"}</Title>
-            <label htmlFor="product-title">Product Name</label>
-            <Input value={title} onChange={e => setTitle(e.target.value)} placeholder="Enter the product name"/>
-            <label htmlFor="product-image">Product Image URL</label>
-            <Input value={image} onChange={e => setImage([e.target.value])} placeholder="Enter the product image URL"/>
-            <label htmlFor="product-description">Description</label>
-            <Textarea value={description} onChange={e => setDescription(e.target.value)}
-                      placeholder="Enter a product description"/>
+            <Title>{isEdit ? t("Edit Product") : t("Add Product")}</Title>
+
+            <label htmlFor="product-title">{t("Product Name")}</label>
+            <Input value={title} onChange={e => setTitle(e.target.value)} placeholder={t("Enter the product name")} />
+
+            <label htmlFor="product-image">{t("Product Image URL")}</label>
+            <Input value={image} onChange={e => setImage([e.target.value])} placeholder={t("Enter the product image URL")} />
+
+            <label htmlFor="product-description">{t("Description")}</label>
+            <Textarea value={description} onChange={e => setDescription(e.target.value)} placeholder={t("Enter a product description")} />
 
             {!isEdit && <>
-                <label htmlFor="product-category">Category</label>
+                <label htmlFor="product-category">{t("Category")}</label>
                 <Select value={selectedCategory} onChange={e => setSelectedCategory(Number(e.target.value))}>
-                    {categoriesLoading && <option>Loading...</option>}
+                    {categoriesLoading && <option>{t("Loading...")}</option>}
                     {categories?.map(cat => (
-                        <option key={cat.id} value={cat.id}>
-                            {cat.name}
-                        </option>))}
-                </Select></>}
-            <label htmlFor="product-price">Price</label>
+                        <option key={cat.id} value={cat.id}>{cat.name}</option>
+                    ))}
+                </Select>
+            </>}
+
+            <label htmlFor="product-price">{t("Price")}</label>
             <Input
                 type="number"
                 value={price === 0 ? "" : price}
                 onChange={e => setPrice(Number(e.target.value) || 0)}
-                placeholder="Enter the price of the product"
+                placeholder={t("Enter the price of the product")}
             />
+
             <ButtonGroup>
-                {isEdit && onDelete && <StyledButton onClick={onDelete}>Delete</StyledButton>}
+                {isEdit && onDelete && <StyledButton onClick={onDelete}>{t("Delete")}</StyledButton>}
                 <ActionButtons>
-                    <StyledButton onClick={handleSave}>Save</StyledButton>
-                    <StyledButton onClick={() => navigate(PATH.HOME)}>Cancel</StyledButton>
+                    <StyledButton onClick={handleSave}>{t("Save")}</StyledButton>
+                    <StyledButton onClick={() => navigate(PATH.HOME)}>{t("Cancel")}</StyledButton>
                 </ActionButtons>
             </ButtonGroup>
         </>

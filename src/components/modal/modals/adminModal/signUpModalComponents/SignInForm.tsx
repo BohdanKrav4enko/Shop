@@ -7,6 +7,7 @@ import {
 } from "@/components";
 import type {SignInFormData} from "@/components/schemas/schemaAuth.tsx";
 import type {FieldErrors, UseFormRegister} from "react-hook-form";
+import {useTranslation} from "react-i18next";
 
 type Props = {
     errors: FieldErrors<SignInFormData>;
@@ -14,30 +15,31 @@ type Props = {
 };
 
 export const SignInForm = ({errors, register}: Props) => {
+    const {t} = useTranslation();
     return (
         <FormWrapper>
             <FormInputWrapper>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">{t("Email")}</label>
                 <StyledSignUpInput
                     id="email"
                     {...register("email")}
                     type="email"
-                    placeholder="Email"
+                    placeholder={t("Email")}
                     hasError={!!errors.email}
                 />
-                {errors.email && <InputError>{errors.email.message}</InputError>}
+                {errors.email && <InputError>{t(errors.email.message || "")}</InputError>}
 
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">{t("Password")}</label>
                 <StyledSignUpInput
                     id="password"
                     {...register("password")}
                     type="password"
-                    placeholder="Password"
+                    placeholder={t("Password")}
                     hasError={!!errors.password}
                 />
-                {errors.password && <InputError>{errors.password.message}</InputError>}
+                {errors.password && <InputError>{t(errors.password.message || "")}</InputError>}
             </FormInputWrapper>
-            <StyledButton type="submit">Sign in</StyledButton>
+            <StyledButton type="submit">{t("Sign in")}</StyledButton>
         </FormWrapper>
     );
 };

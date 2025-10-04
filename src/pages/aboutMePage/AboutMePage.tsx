@@ -13,6 +13,7 @@ import {Switch} from "@mui/material";
 import {Controller} from "react-hook-form";
 
 export const AboutMePage = () => {
+
     const {
         profile,
         isEdit,
@@ -24,14 +25,16 @@ export const AboutMePage = () => {
         errors,
         isChanged,
         handleCancelOrHome,
-        logoutHandler
+        logoutHandler,
+        t
     } = useAboutMe();
 
     return (
         <AboutMeContainer>
-                <AboutMeTitle>About Me</AboutMeTitle>
+            <AboutMeTitle>{t("About Me")}</AboutMeTitle>
+
             <AboutMeSection>
-                <AboutMeSubTitle>Name</AboutMeSubTitle>
+                <AboutMeSubTitle>{t("Name")}</AboutMeSubTitle>
                 <AboutMeText>
                     {isEdit ? (
                         <>
@@ -41,7 +44,7 @@ export const AboutMePage = () => {
                     ) : <p>{profile?.name}</p>}
                 </AboutMeText>
 
-                <AboutMeSubTitle>Surname</AboutMeSubTitle>
+                <AboutMeSubTitle>{t("Surname")}</AboutMeSubTitle>
                 <AboutMeText>
                     {isEdit ? (
                         <>
@@ -53,7 +56,7 @@ export const AboutMePage = () => {
             </AboutMeSection>
 
             <AboutMeSection>
-                <AboutMeSubTitle>Email</AboutMeSubTitle>
+                <AboutMeSubTitle>{t("Email")}</AboutMeSubTitle>
                 <AboutMeText>
                     {isEdit ? (
                         <>
@@ -65,7 +68,7 @@ export const AboutMePage = () => {
             </AboutMeSection>
 
             <AboutMeSection>
-                <AboutMeSubTitle>Phone</AboutMeSubTitle>
+                <AboutMeSubTitle>{t("Phone")}</AboutMeSubTitle>
                 <AboutMeText>
                     {isEdit ? (
                         <>
@@ -77,46 +80,47 @@ export const AboutMePage = () => {
             </AboutMeSection>
 
             <AboutMeSection>
-                <AboutMeSubTitle>Admin</AboutMeSubTitle>
+                <AboutMeSubTitle>{t("Admin")}</AboutMeSubTitle>
                 <AboutMeText>
                     {isEdit ? (
                         <Controller
                             name="isAdmin"
                             control={control}
                             render={({field}) => (
-                                <Switch sx={{
-                                    '& .Mui-checked': {
-                                        color: '#888',
-                                    },
-                                    '& .Mui-checked + .MuiSwitch-track': {
-                                        backgroundColor: '#ccc',
-                                    },
-                                    '& .MuiSwitch-track': {
-                                        backgroundColor: '#eee'
-                                    }
-                                }} {...field} checked={field.value}
-                                        onChange={e =>
-                                            field.onChange(e.target.checked)}/>
+                                <Switch
+                                    {...field}
+                                    checked={field.value}
+                                    onChange={e => field.onChange(e.target.checked)}
+                                    sx={{
+                                        '& .MuiSwitch-switchBase.Mui-checked': {
+                                            color: 'rgb(104,104,104)',
+                                            '& + .MuiSwitch-track': {
+                                                backgroundColor: 'rgb(0,0,0)',
+                                            },
+                                        },
+                                        '& .MuiSwitch-track': {
+                                            backgroundColor: '#1b1b19',
+                                        },
+                                    }}
+                                />
+
                             )}
                         />
                     ) : (
                         <p style={{display: "flex", alignItems: "center", gap: 10}}>
-                            {profile?.isAdmin && <BadgeCheck/>} {profile?.isAdmin ? "Yes" : "No"}
+                            {profile?.isAdmin && <BadgeCheck/>} {profile?.isAdmin ? t("Yes") : t("No")}
                         </p>
                     )}
                 </AboutMeText>
             </AboutMeSection>
 
-            <StyledButton disabled={isEdit && !isChanged}
-                          onClick={isEdit ? handleSubmit(onSubmit) : () => setEdit(true)}>
-                {isEdit ? <Save/> : <Pencil/>}
-                {isEdit ? "Save" : "Edit"}
+            <StyledButton disabled={isEdit && !isChanged} onClick={isEdit ? handleSubmit(onSubmit) : () => setEdit(true)}>
+                {isEdit ? <Save/> : <Pencil/>} {isEdit ? t("Save") : t("Edit")}
             </StyledButton>
             <StyledButton onClick={handleCancelOrHome}>
-                {isEdit ? <ArrowLeft/> : <House/>}
-                {isEdit ? "Back" : "Home"}
+                {isEdit ? <ArrowLeft/> : <House/>} {isEdit ? t("Back") : t("Home")}
             </StyledButton>
-            <StyledButton onClick={logoutHandler}><LogOut />Logout</StyledButton>
+            <StyledButton onClick={logoutHandler}><LogOut />{t("Logout")}</StyledButton>
         </AboutMeContainer>
     );
 };
