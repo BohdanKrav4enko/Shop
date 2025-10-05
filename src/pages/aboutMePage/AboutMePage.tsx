@@ -88,11 +88,11 @@ export const AboutMePage = () => {
                                            '& .MuiSwitch-switchBase.Mui-checked': {
                                                color: 'rgb(104,104,104)',
                                                '& + .MuiSwitch-track': {
-                                                   backgroundColor: 'rgb(0,0,0)',
+                                                   backgroundColor: 'rgb(80,75,75)',
                                                },
                                            },
                                            '& .MuiSwitch-track': {
-                                               backgroundColor: '#1b1b19',
+                                               backgroundColor: '#818176',
                                            },
                                        }}
                                 />
