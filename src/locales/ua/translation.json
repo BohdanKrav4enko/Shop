@@ -9,7 +9,7 @@
   "Show more": "Показати більше",
   "About": "Про нас",
   "Contact": "Контакти",
-  "Privacy Policy": "Політика конфіденційності",
+  "Privacy Policy": "Приватність",
   "FAQ": "Питання",
   "copyright": "© 2025 МАГАЗИН. Всі права захищені.",
   "User Menu": "Меню користувача",
@@ -135,6 +135,7 @@
   "Completed": "Завершено",
   "Cancelled": "Скасовано",
   "The product has been successfully removed.": "Продукт успішно видалено.",
-  "Remove item?": "Видалити товар?"
+  "Remove item?": "Видалити товар?",
+  "items": "од."
 }
 

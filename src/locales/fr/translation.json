@@ -135,5 +135,6 @@
   "Completed": "Terminé",
   "Cancelled": "Annulé",
   "The product has been successfully removed.": "Le produit a été supprimé avec succès.",
-  "Remove item?": "Supprimer l'article ?"
+  "Remove item?": "Supprimer l'article ?",
+  "items": "articles"
 }

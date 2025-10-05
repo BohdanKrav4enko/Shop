@@ -7,7 +7,7 @@ export const Overlay = styled.div<{ isOpen: boolean }>`
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.68);
-    display: ${({isOpen}) => (isOpen ? "flex" : "none")};
+    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
     justify-content: center;
     align-items: center;
     z-index: 1200;
@@ -19,7 +19,7 @@ export const ModalContainer = styled.div`
     width: 100%;
     overflow-y: auto;
     height: 80vh;
-    background: #fff;
+    background: ${({ theme }) => theme.palette.background.paper};
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.2);
     position: relative;
@@ -36,9 +36,9 @@ export const CloseButton = styled.button`
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    border: 1px solid #ddd;
-    background: #fff;
-    color: #333;
+    border: 1px solid ${({ theme }) => theme.palette.divider};
+    background: ${({ theme }) => theme.palette.background.paper};
+    color: ${({ theme }) => theme.palette.text.primary};
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
@@ -49,7 +49,7 @@ export const CloseButton = styled.button`
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 
     &:hover {
-        background: #f5f5f5;
+        background: ${({ theme }) => theme.palette.action.hover};
         transform: scale(1.1);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
@@ -66,37 +66,36 @@ export const CloseButton = styled.button`
     }
 `;
 
-
 export const StyledInput = styled.input`
     width: 100%;
     padding: 12px 16px;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid ${({ theme }) => theme.palette.divider};
     font-size: 16px;
-    color: #333;
-    background-color: #fff;
+    color: ${({ theme }) => theme.palette.text.primary};
+    background-color: ${({ theme }) => theme.palette.background.paper};
     outline: none;
     box-sizing: border-box;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
     &:hover {
-        border-color: #bbb;
+        border-color: ${({ theme }) => theme.palette.text.secondary};
     }
     &:focus {
-        border-color: #888;
+        border-color: ${({ theme }) => theme.palette.primary.main};
         box-shadow: 0 0 0 3px rgba(100, 100, 100, 0.15);
     }
     &::placeholder {
-        color: #aaa;
+        color: ${({ theme }) => theme.palette.text.secondary};
     }
-`
+`;
 
 export const ModalHeader = styled.h3`
     margin: 0 0 12px 0;
     font-size: 22px;
     font-weight: 700;
-    color: #222;
-    border-bottom: 1px solid #e0e0e0;
+    color: ${({ theme }) => theme.palette.text.primary};
+    border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
     padding-bottom: 8px;
 `;
 
@@ -104,12 +103,14 @@ export const ModalText = styled.p`
     margin: 0 auto;
     font-size: 16px;
     line-height: 1.4;
-    color: #555;
+    color: ${({ theme }) => theme.palette.text.secondary};
     word-break: break-word;
+
     @media (max-width: 480px) {
         font-size: 14px;
     }
 `;
+
 export const AdminModalButtonsWrapper = styled.div`
     display: flex;
     align-items: center;
@@ -117,23 +118,27 @@ export const AdminModalButtonsWrapper = styled.div`
     justify-content: center;
     gap: 1rem;
     padding: 20px;
+
     button {
         width: 80%;
     }
+
     @media (max-width: 480px) {
         button {
             width: 100%;
         }
     }
 `;
+
 export const AdminModalWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     height: 100%;
-`
+`;
+
 export const InputWrapper = styled.div`
     display: flex;
     gap: 1rem;
     padding-bottom: 30px;
-`
+`;

@@ -1,16 +1,9 @@
-import {
-    AboutMeContainer,
-    AboutMeInput,
-    AboutMeSection,
-    AboutMeSubTitle,
-    AboutMeText,
-    AboutMeTitle,
-    StyleMeError
-} from "./index.ts";
+import {AboutMeInput, ProfileLogOutButton, StyleMeError} from "./index.ts";
 import {StyledButton, useAboutMe} from "@/components";
 import {ArrowLeft, BadgeCheck, House, LogOut, Pencil, Save} from "lucide-react";
 import {Switch} from "@mui/material";
 import {Controller} from "react-hook-form";
+import {PageContainer, PageSection, PageSubTitle, PageText, PageTitle} from "@/pages";
 
 export const AboutMePage = () => {
 
@@ -30,78 +23,76 @@ export const AboutMePage = () => {
     } = useAboutMe();
 
     return (
-        <AboutMeContainer>
-            <AboutMeTitle>{t("About Me")}</AboutMeTitle>
+        <PageContainer>
+            <PageTitle>{t("About Me")}</PageTitle>
 
-            <AboutMeSection>
-                <AboutMeSubTitle>{t("Name")}</AboutMeSubTitle>
-                <AboutMeText>
+            <PageSection>
+                <PageSubTitle>{t("Name")}</PageSubTitle>
+                <PageText>
                     {isEdit ? (
                         <>
                             <AboutMeInput {...register("name")} />
                             {errors.name && <StyleMeError>{errors.name.message}</StyleMeError>}
                         </>
                     ) : <p>{profile?.name}</p>}
-                </AboutMeText>
+                </PageText>
 
-                <AboutMeSubTitle>{t("Surname")}</AboutMeSubTitle>
-                <AboutMeText>
+                <PageSubTitle>{t("Surname")}</PageSubTitle>
+                <PageText>
                     {isEdit ? (
                         <>
                             <AboutMeInput {...register("surname")} />
                             {errors.surname && <StyleMeError>{errors.surname.message}</StyleMeError>}
                         </>
                     ) : <p>{profile?.surname}</p>}
-                </AboutMeText>
-            </AboutMeSection>
+                </PageText>
+            </PageSection>
 
-            <AboutMeSection>
-                <AboutMeSubTitle>{t("Email")}</AboutMeSubTitle>
-                <AboutMeText>
+            <PageSection>
+                <PageSubTitle>{t("Email")}</PageSubTitle>
+                <PageText>
                     {isEdit ? (
                         <>
                             <AboutMeInput {...register("email")} />
                             {errors.email && <StyleMeError>{errors.email.message}</StyleMeError>}
                         </>
                     ) : <p>{profile?.email}</p>}
-                </AboutMeText>
-            </AboutMeSection>
+                </PageText>
+            </PageSection>
 
-            <AboutMeSection>
-                <AboutMeSubTitle>{t("Phone")}</AboutMeSubTitle>
-                <AboutMeText>
+            <PageSection>
+                <PageSubTitle>{t("Phone")}</PageSubTitle>
+                <PageText>
                     {isEdit ? (
                         <>
                             <AboutMeInput {...register("phone")} />
                             {errors.phone && <StyleMeError>{errors.phone.message}</StyleMeError>}
                         </>
                     ) : <p>{profile?.phone}</p>}
-                </AboutMeText>
-            </AboutMeSection>
+                </PageText>
+            </PageSection>
 
-            <AboutMeSection>
-                <AboutMeSubTitle>{t("Admin")}</AboutMeSubTitle>
-                <AboutMeText>
+            <PageSection>
+                <PageSubTitle>{t("Admin")}</PageSubTitle>
+                <PageText>
                     {isEdit ? (
                         <Controller
                             name="isAdmin"
                             control={control}
                             render={({field}) => (
-                                <Switch
-                                    {...field}
-                                    checked={field.value}
-                                    onChange={e => field.onChange(e.target.checked)}
-                                    sx={{
-                                        '& .MuiSwitch-switchBase.Mui-checked': {
-                                            color: 'rgb(104,104,104)',
-                                            '& + .MuiSwitch-track': {
-                                                backgroundColor: 'rgb(0,0,0)',
-                                            },
-                                        },
-                                        '& .MuiSwitch-track': {
-                                            backgroundColor: '#1b1b19',
-                                        },
-                                    }}
+                                <Switch{...field} checked={field.value}
+                                       onChange={e => field.onChange(e.target.checked)}
+                                       sx={{
+                                           '& .MuiSwitch-switchBase.Mui-checked': {
+                                               color: 'rgb(104,104,104)',
+                                               '& + .MuiSwitch-track': {
+                                                   backgroundColor: 'rgb(0,0,0)',
+                                               },
+                                           },
+                                           '& .MuiSwitch-track': {
+                                               backgroundColor: '#1b1b19',
+                                           },
+                                       }}
                                 />
 
                             )}
@@ -111,16 +102,16 @@ export const AboutMePage = () => {
                             {profile?.isAdmin && <BadgeCheck/>} {profile?.isAdmin ? t("Yes") : t("No")}
                         </p>
                     )}
-                </AboutMeText>
-            </AboutMeSection>
-
-            <StyledButton disabled={isEdit && !isChanged} onClick={isEdit ? handleSubmit(onSubmit) : () => setEdit(true)}>
+                </PageText>
+            </PageSection>
+            <StyledButton disabled={isEdit && !isChanged}
+                          onClick={isEdit ? handleSubmit(onSubmit) : () => setEdit(true)}>
                 {isEdit ? <Save/> : <Pencil/>} {isEdit ? t("Save") : t("Edit")}
             </StyledButton>
             <StyledButton onClick={handleCancelOrHome}>
                 {isEdit ? <ArrowLeft/> : <House/>} {isEdit ? t("Back") : t("Home")}
             </StyledButton>
-            <StyledButton onClick={logoutHandler}><LogOut />{t("Logout")}</StyledButton>
-        </AboutMeContainer>
+            <ProfileLogOutButton onClick={logoutHandler}><LogOut/>{t("Logout")}</ProfileLogOutButton>
+        </PageContainer>
     );
 };

@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 export const DropdownWrapper = styled.div`
-    position: fixed;
-    right: 20px;
-    top: 20px;
+    position: relative;
     display: inline-block;
     font-family: sans-serif;
     width: max-content;
@@ -12,18 +10,19 @@ export const DropdownWrapper = styled.div`
 
 export const DropdownButton = styled.button`
     padding: 4px 8px;
-    border: 1px solid #ccc;
+    border: 1px solid ${({ theme }) => theme.palette.divider};
     border-radius: 4px;
-    background: #fff;
+    background: ${({ theme }) => theme.palette.background.paper};
     cursor: pointer;
     width: max-content;
     font-size: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: ${({ theme }) => theme.palette.text.primary};
 
     &:hover {
-        border-color: #888;
+        border-color: ${({ theme }) => theme.palette.text.primary};
     }
 `;
 
@@ -32,7 +31,7 @@ export const DropdownList = styled.ul<{ open: boolean }>`
     top: 110%;
     left: 0;
     width: max-content;
-    background: #fff;
+    background: ${({ theme }) => theme.palette.background.paper};
     border-radius: 4px;
     list-style: none;
     padding: 0;
@@ -47,8 +46,29 @@ export const DropdownItem = styled.li`
     padding: 4px 8px;
     font-size: 12px;
     cursor: pointer;
+    color: ${({ theme }) => theme.palette.text.primary};
 
     &:hover {
-        background: #f0f0f0;
+        background: ${({ theme }) => theme.palette.action.hover};
+    }
+`;
+export const IconButton = styled.button`
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const SettingsWrapper = styled.div`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+    @media (max-width: 500px) {
+        right: 2px;
     }
 `;

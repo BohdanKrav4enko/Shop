@@ -8,6 +8,7 @@ export const AddToFavoriteButton = ({product}: { product: Product }) => {
     const dispatch = useAppDispatch();
     const favorites = useAppSelector(state => state.app.favorites);
     const exists = favorites.find((favorite) => favorite === product.id);
+    const theme = useAppSelector(state => state.app.themeMode);
 
     const favoriteToggle = () => {
         dispatch(toggleFavorite(product.id))
@@ -15,7 +16,7 @@ export const AddToFavoriteButton = ({product}: { product: Product }) => {
 
     return (
         <StyledAddToFavoriteButton aria-label="Favorite" onClick={favoriteToggle}>
-            <Heart style={exists ? {color: 'red'} : {color: 'black'}}/>
+            <Heart style={exists ? {color: 'red'} : {color: theme === 'light' ? 'black' : 'white'}}/>
         </StyledAddToFavoriteButton>
 
     );

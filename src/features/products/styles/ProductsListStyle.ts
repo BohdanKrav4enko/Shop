@@ -7,17 +7,19 @@ export const Grid = styled.div`
     padding: 20px;
     justify-items: center;
 `;
+
 export const CategoryTitle = styled.p`
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin: 20px 0;
-  color: #333;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 20px 0;
+    color: ${({ theme }) => theme.palette.text.primary};
 `;
+
 export const Greetings = styled.p`
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 20px 0;
-  color: #333;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 20px 0;
+    color: ${({ theme }) => theme.palette.text.primary};
 `;

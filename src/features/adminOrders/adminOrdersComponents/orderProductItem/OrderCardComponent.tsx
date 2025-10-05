@@ -1,5 +1,6 @@
 import {OrderHeader, StatusDot, OrderCard, OrderDetails} from "@/features";
 import type {OrderType} from "@/features/adminOrders/types/type.ts";
+import {useTranslation} from "react-i18next";
 
 interface OrderCardComponentProps {
     order: OrderType;
@@ -12,11 +13,13 @@ interface OrderCardComponentProps {
     setConfirm: () => void;
 }
 
-export const OrderCardComponent = ({ order, isOpen, confirmOpen, onToggle, onConfirmDelete, onCancelDelete, updateStatus, setConfirm }: OrderCardComponentProps) => (
+export const OrderCardComponent = ({ order, isOpen, confirmOpen, onToggle, onConfirmDelete, onCancelDelete, updateStatus, setConfirm }: OrderCardComponentProps) => {
+    const { t } = useTranslation();
+    return (
     <OrderCard key={order.id}>
         <OrderHeader onClick={onToggle}>
             <div>
-                <b>{order.name}</b> ({order.email}) — ${order.total} — {order.products.length} items
+                <b>{order.name}</b> ({order.email}) — ${order.total} — {order.products.length} {t("items")}
             </div>
             <div>
                 <StatusDot status={order.status}/>
@@ -32,4 +35,4 @@ export const OrderCardComponent = ({ order, isOpen, confirmOpen, onToggle, onCon
             setConfirm={setConfirm}
         />
     </OrderCard>
-);
+)};

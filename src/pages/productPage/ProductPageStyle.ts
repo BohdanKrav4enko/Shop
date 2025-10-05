@@ -13,6 +13,7 @@ export const ProductItemWrapper = styled.div`
         }
     }
 `;
+
 export const ProductContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -25,26 +26,26 @@ export const ProductContainer = styled.div`
 export const ProductTitle = styled.h2`
     font-size: 28px;
     font-weight: 700;
-    color: #333;
+    color: ${({ theme }) => theme.palette.text.primary || "#333"};
     margin: 0;
 `;
 
 export const ProductDescription = styled.p`
     font-size: 16px;
-    color: #555;
+    color: ${({ theme }) => theme.palette.text.secondary || "#555"};
     line-height: 1.5;
 `;
 
 export const ProductPrice = styled.p`
     font-size: 30px;
     font-weight: 600;
-    color: #079a0e;
+    color: ${({ theme }) => theme.palette.success.main || "#079a0e"};
 `;
 
 export const ProductImage = styled.img`
     width: 100%;
     max-width: 500px;
-    height: 500px;
+    height: auto;
     border-radius: 12px;
     object-fit: cover;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -53,26 +54,29 @@ export const ProductImage = styled.img`
 export const ProductItemWrapperFooter = styled(ProductItemWrapper)`
     button {
         width: 100%;
+        margin-top: 8px;
     }
-`
+`;
 
 export const CategoryWrapper = styled.div`
     font-size: 16px;
     margin: 10px 0;
-    color: #555;
+    color: ${({ theme }) => theme.palette.text.secondary || "#555"};
 `;
+
 export const CategoryChangeButton = styled.button`
     background: inherit;
     border: none;
     display: flex;
     font-size: 16px;
-    color: #007bff;
+    color: ${({ theme }) => theme.palette.primary.main || "#007bff"};
     text-decoration: none;
     font-weight: 500;
     cursor: pointer;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
 
     &:hover {
         text-decoration: underline;
-        color: #0056b3;
+        color: ${({ theme }) => theme.palette.primary.dark || "#0056b3"};
     }
 `;

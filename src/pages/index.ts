@@ -1,3 +1,4 @@
+export {PageSection, PageContainer, PageText, PageTitle, PageSubTitle} from "./pageStyles.ts";
 export * from "./aboutPage";
 export * from "./faqPage";
 export * from "./contactPage";

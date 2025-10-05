@@ -1,5 +1,5 @@
-import styled, {keyframes} from "styled-components";
-import {Box} from "lucide-react";
+import styled, { keyframes } from "styled-components";
+import { Box } from "lucide-react";
 
 const bounce = keyframes`
     0%, 100% {
@@ -16,14 +16,14 @@ export const EmptyStateWrapper = styled.div`
     align-items: center;
     justify-content: center;
     padding: 60px 20px;
-    color: #777;
+    color: ${({ theme }) => theme.palette.text.secondary};
 `;
 
 export const EmptyIcon = styled(Box)`
     width: 60px;
     height: 60px;
     margin-bottom: 20px;
-    color: #ccc;
+    color: ${({ theme }) => theme.palette.action.disabled};
     animation: ${bounce} 1.5s infinite;
 `;
 
@@ -31,11 +31,11 @@ export const EmptyTitle = styled.h2`
     font-size: 22px;
     font-weight: 600;
     margin-bottom: 8px;
-    color: #333;
+    color: ${({ theme }) => theme.palette.text.primary};
 `;
 
 export const EmptySubtitle = styled.p`
     text-align: center;
     font-size: 16px;
-    color: #555;
+    color: ${({ theme }) => theme.palette.text.secondary};
 `;

@@ -6,7 +6,7 @@ export const sendOrder = async (order: Order) => {
     await addDoc(collection(db, "orders"), {
         ...order,
         createdAt: serverTimestamp(),
-        status: "new",
+        status: "New",
     });
 };
 export const getOrders = async () => {

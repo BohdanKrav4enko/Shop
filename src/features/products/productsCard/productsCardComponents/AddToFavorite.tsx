@@ -8,6 +8,7 @@ export const AddToFavorite = ({product}: { product: Product }) => {
     const dispatch = useAppDispatch();
     const favorites = useAppSelector(state => state.app.favorites);
     const exists = favorites.find((favorite) => favorite === product.id);
+    const theme = useAppSelector(state => state.app.themeMode);
 
     const favoriteToggle = () => {
         dispatch(toggleFavorite(product.id))
@@ -15,8 +16,7 @@ export const AddToFavorite = ({product}: { product: Product }) => {
 
     return (
         <CartWrapper onClick={favoriteToggle}>
-            <ControlButton aria-label="Favorite"><Heart style={exists ? {color: 'red'} : {color: 'black'}}/></ControlButton>
+            <ControlButton aria-label="Favorite"><Heart style={exists ? {color: 'red'} : {color: theme === 'light' ? 'black' : 'white'}}/></ControlButton>
         </CartWrapper>
-
     );
 };

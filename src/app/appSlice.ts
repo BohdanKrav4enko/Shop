@@ -12,6 +12,7 @@ interface AppModeState {
     notification: Notification | null;
     categoryId: number;
     favorites: number[];
+    themeMode: "light" | "dark";
 }
 
 const initialState: AppModeState = {
@@ -19,6 +20,7 @@ const initialState: AppModeState = {
     favorites: JSON.parse(localStorage.getItem('favorites') || '[]'),
     notification: null,
     categoryId: 0,
+    themeMode: (localStorage.getItem("theme") as "light" | "dark") || "light",
 }
 
 export const addSlice = createSlice({
@@ -55,8 +57,26 @@ export const addSlice = createSlice({
         clearFavorite: (state) => {
             state.favorites = []
         },
+        toggleTheme(state) {
+            state.themeMode = state.themeMode === "light" ? "dark" : "light";
+            localStorage.setItem("theme", state.themeMode);
+        },
+        setTheme(state, action: PayloadAction<"light" | "dark">) {
+            state.themeMode = action.payload;
+            localStorage.setItem("theme", state.themeMode);
+        },
     }
 })
 
-export const {setAdmin, setNotification, setCategory, addFavorites, toggleFavorite, removeFavorites, clearFavorite} = addSlice.actions;
+export const {
+    setAdmin,
+    setNotification,
+    setCategory,
+    addFavorites,
+    toggleFavorite,
+    removeFavorites,
+    clearFavorite,
+    toggleTheme,
+    setTheme
+} = addSlice.actions;
 export default addSlice.reducer;

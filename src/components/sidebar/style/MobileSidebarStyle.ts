@@ -6,7 +6,7 @@ export const MobileSidebarContainer = styled.div<{ isOpen: boolean }>`
     left: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
     width: 100%;
     height: 100%;
-    background: #fff;
+    background: ${({ theme }) => theme.palette.background.paper};
     transition: left 0.3s ease;
     z-index: 1000;
     display: flex;
@@ -20,7 +20,8 @@ export const SidebarTitle = styled.p`
     align-items: center;
     justify-content: center;
     font-size: 28px;
-    margin: 30px 0 30px 0;
+    margin: 30px 0;
+    color: ${({ theme }) => theme.palette.text.primary};
 `;
 
 export const CategoriesGrid = styled.div`
@@ -33,14 +34,16 @@ export const MobileCategoryItem = styled.div<{ active: boolean }>`
     padding: 12px;
     border-radius: 10px;
     cursor: pointer;
-    background: ${({ active }) => (active ? "#f0f0f0" : "#fafafa")};
-    color: ${({ active }) => (active ? "#000" : "#333")};
+    background: ${({ theme, active }) =>
+            active ? theme.palette.action.selected || theme.palette.background.paper
+                    : theme.palette.background.paper};
+    color: ${({ theme}) => theme.palette.text.primary};
     font-weight: 500;
     text-align: center;
     transition: all 0.2s ease;
-    border: 1px solid #ddd;
+    border: 1px solid ${({ theme }) => theme.palette.divider || "#ccc"};
 
     &:hover {
-        background: #f0f0f0;
+        background: ${({ theme }) => theme.palette.action.hover || theme.palette.background.paper};
     }
 `;

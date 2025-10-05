@@ -9,7 +9,7 @@
   "Show more": "Показать ещё",
   "About": "О нас",
   "Contact": "Контакты",
-  "Privacy Policy": "Политика конфиденциальности",
+  "Privacy Policy": "Приватность",
   "FAQ": "Вопросы",
   "copyright": "© 2025 МАГАЗИН. Все права защищены.",
   "User Menu": "Меню пользователя",
@@ -135,7 +135,8 @@
   "Completed": "Завершено",
   "Cancelled": "Отменено",
   "The product has been successfully removed.": "Продукт успешно удалён.",
-  "Remove item?": "Удалить товар?"
+  "Remove item?": "Удалить товар?",
+  "items": "ед."
 }
 
 

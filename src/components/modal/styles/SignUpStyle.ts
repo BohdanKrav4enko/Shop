@@ -1,19 +1,22 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 
 export const ModalSignUpInputsContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 12px;
     padding: 16px 24px;
-    margin: 30px auto 30px auto;
+    margin: 30px auto;
     width: 80%;
+
     @media (max-width: 480px) {
         width: 100%;
     }
+
     @media (max-height: 900px) {
-        margin: 0 auto 0 auto;
+        margin: 0 auto;
     }
 `;
+
 export const FormWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -24,58 +27,58 @@ export const FormWrapper = styled.div`
     gap: 12px;
     padding: 12px;
     box-sizing: border-box;
+
     button {
-        background: rgb(96, 104, 99);
-        color: #fff;
+        background: ${({ theme }) => theme.palette.primary.main};
+        color: ${({ theme }) => theme.palette.primary.contrastText};
         padding: 10px 20px;
         border-radius: 8px;
         font-size: 16px;
         font-weight: 500;
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s ease, transform 0.15s ease;
 
         &:hover {
-            background: rgb(80, 88, 84);
+            background: ${({ theme }) => theme.palette.primary.dark};
         }
 
         &:active {
-            background: rgb(70, 78, 74);
+            background: ${({ theme }) => theme.palette.primary.light};
         }
     }
-`
+`;
+
 export const FormInputWrapper = styled.div`
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+`;
 
-`
 export const StyledSignUpInput = styled.input<{ hasError?: boolean }>`
     width: 100%;
     padding: 10px 14px;
     border-radius: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid ${({ theme }) => theme.palette.divider};
     font-size: 15px;
-    color: #333;
-    background: #f9f9f9;
+    color: ${({ theme }) => theme.palette.text.primary};
+    background: ${({ theme }) => theme.palette.background.paper};
     transition: border-color 0.2s ease, background 0.2s ease;
     margin-bottom: 0;
 
     &:focus {
         outline: none;
-        border-color: #999;
-        background: #fff;
+        border-color: ${({ theme }) => theme.palette.primary.main};
+        background: ${({ theme }) => theme.palette.background.default};
     }
 
     &::placeholder {
-        color: #aaa;
+        color: ${({ theme }) => theme.palette.text.secondary};
     }
-
-    ${props => props.hasError && css`
-        border-color: #ff4d4f;
-        background: #fff1f0;
-    `}
 `;
 
 export const InputError = styled.span`
     display: block;
     font-size: 10px;
-    color: #ff4d4f;
+    color: ${({ theme }) => theme.palette.error.main};
 `;

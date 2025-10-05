@@ -7,13 +7,13 @@ export const ArrowButton = styled.button<{ visible: boolean }>`
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: #f9f9f9;
-    color: #000000;
+    background: ${({ theme }) => theme?.palette?.background?.paper ?? "#f9f9f9"};
+    color: ${({ theme }) => theme?.palette?.text?.primary ?? "#000"};
     border: none;
     cursor: pointer;
     font-size: 24px;
-    opacity: ${({visible}) => (visible ? 1 : 0)};
-    pointer-events: ${({visible}) => (visible ? "auto" : "none")};
+    opacity: ${({ visible }) => (visible ? 1 : 0)};
+    pointer-events: ${({ visible }) => (visible ? "auto" : "none")};
     transition: opacity 0.3s ease, transform 0.2s ease, background 0.2s ease;
     display: flex;
     align-items: center;
@@ -23,7 +23,7 @@ export const ArrowButton = styled.button<{ visible: boolean }>`
 
     &:hover {
         transform: scale(1.1);
-        background: #f0f0f0;
+        background: ${({ theme }) => theme?.palette?.action?.hover ?? "#e0e0e0"};
         box-shadow: 0 6px 16px rgba(12, 11, 11, 0.75);
     }
 
@@ -32,3 +32,4 @@ export const ArrowButton = styled.button<{ visible: boolean }>`
         box-shadow: 0 4px 12px rgba(12, 11, 11, 0.67);
     }
 `;
+

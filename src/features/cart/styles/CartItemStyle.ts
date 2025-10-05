@@ -4,17 +4,19 @@ export const DeleteButton = styled.button`
     border: none;
     background: none;
     cursor: pointer;
+    color: ${({ theme }) => theme.palette.text.primary};
 
     &:hover {
-        color: red;
+        color: ${({ theme }) => theme.palette.error.main};
     }
-`
+`;
+
 export const ItemContainer = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-between; /* 👈 кнопки уходят вправо */
+    justify-content: space-between;
     gap: 16px;
-    background: #fff;
+    background: ${({ theme }) => theme.palette.background.paper};
     border-radius: 12px;
     padding: 12px 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -31,6 +33,7 @@ export const ItemContainer = styled.div`
         align-items: center;
         gap: 16px;
         text-decoration: none;
+        color: ${({ theme }) => theme.palette.text.primary};
     }
 `;
 
@@ -51,7 +54,7 @@ export const ItemTitle = styled.span`
     font-weight: 600;
     font-size: 18px;
     margin-bottom: 6px;
-    color: #333;
+    color: ${({ theme }) => theme.palette.text.primary};
     @media (max-width: 480px) {
         font-size: 12px;
     }
@@ -59,7 +62,7 @@ export const ItemTitle = styled.span`
 
 export const ItemPrice = styled.span`
     font-size: 14px;
-    color: #777;
+    color: ${({ theme }) => theme.palette.text.secondary};
 `;
 
 export const ItemControls = styled.div`
@@ -75,11 +78,11 @@ export const ControlButton = styled.button`
     border: none;
     background: none;
     cursor: pointer;
-    color: #555;
+    color: ${({ theme }) => theme.palette.text.primary};
     transition: color 0.2s ease, transform 0.2s ease;
 
     &:hover {
-        color: #ff4d4f;
+        color: ${({ theme }) => theme.palette.error.main};
         transform: scale(1.1);
     }
 `;

@@ -1,12 +1,12 @@
 import { HeaderButtons, HeaderModals, HeaderLogo, HeaderContainer} from "./index.ts";
-import LanguageSelector from "../languageSelector/LanguageSelector.tsx";
+import {SettingsSection} from "@/components";
 
 export const Header = () => {
     return (
         <>
             <HeaderContainer>
                 <HeaderLogo />
-                <LanguageSelector/>
+                <SettingsSection/>
                 <HeaderButtons/>
             </HeaderContainer>
             <HeaderModals/>

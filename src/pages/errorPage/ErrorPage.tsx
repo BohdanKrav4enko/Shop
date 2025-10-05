@@ -13,18 +13,19 @@ const ErrorWrapper = styled.div`
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background-color: #f5f5f5;
-    button{
+    background-color: ${({ theme }) => theme.palette.background.default};
+
+    button {
         margin-top: 20px;
         width: 80%;
     }
 `;
 
 const ErrorImage = styled.img`
-  width: 90%;
-  max-width: 90vw;
-  max-height: 90%;
-  object-fit: contain;
+    width: 90%;
+    max-width: 90vw;
+    max-height: 90%;
+    object-fit: contain;
 `;
 
 export const ErrorPage = () => {

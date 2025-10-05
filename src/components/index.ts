@@ -14,4 +14,4 @@ export * from "./scrollToTopOnRouteChange";
 export * from "./skeletons";
 export * from "./protectedRoute";
 export * from "./errorFetch";
-export * from "./languageSelector";
+export * from "./settingsSection"
