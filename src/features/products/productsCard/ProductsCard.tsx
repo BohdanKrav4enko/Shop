@@ -20,12 +20,6 @@ export const ProductsCard = ({product}: { product: Product }) => {
                         onError={e => (e.currentTarget.src = img)}
                         width="280"
                         height="280"
-                        loading="lazy"
-                        sizes="(max-width: 600px) 140px, 280px"
-                        srcSet={`
-                        ${product.images[0]}?w=140 140w,
-                        ${product.images[0]}?w=280 280w
-                        `}
                     />
                 </ImageWrapper>
             </Link>
