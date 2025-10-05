@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: "Roboto", sans-serif;
         background-color: #f5f5f5;
         color: #333;
         line-height: 1.5;

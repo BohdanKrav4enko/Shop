@@ -46,6 +46,12 @@ export const ProductPage = () => {
                 src={data.images?.[0]}
                 alt={data.title || "Product image"}
                 onError={e => (e.currentTarget.src = img)}
+                height="500"
+                width="500"
+                sizes="(max-width: 600px) 200px, 500px"
+                srcSet={`
+                ${data.images?.[0]}?w=200 200w,
+                ${data.images?.[0]}?w=500 500w`}
             />
             <ProductActions
                 data={data}

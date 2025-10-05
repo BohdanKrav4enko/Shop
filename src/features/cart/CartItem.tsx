@@ -34,6 +34,9 @@ export const CartItem = ({item}: CartItemProps) => {
                 src={item.images[0]}
                 alt={`Image of ${item.title}`}
                 onError={e => (e.currentTarget.src = img)}
+                width="80"
+                height="80"
+                loading="lazy"
             />
             <ItemInfo>
                 <ItemTitle>{item.title}</ItemTitle>

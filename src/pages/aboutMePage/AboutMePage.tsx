@@ -36,7 +36,9 @@ export const AboutMePage = () => {
                         </>
                     ) : <p>{profile?.name}</p>}
                 </PageText>
+            </PageSection>
 
+            <PageSection>
                 <PageSubTitle>{t("Surname")}</PageSubTitle>
                 <PageText>
                     {isEdit ? (

@@ -116,7 +116,7 @@ export const AdminModalButtonsWrapper = styled.div`
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    gap: 1rem;
+    gap: 4px;
     padding: 20px;
 
     button {

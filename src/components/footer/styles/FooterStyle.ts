@@ -9,6 +9,7 @@ export const FooterContainer = styled.footer`
     gap: 12px;
     align-items: center;
     font-size: 14px;
+    min-height: 140px;
     color: ${({ theme }) => theme.palette.text.secondary};
 `;
 

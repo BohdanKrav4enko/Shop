@@ -51,8 +51,12 @@ export const FormWrapper = styled.div`
 
 export const FormInputWrapper = styled.div`
     display: flex;
+    gap: 10px;
     flex-direction: column;
     box-sizing: border-box;
+    @media (max-height: 800px) {
+        gap: 2px;
+    }
 `;
 
 export const StyledSignUpInput = styled.input<{ hasError?: boolean }>`

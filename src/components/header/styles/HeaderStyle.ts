@@ -18,7 +18,6 @@ export const HeaderContainer = styled.header`
 `;
 
 export const Title = styled.h1`
-    font-family: "Acme", sans-serif;
     font-size: 26px;
     font-weight: 800;
     color: ${({ theme }) => theme.palette.text.primary};

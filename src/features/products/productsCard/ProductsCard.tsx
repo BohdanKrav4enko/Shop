@@ -18,6 +18,14 @@ export const ProductsCard = ({product}: { product: Product }) => {
                         src={product.images[0]}
                         alt={`Image of ${product.title}`}
                         onError={e => (e.currentTarget.src = img)}
+                        width="280"
+                        height="280"
+                        loading="lazy"
+                        sizes="(max-width: 600px) 140px, 280px"
+                        srcSet={`
+                        ${product.images[0]}?w=140 140w,
+                        ${product.images[0]}?w=280 280w
+                        `}
                     />
                 </ImageWrapper>
             </Link>
@@ -31,11 +39,11 @@ export const ProductsCard = ({product}: { product: Product }) => {
                         {product.category.name}
                     </CategoryChangeButton>
                 ) : "Unknown"}
-                <AddToFavorite product={product} aria-label={`Add ${product.title} to favorites`} />
+                <AddToFavorite product={product} aria-label={`Add ${product.title} to favorites`}/>
             </FlexWrapper>
             <Footer>
                 <Price>{product.price} $</Price>
-                <AddToCart product={product} aria-label={`Add ${product.title} to cart`} />
+                <AddToCart product={product} aria-label={`Add ${product.title} to cart`}/>
             </Footer>
         </Card>
 
