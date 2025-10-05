@@ -1,13 +1,12 @@
 import {useState} from "react";
 import {useGetProductsQuery} from "@/api/productsApi.ts";
 import {
-    StyledButton,
     InputWrapper,
     ModalHeader,
     ModalText,
     StyledInput,
     CartContent,
-    useAppDispatch
+    useAppDispatch, ModalFooter
 } from "../../index.ts";
 import {CircularProgress} from "@mui/material";
 import {SearchItem} from "@/features";
@@ -47,12 +46,6 @@ export const SearchModal = () => {
                          placeholder={t("I'm looking for...")}
                          aria-label="Search products"
             />
-            <StyledButton
-                onClick={()=>{dispatch(closeModal())}}
-                aria-label="Close search modal"
-            >
-                {t("Close")}
-            </StyledButton>
         </InputWrapper>
         <CartContent>
             {filteredProducts.length > 0
@@ -64,5 +57,6 @@ export const SearchModal = () => {
                 </ModalText>
             }
         </CartContent>
+        <ModalFooter onClose={()=>{dispatch(closeModal())}}/>
     </>
 };
