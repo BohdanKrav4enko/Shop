@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next";
 
 const BreadcrumbsContainer = styled.nav`
   font-size: 14px;
-  color: #555;
+  color: ${({theme})=>theme.palette.text.secondary};
   margin-bottom: 16px;
 `;
 
